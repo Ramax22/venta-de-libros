@@ -1,82 +1,255 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>HOME</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
     <script src="https://kit.fontawesome.com/d6525fcc60.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    
-    <div class="container">
+  
+    <title>HOME</title>
+</head>
+<body>
 
-      <header>
+    <div class="container-fluid">
+        <header>
+            <div class="main-header">
+                <img src="images/logo.png" alt="" class="logo">
 
-        <div class="header1">
+                <div class="busqueda">
+                    
+                    <div class="bar"></div>
+                    <button>Buscar</button>
+                    <button>Búsqueda Avanzada</button>
 
-          <div class="logo"> <img height="100px" src="/images/logo.png" alt=""></div>
+                </div>
 
-          <ul class="navigator">
-            <li>Registo</li>
-            <li>Login <i class="fas fa-sign-in-alt"></i></li>
-            <li>Favoritos <i class="far fa-heart"></i></li>
-            <li>Pedidos <i class="far fa-list-alt"></i></li>
-          </ul>
-          
-          <div class="busqueda">
-            <div class="bar"></div>
-            <ul class="botonesb">
-              <li>Buscar</li>
-              <li>Búsqueda Avanzada</li>
-            </ul>
-          </div>
+                <ul class="navigator">
+                    <li>Registo</li>
+                    <li>Login <i class="fas fa-sign-in-alt"></i></li>
+                    <li>Favoritos <i class="far fa-heart"></i></li>
+                    <li>Pedidos <i class="far fa-list-alt"></i></li>
+                </ul>
+            </div>
+            
+            <div class="bottom-header">
+                <ul class="menui">
+                    <li>Comprar por categoria</li>
+                    <li>Los mas vendidos</li>
+                    <li>Proximamente</li>
+                    <li>Nuevos lanzamientos</li>
+                    <li>Outlet de libros</li>
+                  </ul>
+                  <ul class="menud">
+                    <li>Idioma</li>
+                    <li>Moneda</li>
+                    <li>Total</li>
+                    <li><i class="fas fa-shopping-basket"></i></li>
+                   </ul>
+            </div>
+        </header>
+        <div class="row">
+            <aside class="col-3">
+                <article>
+                    <h5 class="titulos-aside">Destacado</h5>
+                    <img src="images/tend1.jpg" alt="">
+                    <h6 class="info-aside">Glen Cooper</h6>
+                </article>
+
+                <article>
+                    <h5 class="titulos-aside">Bestsellers por idioma</h5>
+                    <img src="images/idiomas.jpg" alt="">
+                    <ul>
+                        <li>Libros en inglés</li>
+                        <li>Libros en español</li>
+                        <li>Libros en francés</li>
+                        <li>Libros en alemán</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <h5 class="titulos-aside">Lista de "mejores libros"</h5>
+                    <ul>
+                        <li>Mejores libros del mundo</li>
+                        <li>Mejores libros de cocina</li>
+                        <li>Mejores libros de terror</li>
+                        <li>Mejores libros de romance</li>
+                      </ul>
+                </article>
+
+            </aside>
+
+            <section class="col-9">
+
+                <div class="carrousel"></div>
+
+                <div class="destacados">
+
+                    <h5 class="titulos-aside">Ultimas novedades</h5>
+
+                    <div class="articles-section">
+                        <article>
+                            <img src="images/nov1.jpg" alt="">
+                            <h6 class="titulo">El traidor. El diario  secreto del hijo del Mayo.</h6>
+                            <h6 class="autor">Anabel Hernández</h6>
+                            <h6 class="precio">$2.000</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov1.jpg" alt="">
+                            <h6 class="titulo">El traidor. El diario  secreto del hijo del Mayo.</h6>
+                            <h6 class="autor">Anabel Hernández</h6>
+                            <h6 class="precio">$2.000</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov1.jpg" alt="">
+                            <h6 class="titulo">El traidor. El diario  secreto del hijo del Mayo.</h6>
+                            <h6 class="autor">Anabel Hernández</h6>
+                            <h6 class="precio">$2.000</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov1.jpg" alt="">
+                            <h6 class="titulo">El traidor. El diario  secreto del hijo del Mayo.</h6>
+                            <h6 class="autor">Anabel Hernández</h6>
+                            <h6 class="precio">$2.000</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov1.jpg" alt="">
+                            <h6 class="titulo">El traidor. El diario  secreto del hijo del Mayo.</h6>
+                            <h6 class="autor">Anabel Hernández</h6>
+                            <h6 class="precio">$2.000</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="destacados">
+                    <h5 class="titulos-aside">Populares en tu region</h5>
+
+                    <div class="articles-section">
+                        <article>
+                            <img src="images/nov4.jpg" alt="">
+                            <h6 class="titulo">El libro negro.</h6>
+                            <h6 class="autor">Dross</h6>
+                            <h6 class="precio">$1.066</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov4.jpg" alt="">
+                            <h6 class="titulo">El libro negro.</h6>
+                            <h6 class="autor">Dross</h6>
+                            <h6 class="precio">$1.066</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov4.jpg" alt="">
+                            <h6 class="titulo">El libro negro.</h6>
+                            <h6 class="autor">Dross</h6>
+                            <h6 class="precio">$1.066</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov4.jpg" alt="">
+                            <h6 class="titulo">El libro negro.</h6>
+                            <h6 class="autor">Dross</h6>
+                            <h6 class="precio">$1.066</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/nov4.jpg" alt="">
+                            <h6 class="titulo">El libro negro.</h6>
+                            <h6 class="autor">Dross</h6>
+                            <h6 class="precio">$1.066</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                    </div>
+                </div>
+
+                <div class="destacados">
+                    <h5 class="titulos-aside">Libros destacados en español</h5>
+                    <div class="articles-section">
+                        <article>
+                            <img src="images/9788491050209.jpg" alt="">
+                            <h6 class="titulo">Moby Dick.</h6>
+                            <h6 class="autor">Herman Merville</h6>
+                            <h6 class="precio">$972</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/9788491050209.jpg" alt="">
+                            <h6 class="titulo">Moby Dick.</h6>
+                            <h6 class="autor">Herman Merville</h6>
+                            <h6 class="precio">$972</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/9788491050209.jpg" alt="">
+                            <h6 class="titulo">Moby Dick.</h6>
+                            <h6 class="autor">Herman Merville</h6>
+                            <h6 class="precio">$972</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/9788491050209.jpg" alt="">
+                            <h6 class="titulo">Moby Dick.</h6>
+                            <h6 class="autor">Herman Merville</h6>
+                            <h6 class="precio">$972</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+
+                        <article>
+                            <img src="images/9788491050209.jpg" alt="">
+                            <h6 class="titulo">Moby Dick.</h6>
+                            <h6 class="autor">Herman Merville</h6>
+                            <h6 class="precio">$972</h6>
+                            <button type="button" class="btn btn-warning">Añadir al carrito</button>
+                        </article>
+                    </div>
+                </div>
+            </section>
         </div>
+        <footer>
 
-        <div class="header2">
-
-            <ul class="menui">
-              <li>Comprar por categoria</li>
-              <li>Los mas vendidos</li>
-              <li>Proximamente</li>
-              <li>Nuevos lanzamientos</li>
-              <li>Outlet de libros</li>
-            </ul>
-            <ul class="menud">
-              <li>Idioma</li>
-              <li>Moneda</li>
-              <li>Total</li>
-              <li><i class="fas fa-shopping-basket"></i></li>
-             </ul>
-        </div>
-
-      </header>
-      <aside></aside>
-      <main></main>
-      <footer>
-
-        <div class="redes">
-          <h5>Síguenos</h5>
-          <ul>
-            <li><i class="fab fa-facebook-square"></i></li>
-            <li><i class="fab fa-twitter-square"></i></li>
-            <li><i class="fab fa-instagram-square"></i></li>
-            <li><i class="fab fa-pinterest-square"></i></li>
-          </ul>
-        </div>
-
-        <div class="ayuda">
-          <ul>
-            <li>Contacto</li>
-            <li>Términos y condiciones</li>
-            <li>Politicas de privacidad</li>
-            <li>Ayuda</li>
-            <li>Trabaja con nosotros</li>
-          </ul>
-        </div>
-
-      </footer>
-
-
+            <div class="redes">
+                <h6 class="social">Síguenos</h6>
+                <ul>
+                  <li><i class="fab fa-facebook-square"></i></li>
+                  <li><i class="fab fa-twitter-square"></i></li>
+                  <li><i class="fab fa-instagram-square"></i></li>
+                  <li><i class="fab fa-pinterest-square"></i></li>
+                </ul>
+              </div>
+      
+              <div class="ayuda">
+                <ul>
+                  <li>Contacto</li>
+                  <li>Términos y condiciones</li>
+                  <li>Politicas de privacidad</li>
+                  <li>Ayuda</li>
+                  <li>Trabaja con nosotros</li>
+                </ul>
+              </div>
+        </footer>
     </div>
-
-  </body>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
 </html>
