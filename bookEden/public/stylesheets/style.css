@@ -1,71 +1,49 @@
-*{
-  box-sizing: border-box;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.container{
-  overflow: hidden;
-}
-
-header,footer,aside, main{
-  float: left;
+.container-fluid{
+  background: rgb(243, 242, 242);
 }
 
 header{
-  width: 100%;
-  overflow: hidden;
+  margin-left: 0PX;
 }
 
-.header1{
-  overflow: hidden;
+.main-header{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
   background-color: rgb(214,187,214);
+  align-items: center;
 }
 
 .logo{
-  float:left;
-  margin: 20px;
+  width: 13%;
+  margin-left: 10px;
 }
 
 .busqueda{
-  float: left;
-  width: 903px;
-  overflow: hidden;
-  margin-top: 61px;
-  margin-left: 27px;
+  display: flex;
+  justify-content: space-around; 
+  width: 60%;
 }
 
 .bar{
   height: 40px;
-  width: 550px;
+  width: 65%;
   border: 2px solid rgb(73,10,72);
   background: white;
-  float: left;
 }
 
-.botonesb{
-  padding-left: 0px;
-  margin: 0px;
-  float:right;
-}
-
-ul.botonesb li{
-  font-size: 15px;
-  list-style: none;
-  background: rgb(73,10,72);
+button{
   height: 40px;
-  width: 170px;
-  border: 2px solid white;
+  border-radius: 10px;
+  background: rgb(73,10,72);
   color: white;
-  text-align: center;
-  display: inline-block;
-  padding-top: 10px;
 }
 
 .navigator{
-  float: right;
   padding-left: 0px;
-  margin: 0px;
-  margin-right: 18px;
+  margin-bottom: 0px;
+  width: 10%;
+  margin: 10px 10px;
 }
 
 ul.navigator li{
@@ -74,83 +52,119 @@ ul.navigator li{
   background: rgb(73,10,72);
   border: 1px solid white;
   color: white;
-  width: 112px;
   text-align: center;
-  padding: 4px 10px;
-  margin: 10px;
+  margin-bottom: 5px;
 }
 
-.header2{
-  overflow: hidden;
+ul.navigator li:nth-child(4){
+  margin-bottom: 0px;
+}
+
+.bottom-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   background: white;
+  margin-bottom: 10px;
+}
+
+.bottom-header ul{
+  padding-left: 0px;
+  padding-top: 10px;
+  margin-bottom: 10px;
 }
 
 .menui{
-  float: left;
-  padding-left: 0px;
-  margin: 0px;
-  margin-left: 33px;
-}
-
-ul.menui li{
-  font-size: 15px;
-  display: inline-block;
-  margin-right: 30px;
-  height: 40px;
-  padding-top: 13px;
-  text-align: center;
+  margin-left: 15px;
 }
 
 .menud{
-  float: right;
-  padding-left: 0px;
-  margin: 0px;
-  margin-right: 33px;
+  margin-right: 15px;
 }
 
-ul.menud li{
-  font-size: 15px;
+.menui li{
+  list-style: none;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.menud li{
+  list-style: none;
   display: inline-block;
   margin-left: 30px;
-  padding-top: 13px;
 }
 
-aside{
-  border: 1px solid black;
-  width: 20%;
-  height: 20px;
+aside article{
+  background: white;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
-main{
-  border: 1px solid black;
-  width: 80%;
-  height: 20px;
+.titulos-aside{
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+article img{
+margin-left: 10px;
+width: 90%;  
+margin-bottom: 5px;
+}
+
+.info-aside{
+  padding: 10px 0px 10px 10px;
+}
+
+article ul{
+  padding: 5px 20px 10px 20px;
+  margin-bottom: 0px;
+}
+
+article ul li{
+  list-style: none;
+  border-top: 1px solid lightgrey;
+  padding-top: 5px;
+  margin-bottom: 3px;
+}
+
+.destacados{
+  background: white;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.articles-section{
+  display:flex;
+  margin-top: 15px;
+}
+
+.articles-section article{
+  text-align: center;
+}
+
+.articles-section img{
+  width:50%;
+}
+
+.autor{
+  font-weight: normal;
+}
+
+.precio{
+  color: rgb(73,10,72);
+  font-size: 20px;
+}
+
+.btn-warning{
+  color: white;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 footer{
   width: 100%;
   background-color: rgb(214,187,214);
-}
-
-.ayuda{
-
-  background: rgb(73,10,72);
-  text-align: center;
-}
-
-div.ayuda ul{
-  padding: 0px;
-  margin: 0px;
-  margin-right: 48px;
-}
-
-div.ayuda ul li{
-  list-style: none;
-  font-size: 14px;
-  color: white;
-  display: inline-block;
-  text-align: center;
-  padding: 10px 64px;
 }
 
 .redes{
@@ -159,23 +173,82 @@ div.ayuda ul li{
   background: rgba(214,187,214);
 }
 
-h5{
+.social{
   font-style: italic;
-  margin: 10px 0px;
-  margin-right: 20px;
+  padding-top: 12px;
 }
 
-div.redes ul{
-
+.redes ul{
   padding-left: 0px;
   margin: 0px;
   margin-bottom: 10px;
 }
 
-div.redes ul li{
+.redes ul li{
   font-size: 18px;
   display: inline-block;
-  margin-right: 16px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.redes ul li:nth-child(4){
+  margin-right: 0px;
+}
+
+.ayuda{
+  background: rgb(73,10,72);
   text-align: center;
 }
 
+.ayuda ul{
+  padding: 0px;
+  margin: 0px;
+}
+
+.ayuda ul li{
+  list-style: none;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin-right: 118px;
+}
+
+.ayuda ul li:nth-child(5){
+  margin-right: 30px;
+}
+
+/*----AJUSTEEEE*/
+
+@media(max-width:320px){
+
+  .logo{
+      width: 13%;
+      margin-left: 0px;
+  }
+
+  .bar{
+      height: 8px;
+      width: 65%;
+      border: 1px solid rgb(73,10,72);
+      background: white;
+  }
+  
+  button{
+      height: 8px;
+      border-radius: 10px;
+      background: rgb(73,10,72);
+      color: white;
+      font-size: 8px;
+  }
+
+  ul.navigator li{
+      font-size: 8px;
+      list-style: none;
+      background: rgb(73,10,72);
+      border: 1px solid white;
+      color: white;
+      text-align: center;
+      margin-bottom: 5px;
+  }
+
+}
