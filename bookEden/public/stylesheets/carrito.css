@@ -1,449 +1,157 @@
 
-/*div.carrito{
-    overflow: hidden;
-    width: 100%;
-    background-color: #f2f3f3;
-    }
- 
-   div .detalle-cesta i.fas{
-    position: relative;
-    left: 13px;
-    margin-top: 3%;
-  }
-  .button {
-    display: inline-block;
-    padding: 1.5% 7%;
-    position: relative;
-    left: 45%;
-    background-color: rgb(73,10,72);
-    border-radius: 5px;
-  }
-  .button a{
-    text-decoration: none;
-    color: white;
-  }
-  .cesta{
-    width: 100%;
-  }
-  .cesta h1{
-    position: relative;
-    left: 2.5%;
-    width: 95%;
-    margin: 0px;
-    padding: 10px 5px;
-    font-size: 24px;
-  }
-  .detalle-cesta-titulo h2{
-    font-size: 15px;
-    padding-left: 1%;
-    margin: 15px;
-  }
-  .condiciones{
-    margin: 0px; 
-    display: block;
-    font-size: 14px;
-    position: relative;
-    left: 1%;
-    bottom: 7px;  
+div.row.carrito{
+  display: flex;
+  width: 96%;
+  margin-left: 2%;
 }
-  .condiciones p{
-    display: inline-block;
-    margin: 0px;
+div.row.col-12.compra{
+ margin-left: 0px;
+ padding: 0px;
+}
+div.row.col-12.cesta{
+  margin-left: 0px;
+ padding: 0px;
+ background-color: white;
+ font-size: 14px;
+ margin-top: 2%;
+}
+.detalle-de-cesta{
+  margin-top: 2px;
+  width: 93%;
+  margin-left: 3%;
+}
+a.btn.btn-primary{
+  padding: 10px 75px;
+  margin-top: 10px;
+  background-color: rgb(73,10,72);
+}
+.row.condiciones{
+margin: 0px;
+line-height: 17px;
+font-size: 14px;
+margin-bottom: 10px;
+}
+.row.condiciones p{
+  margin: 0px;
+}
+.row.detalle{
+  display: flex;
+  margin-left: 3%;
+  width: 97%;
+}
+img{
+  width: 110px;
+}
+#descripcion{
+  justify-content: center;
+}
+#cantidad{
+  padding: 5px;
+}
+.eliminar{
+  text-align: right;
+  height: 60px;
+  margin-right: 0px;
+  width: 100%;
+}
+input.btn.btn-primary{
+  background-color: white;
+  color: black;
+  border-color: gainsboro;
+}
+.cantidad1{
+ text-align: right;
+}
+.form.col-6{
+  text-align: right;
+}
+.pago-final{
+  margin-top: 2%;
+  background-color: white;
+  width: 100%;
+}
+.row.envio{
+  width: 100%;
+  justify-content: center;
+  margin: 0px;
+}
+#total{
+  text-align: right;
+}
+img.cards{
+ width: 47px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.continuar{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 95px;
+}
+.continuar-comprando a{
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: gainsboro;
+  text-decoration: none;
+  color: black;
+  text-align: center;   
+}
+#valor{
+  color:rgb(73,10,72);
+  font-weight: 700;
+}
+@media (min-width:1200px){
+  #cesta{
+    margin-right: -67px;
+    margin-top: 10px;
   }
-  .detalle-cesta{
-    overflow: hidden;
-    display: inline-block;
-    position: relative;
-    left: 2.5%;
-    width: 95%;
-    margin: 0px;
-    background-color: white;
-    font-size: 14px;
+  #articulo{
+    margin-top: 10px;
   }
-  .cesta-contenido{
-    position: relative;
-    left: 19px;
-    display: inline-block;
+  #btn{
+    text-align: right;
   }
-  .detalle-carrito{
-    position: relative;
-    left: 2.5%;
-    margin-top: 3px;
-    width: 95%;
-    background-color: white;
-    overflow: hidden;
-  }
-  .img-libro{
-      display: inline;
+  a.btn.btn-primary{
+    margin-top: -5px;
   }
   img{
-    width: 12%;
-    margin: 0% 1%;
+    width: 170px;
   }
-  .calificacion{
-    position: absolute;
-    width: 43%;
-    left: 178px;
-    top: 48px;
+  #descripcion{
+    margin-left: 0px;
   }
-  .calificacion h2{
-    position: relative;
-    margin: 8px 1px;
-    font-size: 15px;
-  }
-  .estrellas{
-    margin: 1px 1px;
-    font-size: 13px;
-    line-height: 170%;
-  }
-  #precio{
-    color:rgb(73,10,72);
-    font-weight: bold; 
-    font-size: 17px;
-  }
-  .estrellas p{
-    margin: 5px 0px;
-  }
-  .total{
-    position: absolute;
-    width: 43%;
-    left: 57%;
-    bottom: 39px;
-  }
- 
-  .cantidad{
-    color:#999;
-    margin-left: 74%;
+  form.cantidad1{
+    margin-bottom: -40px;
+    margin-top: 55px;
   }
   #cantidad{
-    margin: 1% 3%; 
-    display: inline-block;
+    padding: 9px;
   }
-  p.form{
-    color: rgb(73,10,72);
-    font-weight: bold;
-    padding: 3% 4%;
-    display: inline-block;
-    left: 75%;
-    bottom: 10%;
-    position: relative;
+  .eliminar{
+    margin-bottom: -25px;
+    margin-right: 15px;
+    margin-top: -20px;
+    width: 100%;
   }
-  .button-eliminar{
-    position: relative;
-    margin-left: 81%;
-    margin-top: 3%;
+  #leyenda{
+    text-align: right;
   }
-  .button-remover{
-    height: 6px;
-    color: #999;
-    line-height: 5px;
-    background: none;
-    padding: 16px;
-    font-size: 14px;
-    border: 1px solid #ccc;
+  img.cards{
+    width: 85px;
+    margin-top: -25px;
+    margin-bottom: 15px;
   }
-  .mediosdepago{
-    position: relative;
-    left: 2.5%;
-    overflow: hidden;
-    width: 95%;
-    margin-top: 7px;
-    background-color: white;
-  }
- 
-  .continuar-comprando{
-    text-align: center;
-    padding: 25px;
-    
-  }
-  div.continuar-comprando a{
-      display: inline-block;
-      padding: 15px;
-      border-radius: 5px;
-      font-size: 14px;
-      background-color: gainsboro;
-      text-decoration: none;
-      color: black;
-      text-align: center;   
-  }
-  .total-carrito{
-    overflow: hidden;
-    padding: 20px 15px;
-    border-bottom: solid 1px gainsboro; 
-  }
-  .envios{
-    font-size: 14PX;
-    margin-top: 4%;
-    padding-left: 80%;
-    padding-bottom: 2%;
-  }
-  .envios-pago{
-    font-size: 14PX;
-    margin-top: 12px;
-    padding-left: 86%;
-}
-  p.envio{
-    display: inline;
-    margin: 10%;
-    position: relative;
-  }
-  p.envio-gratis{
-    display: inline;
-    font-size: large;
+  div.row.col-12.cesta{
+    margin-top: 1%;
+    width: 98%;
+    font-size: 15px;
   }
   .pago-final{
-    overflow: hidden;
-    display: block;
-    margin: 21px -6px;
-  }
-  .button-final{
-    display: inline-flex;
-    padding: 1.5% 7%;
-    position: relative;
-    left: 75%;
-    background-color: rgb(73,10,72);
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  .button-final a{
-    text-decoration: none;
-    color: white;
-  }
-  .cards{
-    display: flex;
-    width: 50%;
-    left: 1%;
-    position: relative;
-  }
-  .cards img{
-    display: inline-block;
-    width: 15%;
-    height: 54px;
-    padding: 5px;
-    margin-top: 15px;   
+    margin-top: 1%;
   }
 
-
-
-  @media(min-width: 425px){
-  
-     div .detalle-cesta i.fas{
-      position: relative;
-      left: 13px;
-      margin-top: 3%;
-    }
-    .button {
-      padding: 4% 30%;
-      left: 5%;
-    }
-    .cesta{
-      width: 100%;
-    }
-    .cesta h1{
-      position: relative;
-      left: 2.5%;
-      width: 95%;
-      margin: 0px;
-      padding: 10px 5px;
-      font-size: 24px;
-    }
-    .detalle-cesta-titulo h2{
-      font-size: 15px;
-      padding-left: 1%;
-      margin: 5px;
-    }
-    .condiciones{
-      margin: 12px 10px 10px 10px;
-      display: block;
-      font-size: 13px;
-      border: solid 1px black;
-      /* margin: 3%; */
-  /*}
-    }
-    .condiciones p{
-      display: inline-block;
-      margin: 0px;
-    }
-    .detalle-cesta{
-      overflow: hidden;
-      display: inline-block;
-      position: relative;
-      left: 2.5%;
-      width: 95%;
-      margin: 0px;
-      background-color: white;
-      font-size: 14px;
-    }
-    .cesta-contenido{
-      position: relative;
-      left: 33px;
-      margin-top: -17px;
-      width: 93%;
-      margin-bottom: 5px;
-    }
-    .detalle-carrito{
-      position: relative;
-      left: 2.5%;
-      border: solid 1px black;
-      /* height: 320px; */
-     /* margin-top: 3px;
-      width: 95%;
-      /* display: flex; */
-     /* background-color: white;
-      overflow: hidden;
-    }
-    .img-libro{
-        display: inline;
-    }
-    img{
-      width: 33%;
-      margin: 2% 1%;
-      right: 50%;
-    }
-    .calificacion{
-      border: solid 1px black;
-      position: absolute;
-      width: 64.5%;
-      left: 135px;
-      top: 35px;
-      
-    }
-    .calificacion h2{
-      position: relative;
-      margin: 10px 1px;
-      font-size: 15px;
-    }
-    .estrellas{
-      border: solid 1px black;
-      margin: 1px 1px;
-      font-size: 13px;
-      line-height: 170%;
-    }
-    #precio{
-      color:rgb(73,10,72);
-      font-weight: bold; 
-      font-size: 17px;
-    }
-    .estrellas p{
-      margin: 5px 0px;
-    }
-    .total{
-      border: solid 1px black;
-      /* position: absolute; */
-     /* width: 100%;
-      /* bottom: -18%;*/
-      
-   /* }
-    form{
-      margin: 3%;
-      display: block;
-    
-    }
-    .cantidad{
-      color:#999;
-    }
-    #cantidad{
-      margin: 1% 3%; 
-    }
-    p.form{
-      color: rgb(73,10,72);
-      font-weight: bold;
-      padding: 3% 4%;
-      position: absolute;
-      left: 67%;
-      bottom: 10%;
-      
-    }
-    .button-eliminar{
-      position: relative;
-      margin-left: 74%;
-      margin-top: 5%;
-    }
-    .button-remover{
-      height: 6px;
-      color: #999;
-      line-height: 5px;
-      background: none;
-      padding: 16px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-    }
-    .mediosdepago{
-      position: relative;
-      left: 2.5%;
-      overflow: hidden;
-      width: 95%;
-      border: solid 1px black;
-      margin-top: 5px;
-      background-color: white;
-    }
-   
-    .continuar-comprando{
-      text-align: center;
-      padding: 25px;
-      
-    }
-    div.continuar-comprando a{
-        display: inline-block;
-        padding: 15px;
-        border-radius: 5px;
-        font-size: 14px;
-        background-color: gainsboro;
-        text-decoration: none;
-        color: black;
-        text-align: center
-        
-    }
-    .total-carrito{
-        overflow: hidden; 
-    }
-    .envios{
-      font-size: 14PX;
-      margin-top: 30px;
-      padding-left: 36%;
-    }
-    .envios-pago{
-      font-size: 14PX;
-      margin-top: 19px;
-      padding-left: 55%;
-      margin-bottom: 4%;
-  }
-    p.envio{
-      display: inline;
-      margin: 10%;
-      position: relative;
-      right: 0%;
-    }
-    p.envio-gratis{
-      display: inline;
-      font-size: large;
-    }
-    .pago-final{
-      overflow: hidden;
-      position: relative;
-    }
-    .cards{
-      display: inline-block;
-    }
-    .cards img{
-      display: inline-block;
-      width: 16%;
-      height: 48px;
-      padding: 7px;
-      margin-top: 20px;
-        
-    }
-    .button-final {
-        display: inline-block;
-        padding: 4% 30%;
-        position: relative;
-        left: 5%;
-        /* top: -13px; */
-      /*  background-color: rgb(73,10,72);
-        border-radius: 5px;
-      }
-      .button-final a{
-        text-decoration: none;
-        color: white;
-      }
-  }*/
+}

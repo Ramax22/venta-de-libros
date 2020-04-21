@@ -10,123 +10,140 @@
   </head>
   <body>
     
-    <div class="container">
+    <div class="container-fluid">
 
       <header>
+        <div class="main-header">
+            <img src="images/logo.png" alt="" class="logo">
 
-        <div class="header1">
+            <div class="busqueda">
+                
+                <div class="bar"></div>
+                <button>Buscar</button>
+                <button>Búsqueda Avanzada</button>
 
-          <div class="logo"> <img height="100px" src="/images/logo.png" alt=""></div>
+            </div>
 
-          <ul class="navigator">
-            <li>Registo</li>
-            <li>Login <i class="fas fa-sign-in-alt"></i></li>
-            <li>Favoritos <i class="far fa-heart"></i></li>
-            <li>Pedidos <i class="far fa-list-alt"></i></li>
-          </ul>
-          
-          <div class="busqueda">
-            <div class="bar"></div>
-            <ul class="botonesb">
-              <li>Buscar</li>
-              <li>Búsqueda Avanzada</li>
+            <ul class="navigator">
+                <li>Registo</li>
+                <li>Login <i class="fas fa-sign-in-alt"></i></li>
+                <li>Favoritos <i class="far fa-heart"></i></li>
+                <li>Pedidos <i class="far fa-list-alt"></i></li>
             </ul>
-          </div>
         </div>
-
-        <div class="header2">
-
-            <ul class="menui">
-              <li>Comprar por categoria</li>
-              <li>Los mas vendidos</li>
-              <li>Proximamente</li>
-              <li>Nuevos lanzamientos</li>
-              <li>Outlet de libros</li>
-            </ul>
-            <ul class="menud">
-              <li>Idioma</li>
-              <li>Moneda</li>
-              <li>Total</li>
-              <li><i class="fas fa-shopping-basket"></i></li>
-             </ul>
-        </div>
-
-      </header>
-      <div class="carrito">
-     <div class="cesta" ><h1>Tu compra</h1></div>
-     <div class="detalle-cesta">
-      <i class="fas fa-shopping-basket"></i>
-      <div class="cesta-contenido">Tiene 1 articulo con un total de<span>ARP867</span>en tu compra</div>
-      <div class="button"> <a href="">Proceder al Pago</a></div>
-      <div class="condiciones"><p>Al realizar tu pedido confirmas que has leído y aceptas nuestros <a href="">Terminos y condiciones.</a></p></div>
         
-     </div>
-     <div class="detalle-carrito">
-      <div class="detalle-cesta-titulo"><h2>Detalles de tu Compra</h2></div>
-       <div class="img-libro"><img src="/images/libro.png" alt=""></div>
-       <div class="calificacion">
-         <div><h2>LARGO PETALO DE MAR</h2></div>
-       <div class="estrellas">
-         <span><i class="far fa-star"></i></span>
-         <span><i class="far fa-star"></i></span>
-         <span><i class="far fa-star"></i></span>
-         <span><i class="far fa-star"></i></span>
-         <span><i class="far fa-star"></i></span>
-       </div>
-       <div class="estrellas"><span>Idioma: Español |</span><span> Autor:Allende Isabel</span></div>
-       <div class="estrellas"><span id="precio">ARS$867</span>
-       <p>Disponible - Producto despachado en dos dias hábiles</p></div>
-      </div>
-      <div class="total">
-        <form action="">
-      <label for="cantidad" class="cantidad">Cantidad </label>
-      <select name="" id="cantidad">
-        <option value="">1</option>
-        <option value="">2</option>
-        <option value="">3</option>
-      </select>
-    </form>
-    <p class="form">ARP$867</p>
-    <form class="button-eliminar" action="">
-      <input type="hidden">
-      <button type="submit" class="button-remover">Eliminar</button>
-    </form>
-      </div>
-    </div>
-      <div class="mediosdepago"> 
-        <div class="total-carrito">
-          <div class="envios">
-            <p class="envio"> Gastos de envío</p>
-            <p class="envio-gratis">GRATIS</p>
+        <div class="bottom-header">
+            <ul class="menui">
+                <li>Comprar por categoria</li>
+                <li>Los mas vendidos</li>
+                <li>Proximamente</li>
+                <li>Nuevos lanzamientos</li>
+                <li>Outlet de libros</li>
+              </ul>
+              <ul class="menud">
+                <li>Idioma</li>
+                <li>Moneda</li>
+                <li>Total</li>
+                <li><i class="fas fa-shopping-basket"></i></li>
+               </ul>
+        </div>
+    </header>
+    <div class="row">
+      <div class="row carrito">
+        <div class=" row col-12 compra">
+          <h4>Tu compra</h4> </div>
+        <div class="row col-12 cesta">
+          <div id="cesta" class="column col-2 col-xl-1 p-0-3"><i class="fas fa-shopping-basket"></i></div>
+          <div id="articulo" class="col-10 col-xl-11 p-0 ml-0">Tiene 1 articulo con un total de <span id="valor" >ARP867,00 </span>en tu compra</div>
+          <div  id="btn" class="col offset-1 m-0">
+            <a class="btn btn-primary" href="#" role="button">Proceder al pago</a>
+            <hr class="">
           </div>
-          <div class="envios-pago">
-            <p class="envio">Total</p>
-            <p class="envio-gratis">ARP$867</p>
+          <div class="row col-12 condiciones">
+            <p>Al realizar tu pedido confirmas que has leído y aceptas nuestros
+            <a href="">Terminos y condiciones</a></p>
           </div>
+        </div>
+        <div class="row col-12 cesta">
+          <div class="detalle-de-cesta"><h5 class="m-0"> Detalle de tu cesta</h5> <hr></div>
+          <div class="detalle row">
+            <div class="col-5 col-xl-2">
+              <img src="/images/nov1.jpg" alt="">
+            </div>
+            <div class="col-6 offset-1 col-xl-5 p-0" id="descripcion">
+            <div>
+              <h5>El Traidor</h5>
+            </div>
+            <div class="estrellas">
+             <span><i class="far fa-star"></i></span>
+             <span><i class="far fa-star"></i></span>
+             <span><i class="far fa-star"></i></span>
+             <span><i class="far fa-star"></i></span>
+             <span><i class="far fa-star"></i></span>
+            </div>
+            <div class="estrellas">
+              <span>Idioma:Español</span>
+              <span>Autor:Allende Isabel</span>
+            </div>
+            <div class="estrellas">
+              <span id="valor">ARS$867,00</span>
+              <p>Disponible - Producto despachado en dos dias hábiles</p>
+            </div>
+          </div>
+          <div class="total row col-xl-5 m-0 p-0 w-100">
+            <form class=" cantidad1 col-6 col-xl-12" action="">
+              <label for="cantidad" class="cantidad">Cantidad </label>
+              <select name="" id="cantidad">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+              </select>
+            </form>
+            <p id="valor" class="form col-6 col-xl-12">ARP$867,00</p></div>
+            <div class="eliminar">
+            <div class="eliminar" >
+              <input class="btn btn-primary" type="reset" value="Eliminar">
+            </div>
+          </div>
+        </div>
         </div>
         <div class="pago-final">
-          <div class="button-final"> <a href="">Proceder al Pago</a></div>
-          <div class="cards">
-          <img src="/images/visa.gif" alt="">
-          <img src="/images/maestro.gif" alt="">
-          <img src="/images/mastercard.gif" alt="">
-          <img src="/images/visad.gif" alt="">
-          <img src="/images/visae.gif" alt="">
+          <div class="row envio mt-4">
+            <div id="leyenda" class="col-9"><p>Gastos de Envio</p></div>
+            <div id="total" class="col-3"><p>GRATIS</p></div>
+          </div>
+          <div class="row envio">
+            <div id="leyenda" class="col-7 col-xl-9"><p>Total</p></div>
+            <div id="total" class="col-5 col-xl-3"><p id="valor">ARP$867,00</p></div>
+          </div>
+          <div class="row envio">
+          <div id="btn" class="button-final col-xl-12">
+            <hr class="">
+            <a class="btn btn-primary" href="#" role="button">Proceder al pago</a>
+          </div>
+          <div class="cards col-xl-12">
+            <img class="cards" src="/images/visa.gif" alt="">
+            <img class="cards" src="/images/maestro.gif" alt="">
+            <img class="cards" src="/images/mastercard.gif" alt="">
+            <img class="cards" src="/images/visad.gif" alt="">
+            <img class="cards" src="/images/visae.gif" alt="">
           </div> 
-         
+          </div>
         </div>
-      </DIV>
-      <div class="continuar-comprando">
-        <a href="">Seguir comprando</a>
+        <div class="continuar">
+        <div class="continuar-comprando">
+          <a href="">Seguir comprando</a>
+        </div>
+    
+        
       </div>
-
-     </div>
-   
     </div>
-     <footer>
+    
+    </div>
 
-        <div class="redes">
-          <h5>Síguenos</h5>
+        <footer>
+      <div class="redes">
+          <h6 class="social">Síguenos</h6>
           <ul>
             <li><i class="fab fa-facebook-square"></i></li>
             <li><i class="fab fa-twitter-square"></i></li>
@@ -144,10 +161,12 @@
             <li>Trabaja con nosotros</li>
           </ul>
         </div>
+  </footer>
 
-      </footer>
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     </div>
+  </body>
+  </html>
