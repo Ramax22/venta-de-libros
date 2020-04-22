@@ -51,7 +51,7 @@ img{
 .eliminar{
   text-align: right;
   height: 60px;
-  margin-right: 0px;
+  margin-right: 12px;
   width: 100%;
 }
 input.btn.btn-primary{
@@ -106,20 +106,28 @@ img.cards{
 }
 @media (min-width:1200px){
   #cesta{
-    margin-right: -67px;
-    margin-top: 10px;
+    margin-right: -68px;
+    margin-top: 15px;
   }
   #articulo{
-    margin-top: 10px;
+    margin-top: 15px;
   }
   #btn{
     text-align: right;
   }
+ 
   a.btn.btn-primary{
     margin-top: -5px;
   }
+  .detalle-de-cesta{
+    margin-top: 10px;
+    width: 96%;
+  }
   img{
     width: 170px;
+  }
+  .estrellas{
+    margin-bottom: 5px;
   }
   #descripcion{
     margin-left: 0px;
@@ -148,9 +156,10 @@ img.cards{
   div.row.col-12.cesta{
     margin-top: 1%;
     width: 98%;
-    font-size: 15px;
+    font-size: 17px;
   }
   .pago-final{
     margin-top: 1%;
+    font-size: 17px;
   }
 }
