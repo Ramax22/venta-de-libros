@@ -1,254 +1,353 @@
+*{
+  padding: 0px;
+}
+
 .container-fluid{
-  background: rgb(243, 242, 242);
+  padding:0px;
+  background-color: rgb(238, 236, 235);
 }
 
 header{
-  margin-left: 0PX;
-}
-
-.main-header{
-  display: flex;
-  justify-content: space-between;
-  width:100%;
-  background-color: rgb(214,187,214);
-  align-items: center;
-}
-
-.logo{
-  width: 13%;
-  margin-left: 10px;
-}
-
-.busqueda{
-  display: flex;
-  justify-content: space-around; 
-  width: 60%;
-}
-
-.bar{
-  height: 40px;
-  width: 65%;
-  border: 2px solid rgb(73,10,72);
-  background: white;
-}
-
-button{
-  height: 40px;
-  border-radius: 10px;
-  background: rgb(73,10,72);
-  color: white;
-}
-
-.navigator{
-  padding-left: 0px;
-  margin-bottom: 0px;
-  width: 10%;
-  margin: 10px 10px;
-}
-
-ul.navigator li{
-  font-size: 15px;
-  list-style: none;
-  background: rgb(73,10,72);
-  border: 1px solid white;
-  color: white;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-ul.navigator li:nth-child(4){
-  margin-bottom: 0px;
-}
-
-.bottom-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background: white;
+  background-color: rgb(214,187,214)!important;
   margin-bottom: 10px;
 }
 
-.bottom-header ul{
-  padding-left: 0px;
-  padding-top: 10px;
-  margin-bottom: 10px;
+.bg-light{
+  background-color: rgb(214,187,214)!important;
 }
 
-.menui{
-  margin-left: 15px;
+nav a img{
+  width:90%;
 }
 
-.menud{
-  margin-right: 15px;
+a.navbar-brand{
+  width: 50%;
 }
 
-.menui li{
-  list-style: none;
-  display: inline-block;
-  margin-right: 30px;
+.form-inline{
+width: 100%;
 }
 
-.menud li{
-  list-style: none;
-  display: inline-block;
-  margin-left: 30px;
-}
-
-aside article{
-  background: white;
-  margin-left: 10px;
-  margin-bottom: 10px;
-}
-
-.titulos-aside{
-  padding-top: 5px;
-  padding-left: 10px;
-}
-
-article img{
-margin-left: 10px;
-width: 90%;  
-margin-bottom: 5px;
-}
-
-.info-aside{
-  padding: 10px 0px 10px 10px;
-}
-
-article ul{
-  padding: 5px 20px 10px 20px;
-  margin-bottom: 0px;
-}
-
-article ul li{
-  list-style: none;
-  border-top: 1px solid lightgrey;
-  padding-top: 5px;
-  margin-bottom: 3px;
-}
-
-.destacados{
-  background: white;
-  margin-bottom: 10px;
+.form-control{
+  display:inline-block;
+  width: 81%;
   margin-right: 10px;
 }
 
-.articles-section{
-  display:flex;
-  margin-top: 15px;
+.nav-bar{
+  margin: 0px 10px 0px 10px;
 }
 
-.articles-section article{
-  text-align: center;
-}
-
-.articles-section img{
-  width:50%;
-}
-
-.autor{
-  font-weight: normal;
-}
-
-.precio{
-  color: rgb(73,10,72);
-  font-size: 20px;
-}
-
-.btn-warning{
-  color: white;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-footer{
-  width: 100%;
-  background-color: rgb(214,187,214);
-}
-
-.redes{
-  text-align: center;
-  color: rgb(73,10,72);
-  background: rgba(214,187,214);
-}
-
-.social{
-  font-style: italic;
-  padding-top: 12px;
-}
-
-.redes ul{
-  padding-left: 0px;
-  margin: 0px;
-  margin-bottom: 10px;
-}
-
-.redes ul li{
-  font-size: 18px;
-  display: inline-block;
-  text-align: center;
-  margin-right: 10px;
-}
-
-.redes ul li:nth-child(4){
-  margin-right: 0px;
-}
-
-.ayuda{
-  background: rgb(73,10,72);
-  text-align: center;
-}
-
-.ayuda ul{
+div.nav-bar ul{
   padding: 0px;
   margin: 0px;
 }
 
-.ayuda ul li{
+div.nav-bar ul li{
+  background-color: rgb(73,10,72);
+  text-decoration: none;
   list-style: none;
-  color: white;
+  width: 49%;
   display: inline-block;
   text-align: center;
-  margin-right: 118px;
+  margin-bottom: 10px;
 }
 
-.ayuda ul li:nth-child(5){
-  margin-right: 30px;
+div.nav-bar ul li a{
+color: white;
 }
 
-/*----AJUSTEEEE*/
+ul.nav-bar-2 li{
+  list-style: none;
+  display: inline-block;
+  font-size: 27px;
+  font-weight: normal;
+  margin-top: 5px;
+}
 
-@media(max-width:320px){
+.btn-outline-success{
+  color: rgb(73,10,72);
+  border: 1px solid #ced4da;
+}
 
-  .logo{
-      width: 13%;
-      margin-left: 0px;
-  }
 
-  .bar{
-      height: 8px;
-      width: 65%;
-      border: 1px solid rgb(73,10,72);
-      background: white;
+/*-------BANNER-------*/
+.banner{
+  margin-bottom: 10px;
+  width:100%
+}
+
+div.banner img{
+  width:100%;
+}
+
+/*-------SECTION-------*/
+.categorias{
+  background-color: white;
+  margin: 0px 10px;
+}
+
+h2{
+  font-size: 20px;
+  padding-top: 10px;
+  margin-left: 10px;
+}
+
+.products{
+  background-color: white;
+  margin: 0px 10px 10px 10px;
+}
+
+article.product-des{
+  background-color: white;
+  margin: 0px 10px 10px 10px;
+  padding: 10px 10px;
+  min-width: 300px;
+}
+
+section article img {
+  width:50%;
+}
+
+p.titulo{
+  margin: 10px 0px;
+  font-weight: bold;
+  text-align: center;
+}
+
+p.autor{
+  margin-bottom: 5px;
+}
+
+p.precio{
+  color: rgb(73,10,72);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+article button.btn-warning{
+  color: white;
+}
+
+article div a{
+  color: black
+}
+
+/*-------ASIDE-------*/
+
+aside article img {
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+div.sub-categorias ul{
+  padding: 0px;
+  margin: 10px 0px 10px 20px;
+  padding-right: 17px;
+}
+
+div.sub-categorias ul li{
+  list-style: none;
+  margin-bottom: 5px;
+  border-bottom: 1px solid lightgrey; 
+}
+
+.izq-art-3{
+  width: 100%;
+}
+
+/*-----FOOTER-----*/
+
+footer a{
+  text-decoration: none;
+}
+
+.main-footer{
+  background-color: rgb(214,187,214);
+  color: rgb(73,10,72);
+  padding-bottom: 5px;
+}
+
+div.main-footer h2{
+  font-style: italic;
+  font-size: 16px;
+}
+
+div.main-footer a{
+  color: rgb(73,10,72);
+  margin: 10px;
+}
+
+.bottom-footer{
+  background-color: rgb(73,10,72);
+}
+
+div.bottom-footer ul{
+  padding: 0px;
+  margin: 10px 0px 10px 20px;
+  padding-right: 17px;
+}
+
+div.bottom-footer ul li{
+  list-style: none;
+  margin-bottom: 5px;
+  text-align: center;
+
+}
+
+div.bottom-footer ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+/*-----768px-----*/
+
+
+@media(min-width:768px){
+
+  h2{
+    font-size: 17px;
+    padding-top: 10px;
+    margin-left: 10px;
   }
   
-  button{
-      height: 8px;
-      border-radius: 10px;
-      background: rgb(73,10,72);
-      color: white;
-      font-size: 8px;
+  div.bottom-footer ul li{
+    list-style: none;
+    margin-bottom: 5px;
+    margin-right: 21px;
+    text-align: center;
+    display: list-item;
+    border-bottom: none;
   }
 
-  ul.navigator li{
-      font-size: 8px;
-      list-style: none;
-      background: rgb(73,10,72);
-      border: 1px solid white;
-      color: white;
-      text-align: center;
-      margin-bottom: 5px;
+  .navbar{
+    width:80%;
   }
 
+  nav a img{
+    width:90%;
+  }
+  
+  a.navbar-brand{
+    width: 32%;
+  }
+  
+  .form-inline{
+  width: 64%;
+  }
+  
+  .form-control{
+    display:inline-block;
+    width: 10%;
+    margin-right: 10px;
+  }
+
+  div.nav-bar{
+    margin: 10px 10px 0px 10px;
+  }
+
+  div.nav-bar ul{
+    padding: 0px;
+    margin: 10px 0px 0px 0px;
+  }
+
+  div.nav-bar ul li{
+    background-color: rgb(73,10,72);
+    text-decoration: none;
+    list-style: none;
+    width: 123%;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  article.product-des{
+    background-color: white;
+    margin: 0px 10px 10px 10px;
+    padding: 10px 10px;
+    min-width:0px;
+    width: 29%;
+  }
+
+  .izquierda{
+    width:34%
+  }
+
+  aside article img {
+    width: 70%;
+    margin-bottom: 10px;
+  }
+}
+
+/*-----1024px-----*/
+
+@media(min-width:1024px){
+  
+  div.nav-bar ul li{
+    background-color: rgb(73,10,72);
+    text-decoration: none;
+    list-style: none;
+    width: 140%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  div.bottom-footer ul li{
+    list-style: none;
+    margin-bottom: 5px;
+    margin-right: 60px;
+    text-align: center;
+    display: inline-block;
+    border-bottom: none;
+  }
+
+  div.bottom-footer ul li:nth-child(5){
+    margin-right: 36px;
+  }
+
+  a.navbar-brand{
+    width: 22%;
+  }
+
+  ul.nav-bar-2 li{
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  div.buttom-header div{
+    width:100%;
+  }
+
+  .izquierda{
+    width:100%
+  }
+
+  .banner{
+    margin-left: 10px;
+  }
+
+  div.banner img{
+    width:90%;
+  }
+
+}
+
+/*-----1444px-----*/
+
+@media(min-width:1440px){
+  
+  div.nav-bar ul li{
+    font-size: 19px;
+    width: 140%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  ul.nav-bar-2 li{
+    font-size: 19px;
+  }
+
+  h2{
+    font-size: 22px;
+  }
 }
