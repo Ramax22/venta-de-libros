@@ -1,0 +1,70 @@
+
+  h2{
+      
+      font-family: 'Times New Roman', Times, serif;
+  }
+  main{
+    text-align: center;
+    
+    /* border: solid 4px violet; */
+    /* background-color: rgb(210,186 ,218 ); */
+    /* background-color: rgb(252, 237, 253); */
+    background: linear-gradient(#DA9FEE , #F7DFFF);
+    width: 100%;
+  }
+  div{
+    display: flex;
+   
+    justify-content: center;
+  } 
+  input{
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+
+  }
+  form p {
+      margin-bottom: 0px;
+      padding: 0px; 
+      text-align: left;
+  }
+  form p label {
+      margin: 0px;
+  }
+  form {
+      border: inset 4px white;
+      padding-left: 20px ;
+      padding-right: 0px;
+      background-color: whitesmoke;
+      border-radius: 10px;
+      margin-bottom: 50px;
+      margin-top: 20px;
+      text-align: left;
+      width: 80%;
+  }
+  
+  span{
+      display: block;
+      font-size: 12px;
+  }
+  form p input#contrasenia{
+      margin-bottom: 0px;
+  }
+  form button{
+      margin-left: 45px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+
+  @media(min-width:1440px){
+form{
+    width: 20%;
+
+}
+form button{
+    margin-left: 55px;
+}
+    
+  }
+
+  
