@@ -65,9 +65,17 @@ ul.nav-bar-2 li{
   margin-top: 5px;
 }
 
+ul.nav-bar-2 li a{
+  color:black;
+}
+
 .btn-outline-success{
   color: rgb(73,10,72);
   border: 1px solid #ced4da;
+}
+
+button a{
+  color: white;
 }
 
 
@@ -107,6 +115,10 @@ article.product-des{
 
 section article img {
   width:50%;
+}
+
+section article a {
+  text-align: center;
 }
 
 p.titulo{
