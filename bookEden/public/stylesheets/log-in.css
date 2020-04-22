@@ -1,6 +1,7 @@
 
   h2{
     font-family: 'Times New Roman', Times, serif;
+    font-weight: 600 !important;
     margin-bottom: 0px !important;
     margin-right: 90px;
   }
@@ -10,6 +11,7 @@ main{
   /* border: solid 4px violet; */
   /* background-color: rgb(210,186 ,218 ); */
   /* background-color: rgb(252, 237, 253); */
+  min-height: 315px;
   background: linear-gradient(#DA9FEE , #F7DFFF);
   width: 100%;
 }
@@ -64,5 +66,8 @@ h2{
   margin-right: 110px;
 }
   
+main{
+  min-height: 1000px;
+}
 }
 

@@ -2,15 +2,14 @@
   h2{
       
       font-family: 'Times New Roman', Times, serif;
+      font-weight: 700 !important;
   }
   main{
     text-align: center;
     
-    /* border: solid 4px violet; */
-    /* background-color: rgb(210,186 ,218 ); */
-    /* background-color: rgb(252, 237, 253); */
     background: linear-gradient(#DA9FEE , #F7DFFF);
     width: 100%;
+    min-height: 310px;
   }
   div{
     display: flex;
@@ -44,7 +43,7 @@
   }
   
   span{
-      display: block;
+      
       font-size: 12px;
   }
   form p input#contrasenia{
@@ -64,6 +63,12 @@ form{
 form button{
     margin-left: 55px;
 }
+
+main{
+    min-height: 1000px;
+    
+}
+
     
   }
 

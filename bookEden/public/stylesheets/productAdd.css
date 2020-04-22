@@ -1,0 +1,38 @@
+body{
+    margin:0;
+    padding:0;
+    background: linear-gradient(#DA9FEE , rgb(186, 157, 196));
+  
+}
+
+div.row{ 
+    margin-right: auto;
+ 
+}
+
+
+.direccion {
+  justify-content: center;
+    
+} 
+
+.direccion input {
+    width: 100%;
+    position: relative;
+    padding: 5px;
+    
+}
+form{
+    padding: 20px;
+}
+form select{
+    width: 100%;
+    padding: 5px;
+    background-color: rgb(226, 219, 248)
+    
+
+}
+form textarea{
+    width: 100%;
+    margin-bottom: 30px;
+}
