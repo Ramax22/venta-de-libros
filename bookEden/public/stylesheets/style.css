@@ -57,6 +57,21 @@ div.nav-bar ul li a{
 color: white;
 }
 
+
+/*----HEADER INFERIOR-----*/
+
+.navigation{
+  width: 80%;
+}
+
+.menu-b-der{
+  width: 20%
+}
+
+ul.nav-bar-2{
+  margin:0px;
+}
+
 ul.nav-bar-2 li{
   list-style: none;
   display: inline-block;
@@ -232,10 +247,6 @@ div.bottom-footer ul li a{
     border-bottom: none;
   }
 
-  .navbar{
-    width:80%;
-  }
-
   nav a img{
     width:90%;
   }
@@ -244,6 +255,14 @@ div.bottom-footer ul li a{
     width: 32%;
   }
   
+  .navigation-top{
+    width: 80%;
+  }
+
+  .nav-bar{
+    width:20%;
+  }
+
   .form-inline{
   width: 64%;
   }
@@ -267,7 +286,7 @@ div.bottom-footer ul li a{
     background-color: rgb(73,10,72);
     text-decoration: none;
     list-style: none;
-    width: 123%;
+    width: 96%;
     display: block;
     text-align: center;
     margin-bottom: 10px;
@@ -299,7 +318,7 @@ div.bottom-footer ul li a{
     background-color: rgb(73,10,72);
     text-decoration: none;
     list-style: none;
-    width: 140%;
+    width: 97%;
     text-align: center;
     margin-bottom: 10px;
   }
@@ -322,12 +341,8 @@ div.bottom-footer ul li a{
   }
 
   ul.nav-bar-2 li{
-    font-size: 16px;
+    font-size: 15px;
     margin-right: 10px;
-  }
-
-  div.buttom-header div{
-    width:100%;
   }
 
   .izquierda{
@@ -350,7 +365,7 @@ div.bottom-footer ul li a{
   
   div.nav-bar ul li{
     font-size: 19px;
-    width: 140%;
+    width: 83%;
     text-align: center;
     margin-bottom: 10px;
   }

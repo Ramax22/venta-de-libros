@@ -18,15 +18,18 @@
 
         <div class="top-header d-flex flex-column flex-md-row">
             
-            <nav class="navbar navbar-light bg-light top-header justify-content-center justify-content-md-start">
+            <div class="navigation-top">
+                <nav class="navbar navbar-light bg-light top-header justify-content-center justify-content-md-start">
 
-                <a class="navbar-brand"><img src="/images/logo.png" alt=""></a>
+                    <a class="navbar-brand"><img src="/images/logo.png" alt=""></a>
+    
+                    <form class="form-inline">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Buscar libros porpalabra clave" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                  </nav>
+            </div>
 
-                <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Buscar libros porpalabra clave" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-              </nav>
 
             <div class="nav-bar">
                 <ul>
@@ -42,8 +45,7 @@
 <!--AQUÍ ESTÁ EL HEADER INFERIOR-->
         <div class="buttom-header d-flex justify-content-center justify-content-lg-around">
 
-            <div class="d-flex justify-content-center align-items-center justify-content-lg-around">
-
+            <div class="navigation">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
@@ -78,17 +80,17 @@
                       </ul>
                     </div>
                   </nav>
+            </div>
+
     
-                  <div class="d-flex">
+            <div class="menu-b-der d-flex align-items-center">
                     <ul class="nav-bar-2">
                       <li class="d-none d-lg-inline">Idioma</li>
                       <li class="d-none d-lg-inline">Moneda</li>
                       <li class="d-none d-lg-inline">Total</li>
                       <li><a href="/carrito"><i class="fas fa-shopping-basket"></i></a></li>
                      </ul>
-                    </div>
-    
-              </div>
+            </div>
         </div>
         
     </header>
