@@ -2,7 +2,11 @@
 div.row.carrito{
   display: flex;
   width: 96%;
-  margin-left: 2%;
+  margin: 0px 15px;
+}
+div.row.contenido{
+  width: 100%;
+  margin: 0px;
 }
 div.row.col-12.compra{
  margin-left: 0px;
@@ -20,8 +24,11 @@ div.row.col-12.cesta{
   width: 93%;
   margin-left: 3%;
 }
+#btn{
+  text-align: center;
+}
 a.btn.btn-primary{
-  padding: 10px 75px;
+  padding: 10px 56px;
   margin-top: 10px;
   background-color: rgb(73,10,72);
 }
@@ -69,6 +76,7 @@ input.btn.btn-primary{
   margin-top: 2%;
   background-color: white;
   width: 100%;
+  
 }
 .row.envio{
   width: 100%;
@@ -90,6 +98,7 @@ img.cards{
   justify-content: center;
   text-align: center;
   height: 95px;
+  
 }
 .continuar-comprando a{
   padding: 15px;
@@ -104,7 +113,57 @@ img.cards{
   color:rgb(73,10,72);
   font-weight: 700;
 }
+
+@media (min-width:768px){
+  .row.detalle{
+    font-size: 15px;
+    
+  }
+  #cesta{
+    margin-right: -20px;
+    margin-top: 15px;
+  }
+  #articulo{
+    margin-top: 15px;
+    font-size: 15px;
+  }
+  a.btn.btn-primary{
+    margin-top: 15px;
+  }
+  #btn{
+    text-align: right;
+  }
+  .detalle-de-cesta{
+    margin-top: 10px;
+    width: 95%;
+  }
+  img{
+    width: 120px;
+  }
+  #descripcion{
+    margin-left: 35px;
+  }
+  .cantidad1{
+    margin-top: 35PX;
+   }
+   .eliminar{
+     margin-right: 35px;
+   }
+   .row.envio{
+     justify-content: right;
+   }
+   img.cards{
+    width: 65px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+   }
+}
 @media (min-width:1200px){
+ 
+  div.row.carrito{
+    margin: 0px 15px;
+    width: 100%;
+  }
   #cesta{
     margin-right: -68px;
     margin-top: 15px;

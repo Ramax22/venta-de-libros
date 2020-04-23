@@ -2,59 +2,101 @@
 <html>
   <head>
     <title>Carrito</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/carrito.css' />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/carrito.css' />
     <script src="https://kit.fontawesome.com/d6525fcc60.js" crossorigin="anonymous"></script>
   </head>
   <body>
     
     <div class="container-fluid">
+      <header class="d-flex flex-column">
 
-      <header>
-        <div class="main-header">
-            <img src="images/logo.png" alt="" class="logo">
+        <div class="top-header d-flex flex-column flex-md-row">
+            
+            <nav class="navbar navbar-light bg-light top-header justify-content-center justify-content-md-start">
 
-            <div class="busqueda">
-                
-                <div class="bar"></div>
-                <button>Buscar</button>
-                <button>Búsqueda Avanzada</button>
+                <a class="navbar-brand"><img src="/images/logo.png" alt=""></a>
 
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Buscar libros porpalabra clave" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+              </nav>
+
+            <div class="nav-bar">
+                <ul>
+                    <li><a href="">Registro</a></li>
+                    <li><a href="">Login <i class="fas fa-sign-in-alt"></i></a></li>
+                    <li><a href="">Favoritos <i class="far fa-heart"></i></a></li>
+                    <li><a href="">Pedidos <i class="far fa-list-alt"></i></a></li>
+                </ul>
             </div>
 
-            <ul class="navigator">
-                <li>Registo</li>
-                <li>Login <i class="fas fa-sign-in-alt"></i></li>
-                <li>Favoritos <i class="far fa-heart"></i></li>
-                <li>Pedidos <i class="far fa-list-alt"></i></li>
-            </ul>
+        </div>
+
+<!--AQUÍ ESTÁ EL HEADER INFERIOR-->
+        <div class="buttom-header d-flex justify-content-center justify-content-lg-around">
+
+            <div class="d-flex justify-content-center align-items-center justify-content-lg-around">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Comprar por categoría
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="#">Arte y Fotografía</a>
+                              <a class="dropdown-item" href="#">Audiolibros</a>
+                              <a class="dropdown-item" href="#">Biografía</a>
+                              <a class="dropdown-item" href="#">Leyes, Negocios, Finanzas</a>
+                              <a class="dropdown-item" href="#">Libros para niños</a>
+                            </div>
+                          </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Los mas vendidos <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Proximamente<span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link" href="#">Nuevos lanzamientos<span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link" href="#">Outlet de libros<span class="sr-only">(current)</span></a>
+                          </li>
+                       
+                      </ul>
+                    </div>
+                  </nav>
+    
+                  <div class="d-flex">
+                    <ul class="nav-bar-2">
+                      <li class="d-none d-lg-inline">Idioma</li>
+                      <li class="d-none d-lg-inline">Moneda</li>
+                      <li class="d-none d-lg-inline">Total</li>
+                      <li><a href="/carrito"><i class="fas fa-shopping-basket"></i></a></li>
+                     </ul>
+                    </div>
+    
+              </div>
         </div>
         
-        <div class="bottom-header">
-            <ul class="menui">
-                <li>Comprar por categoria</li>
-                <li>Los mas vendidos</li>
-                <li>Proximamente</li>
-                <li>Nuevos lanzamientos</li>
-                <li>Outlet de libros</li>
-              </ul>
-              <ul class="menud">
-                <li>Idioma</li>
-                <li>Moneda</li>
-                <li>Total</li>
-                <li><i class="fas fa-shopping-basket"></i></li>
-               </ul>
-        </div>
     </header>
-    <div class="row">
+    <div class="row contenido">
       <div class="row carrito">
         <div class=" row col-12 compra align-items:center">
           <h4>Tu compra</h4> </div>
         <div class="row col-12 cesta">
-          <div id="cesta" class="column col-2 col-xl-1 p-0-3"><i class="fas fa-shopping-basket"></i></div>
-          <div id="articulo" class="col-10 col-xl-11 p-0 ml-0">Tiene 1 articulo con un total de <span id="valor" >ARP867,00 </span>en tu compra</div>
+          <div id="cesta" class="column col-2 col-md-1 col-xl-1 p-0-3"><i class="fas fa-shopping-basket"></i></div>
+          <div id="articulo" class="col-10 col-md-7 col-xl-11 p-0 ml-0">Tiene 1 articulo con un total de <span id="valor" >ARP867,00 </span>en tu compra</div>
           <div  id="btn" class="col offset-1 m-0">
             <a class="btn btn-primary" href="#" role="button">Proceder al pago</a>
             <hr class="">
@@ -67,10 +109,10 @@
         <div class="row col-12 cesta">
           <div class="detalle-de-cesta"><h5 class="m-0"> Detalle de tu cesta</h5> <hr></div>
           <div class="detalle row">
-            <div class="col-5 col-xl-2">
+            <div class="col-5 col-md-2 col-xl-2">
               <img src="/images/nov1.jpg" alt="">
             </div>
-            <div class="col-6 offset-1 col-xl-5 p-0" id="descripcion">
+            <div class="col-6 offset-1 col-md-5 col-xl-5 p-0" id="descripcion">
             <div>
               <h5>El Traidor</h5>
             </div>
@@ -90,8 +132,8 @@
               <p>Disponible - Producto despachado en dos dias hábiles</p>
             </div>
           </div>
-          <div class="total row col-xl-5 m-0 p-0 w-100">
-            <form class=" cantidad1 col-6 col-xl-12" action="">
+          <div class="total row col-md-4 col-xl-5 m-0 p-0 w-100">
+            <form class=" cantidad1 col-6 col-md-12 col-xl-12" action="">
               <label for="cantidad" class="cantidad">Cantidad </label>
               <select name="" id="cantidad">
                 <option value="">1</option>
@@ -99,7 +141,7 @@
                 <option value="">3</option>
               </select>
             </form>
-            <p id="valor" class="form col-6 col-xl-12">ARP$867,00</p></div>
+            <p id="valor" class="form col-6 col-md-12 col-xl-12">ARP$867,00</p></div>
             <div class="eliminar">
             <div class="eliminar" >
               <input class="btn btn-primary" type="reset" value="Eliminar">
@@ -109,8 +151,8 @@
         </div>
         <div class="pago-final">
           <div class="row envio mt-4">
-            <div id="leyenda" class="col-9"><p>Gastos de Envio</p></div>
-            <div id="total" class="col-3"><p>GRATIS</p></div>
+            <div id="leyenda" class="col-8 col-xl-9"><p>Gastos de Envio</p></div>
+            <div id="total" class="col-4 col-xl-3"><p>GRATIS</p></div>
           </div>
           <div class="row envio">
             <div id="leyenda" class="col-7 col-xl-9"><p>Total</p></div>
@@ -121,7 +163,7 @@
             <hr class="">
             <a class="btn btn-primary" href="#" role="button">Proceder al pago</a>
           </div>
-          <div class="cards col-xl-12">
+          <div class="cards col-md-7 col-xl-12">
             <img class="cards" src="/images/visa.gif" alt="">
             <img class="cards" src="/images/maestro.gif" alt="">
             <img class="cards" src="/images/mastercard.gif" alt="">
@@ -141,27 +183,30 @@
     
     </div>
 
-        <footer>
-      <div class="redes">
-          <h6 class="social">Síguenos</h6>
-          <ul>
-            <li><i class="fab fa-facebook-square"></i></li>
-            <li><i class="fab fa-twitter-square"></i></li>
-            <li><i class="fab fa-instagram-square"></i></li>
-            <li><i class="fab fa-pinterest-square"></i></li>
-          </ul>
+  <!-------AQUÍ ESTÁ EL FOOTER--------->
+  <footer class="d-flex flex-column">
+    <div class="d-flex flex-column align-items-center main-footer">
+            <h2 class="redes">Síguenos</h2>
+            <div class="redes">
+                <a href=""><i class="fab fa-facebook-square"></i></a>
+                <a href=""><i class="fab fa-twitter-square"></i></a>
+                <a href=""><i class="fab fa-instagram-square"></i></a>
+                <a href=""><i class="fab fa-pinterest-square"></i></a>                    
+            </div>
         </div>
-
-        <div class="ayuda">
-          <ul>
-            <li>Contacto</li>
-            <li>Términos y condiciones</li>
-            <li>Politicas de privacidad</li>
-            <li>Ayuda</li>
-            <li>Trabaja con nosotros</li>
-          </ul>
+    <div class="d-flex justify-content-center bottom-footer">
+            <div class="justify-content-center">
+                <ul class="justify-content-around">
+                    <li><a href="">Contacto</a></li>
+                    <li><a href="">Términos y condiciones</a></li>
+                    <li><a href="">Políticas de privacidad</a></li>
+                    <li><a href="">Ayuda</a> </li>
+                    <li><a href="">Trabaja con nosotros<a></li>
+                </ul>            
+            </div>
         </div>
-  </footer>
+    </div>
+</footer>
 
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
