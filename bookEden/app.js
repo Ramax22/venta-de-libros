@@ -7,12 +7,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var registerRouter= require('./routes/register');
-var productRouter = require('./routes/product');
-var productAddRouter= require('./routes/productAdd');
+var productsRouter = require('./routes/products');
+var cartRouter = require('./routes/carrito');
 //app.use(methodOverride('_method')); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 
-var carritoRouter = require('./routes/carrito');
 var app = express();
 
 // view engine setup
@@ -27,9 +25,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/index', indexRouter);
 app.use('/users', usersRouter);
-app.use('/productDetail', productRouter)
-app.use('/carrito', carritoRouter);
-app.use('/product',productAddRouter);
+app.use('/products',productsRouter);
+app.use('/cart', cartRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

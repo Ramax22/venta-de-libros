@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "title": "El Traidor. El Diario Secreto del Hijo del Mayo",
+        "author": "Anabel Hernández",
+        "price": 1331.56,
+        "discount": 5,
+        "category": "novedades",
+        "description": "El traidor es uno de los trabajos periodísticos más ambiciosos en la trayectoria de Anabel Hernández. Su historia se remonta a enero de 2011, cuando la contactó uno de los abogados de Vicente Zambada Niebla, mejor conocido como Vicentillo, quien enfrentaba un juicio en una corte de Chicago. La intención era compartir con la periodista documentos y hechos que ampliaban y esclarecían varios de los episodios que acababa de dar a conocer en Los señores del narco. Entre los documentos a los que tuvo acceso se encuentran el inquietante autorretrato como payaso que aparece en la portada y los diarios realizados por Vicentillo durante las negociaciones para colaborar con el gobierno norteamericano, los cuales hasta ahora eran secretos. En ellos el capo reconstruyó su historia y la historia de una de las organizaciones de tráfico de estupefacientes más grandes del planeta. A lo largo de estas páginas, la autora se adentra en el Cártel de Sinaloa a través del relato de Vicentillo, quien exhibe de manera descarnada cómo funciona el sistema interno que da vida a la organización criminal, la violencia, las mil formas de traficar droga y la complicidad entre políticos, empresarios y fuerzas del orden. Pero sobre todo devela el perfil de quien durante el último medio siglo ha sido el rey del narcotráfico. Quien nunca ha pisado la cárcel y quien desde su trono ha visto caer a amigos, enemigos, socios, competidores, familiares, empleados del gobierno y hasta sus propios hijos, sin que eso haga mella en su poder, el padre de Vicentillo: Ismael el Mayo Zambada.",
+        "language": "Español",
+        "format": "Paperback",
+        "date": "21-Ene-20",
+        "image": "nov1.jpg"
+    },
+
+    {
+        "id": 2,
+        "title": "El Libro Negro",
+        "author": "Dross",
+        "price": 997.84,
+        "discount": 0,
+        "category": "novedades",
+        "description": "La vida puede ser una verdadera mierda para algunas, que no la mayoría de las personas. Sin embargo, por lo menos un par de veces, a lo largo y ancho de esa vida, ésta elige un día para demostrarnos qué tanto asco puede dar. Esto les pasa a todos y cada uno de los seres humanos que habitan en este mundo, caprichosos o no, malos o buenos, simples o excéntricos: todos tienen una probada de qué tan mal pueden salir las cosas durante veinticuatro horas. Y para mí, ese día parece que va a ser hoy. En los cuatro cuentos reunidos en este libro escabroso, Ángel David Revilla, alias Dross, nos revela detalles perturbadores de la deep web y que la vida jamás es lo que parece y que la existencia humana no es más que un recorte fugaz y lastimoso del universo. El universo se vuelve escalofriante cuando la vida se bifurca. Vuele Dross con su primer libro de cuentos",
+        "language": "Español",
+        "format": "Paperback",
+        "date": "10-Dic-19",
+        "image": "nov2.jpg"
+    },
+
+    {
+        "id": 3,
+        "title": "El hombre en busca de sentido",
+        "author": "Viktor Frankl",
+        "price": 1302.79,
+        "discount": 15,
+        "category": "novedades",
+        "description": "El hombre en busca del sentido. Por  Viktor Frankl. Este es uno de los grandes libros de la humanidad. Un testimonio estremecedor sobre la trágica experiencia vivida por el autor en un campo de concentración. El sufrimiento, el dolor y la pena, y como, cuando la fuerza del espíritu se hace presente, la vida  continúa. Es más que un testimonio: es una enseñanza sobre lo esencial. Sobre el coraje del corazón.   Recomendado del librero.   El hombre en busca del sentido Por Frankl Viktor ,El hombre en busca de sentido es el estremecedor relato en el que Viktor Frankl nos narra su experiencia en los campos de concentración. Durante todos esos años de sufrimiento, sintió en su propio ser lo que significaba una existencia desnuda, absolutamente desprovista de todo, salvo de la existencia misma. Él, que todo lo había perdido, que padeció hambre, frío y brutalidades, que tantas veces estuvo a punto de ser ejecutado, pudo reconocer que, pese a todo, la vida es digna de ser vivida y que la libertad interior y la dignidad humana son indestructibles. En su condición de psiquiatra y prisionero, Frankl reflexiona con palabras de sorprendente esperanza sobre la capacidad humana de trascender las dificultades y descubrir una verdad profunda que nos orienta y da sentido a nuestras vidas. La logoterapia, método psicoterapéutico creado por el propio Frankl, se centra precisamente en el sentido de la existencia y en la búsqueda de ese sentido por parte del hombre, que asume la responsabilidad ante sí mismo, ante los demás y ante la vida. ¿Qué espera la vida de nosotros? El hombre en busca de sentido es mucho más que el testimonio de un psiquiatra sobre los hechos y los acontecimientos vividos en un campo de concentración, es una lección existencial. Traducido a medio centenar de idiomas, se han vendido millones de ejemplares en todo el mundo. Según la Library of Congress de Washington, es uno de los diez libros de mayor influencia en Estados Unidos.",
+        "language": "Español",
+        "format": "Paperback",
+        "date": "01-Dic-15",
+        "image": "nov3.jpg"
+    },
+
+    {
+        "id": 1,
+        "title": El Traidor. El Diario Secreto del Hijo del Mayo,
+        "author": ,
+        "price": ,
+        "discount": ,
+        "category": ,
+        "description": ,
+        "language": ,
+        "format": ,
+        "date": ,
+        "image": 
+    },
+
+    {
+        "id": 1,
+        "title": El Traidor. El Diario Secreto del Hijo del Mayo,
+        "author": ,
+        "price": ,
+        "discount": ,
+        "category": ,
+        "description": ,
+        "language": ,
+        "format": ,
+        "date": ,
+        "image": 
+    },
+
+    {
+        "id": 1,
+        "title": El Traidor. El Diario Secreto del Hijo del Mayo,
+        "author": ,
+        "price": ,
+        "discount": ,
+        "category": ,
+        "description": ,
+        "language": ,
+        "format": ,
+        "date": ,
+        "image": 
+    }
+
+]
