@@ -1,7 +1,7 @@
 var productsController = {
 
     main: function(req, res){
-
+        res.send("aquí estoy")
     },
         
     create: function(req, res){
