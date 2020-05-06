@@ -23,8 +23,8 @@ var indexController = {
         let destacado = products.filter(function(producto){
             return producto.category == "destacado";
         });
-		
-		console.log(destacado);
+		//comentado por Miguel
+		//console.log(destacado);
 
         res.render('index',{
             title: 'BookEden',

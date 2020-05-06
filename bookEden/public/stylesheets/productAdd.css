@@ -1,38 +1,52 @@
-body{
-    margin:0;
-    padding:0;
-    background: linear-gradient(#DA9FEE , rgb(186, 157, 196));
-  
-}
-
-div.row{ 
-    margin-right: auto;
- 
-}
-
-
-.direccion {
-  justify-content: center;
-    
-} 
-
-.direccion input {
+  .form-label {
+    display: inline-block;
+    font-size: 1.6em;
+    margin: 10px 0;
+  }
+  .form-input {
+    display: block;
     width: 100%;
-    position: relative;
-    padding: 5px;
-    
-}
-form{
-    padding: 20px;
-}
-form select{
-    width: 100%;
-    padding: 5px;
-    background-color: rgb(226, 219, 248)
-    
-
-}
-form textarea{
-    width: 100%;
+    height: 45px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border-radius: 16px;
+    border: solid 2px grey;
+    padding: 0 12px;
+  }
+  textarea.form-input {
+    min-height: 140px;
+    resize: vertical;
+    padding: 15px;
+  }
+  .products-wrapper {
+    margin-top: 30px;
     margin-bottom: 30px;
-}
+    }
+  .products-title {
+    font-size: 2.4em;
+    font-weight: 400;
+    color: var(--gray);
+  }
+  div.back{ 
+       background: rgb(238,236, 235); 
+  }
+  div.color{
+    /* background: linear-gradient(#DA9FEE , rgb(186, 157, 196)); */
+    background-color:#DA9FEE ;
+  }
+  div.align{
+      text-align: center;
+      padding-bottom: 10px;
+  }
+  span.oblig{
+      color: #686868; 
+      font-size: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  div.align button{
+      background-color: rgb(51, 53, 167);
+      border: none;
+      border-radius: 15px;
+      padding:10px 20px;
+      
+  }
