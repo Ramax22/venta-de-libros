@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <%- include('partials/header.ejs') %> 
+    
     <main> 
         <div class="container">
-       
+        <%- include('partials/header.ejs') %> 
+
         <div id="login" > 
             <div class="menu">
                 <H2>Para continuar, ingresa e-mail o usuario</H2>
@@ -34,7 +35,7 @@
                   <button type="submit" class="btn btn-primary">Ingresar</button>
                 </form>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Sos nuevo aquí? Registrate</a>
+                <a class="dropdown-item" href="/users/register">Sos nuevo aquí? Registrate</a>
                 <a class="dropdown-item" href="#">olvido su clave?</a>
             </div>
           

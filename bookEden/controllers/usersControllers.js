@@ -5,10 +5,15 @@ const bcrypt = require ('bcrypt');
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
-var registerController = {
+var usersController = {
+    login: function(req,res,next){
+      res.render('log-in');
+    },
+    
     register: function (req, res, next){
         res.render("register");
     },
+
     create: function (req, res, next){
       let usuario = {
             id: req.body.username,
@@ -36,4 +41,4 @@ var registerController = {
     }
 }
 
-module.exports = registerController;
+module.exports = usersController;

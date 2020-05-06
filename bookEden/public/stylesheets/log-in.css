@@ -6,6 +6,10 @@
   #requisitos{
     font-size: small;
   }
+
+  #login{
+    border-radius: 5px;
+  }
   
   .registro{
       text-align: center;

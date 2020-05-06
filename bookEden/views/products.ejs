@@ -3,6 +3,7 @@
 <head>
        <!--AQUÍ ESTÁ EL HEAD-->
     <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/products.css">
     <title><%= title %> </title>
 </head>
 
@@ -17,55 +18,19 @@
 
             <section class="products d-flex flex-wrap justify-content-center">
             <!--AQUÍ ESTÁ FOREACH-->
-                <% novedades.forEach(novedad => { %>
+                <% products.forEach(product => { %>
                     <article class="product-des d-flex flex-column align-items-center">
-                        <a href="/products/detail/<%= novedad.id %> "><img src="/images/products/<%= novedad.image %> " alt="<%= novedad.title %> "></a>
-                        <p class="titulo"><%= novedad.title %> </p>
-                        <p class="autor"><%= novedad.author %> </p>
-                        <% let precioFinal = Math.round(novedad.price) %> 
-                        <p class="precio"><%= precioFinal%> </p>
+                        <a href="/products/detail/<%= product.id %> "><img src="/images/products/<%= product.image %> " alt="<%= product.title %> "></a>
+                        <p class="titulo"><%= product.title %> </p>
+                        <p class="autor"><%= product.author %> </p>
+                        <% let precioFinal = Math.round(product.price) %> 
+                        <p class="precio"> ARS$<%= precioFinal%> </p>
                         <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
                     </article>
                     <% }) %> 
             </section>
     
-            <div class="categorias align-items-center">
-                <h2 class="">Mejor vendidos</h2>
-            </div>
-    
-            <section class="products d-flex flex-wrap justify-content-center">
-            <!--AQUÍ ESTÁ FOREACH-->
-            <% bestselling.forEach(element => { %>
-                <article class="product-des d-flex flex-column align-items-center">
-                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.image %>" alt="<%= element.title %>"></a>
-                    <p class="titulo"><%= element.title %> </p>
-                    <p class="autor"><%= element.author %> </p>
-                    <% let precioFinal = Math.round(element.price) %> 
-                    <p class="precio"><%= precioFinal%> </p>
-                    <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
-                </article>
-            <% }) %>
-
-            </section>
-    
-            <div class="categorias align-items-center">
-                <h2 class="">Libros destacados en español</h2>
-            </div>
-    
-            <section class="products d-flex flex-wrap justify-content-center">
-            <!--AQUÍ ESTÁ FOREACH-->
-            <% popularSpanish.forEach(element => { %>
-                <article class="product-des d-flex flex-column align-items-center">
-                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.image %>" alt="<%= element.title %> "></a>
-                    <p class="titulo"><%= element.title %> </p>
-                    <p class="autor"><%= element.author %> </p>
-                    <% let precioFinal = Math.round(element.price) %> 
-                    <p class="precio"><%= precioFinal%> </p>
-                    <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
-                </article>
-            <% }) %>
-
-            </section>
+           
         </div>
     </div>
     <%- include('./partials/footer') %>

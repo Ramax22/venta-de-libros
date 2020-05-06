@@ -24,9 +24,7 @@ var indexController = {
             return producto.category == "destacado";
         });
 		
-		console.log(destacado);
-
-        res.render('index',{
+		res.render('index',{
             title: 'BookEden',
             novedades: novedades,
             bestselling: bestselling,
