@@ -5,81 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+    <%-include('partials/head')  %>
 
     <link rel="stylesheet" href="/stylesheets/productAdd.css">
     <title>Document</title>
 </head>
 <body>
-<div class="conteiner">
-    <div class="row">
-        <h3 class="col-sm-8 offset-2">Agregar Articulo </h3>
+    <%-include('partials/header')  %>
+    <div class="back">
+        <div class="container products-wrapper ">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="products-title">Ingrese Datos del producto</h2>
+                </div>
+            </div>
+           <div class="color border">
+            <div class="col-12 ">
+                <form action="/products/create" method="POST" enctype="multipart/form-data">
+                    <div class="row product-detail">
+                        <div class="col-12 col-md-6 color">
+                            <label for="title" class="form-label">Titulo<span class="oblig">(obligatorio)</span> </label>
+                            <input type="text" id="title" name="title" placeholder="Ej: El Hobbit" class="form-input">
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
+                            <input type="text" id="author" name="author" placeholder="Ej:  J. R. R. Tolkien" class="form-input">
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="price" class="form-label">Precio<span class="oblig">(obligatorio)</span></label>
+                            <input type="text" id="price" name="price" placeholder="Ej: 1000" class="form-input">
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="discount" class="form-label">Descuento<span class="oblig">(No obligatorio)</span></label>
+                            <input type="text" id="discount" name="discount" placeholder="Ej: 50" class="form-input">
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="lenguage" class="form-label">Idioma<span class="oblig">(obligatorio)</span></label>
+                            <select name="lenguage" id="lenguage" class="form-input">
+                                <option value="">Elige</option>
+                                <option value="Inglés">Ingles</option>
+                                <option value="Español">Español</option>
+                                <option value="Arabe">Arabe</option>
+                                <option value="Portugues">Portugues</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="date" class="form-label">Fecha<span class="oblig">(obligatorio)</span></label>
+                            <input type="text" id="date" name="date" placeholder="Ej: 04-may-01" class="form-input">
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="format" class="form-label">Formato<span class="oblig">(obligatorio)</span></label>
+                            <select name="format" id="format" class="form-input">
+                                <option value="">Elige</option>
+                                <option value="Paperback">De Bolsillo</option>
+                                <option value="Tapa Blanda">Tapa Blanda</option>
+                                <option value="Tapa Dura">Tapa Dura</option>
+                                <option value="Audio">Audio</option>
+                                <option value="Digital">Digital</option>
+                            </select>
+                        </div>
+                        <!-- <div class="col-12 col-md-6 color">
+                            <label for="category" class="form-label">Categoría<span class="oblig">(obligatorio)</span></label>
+                            <select name="category" id="category" class="form-input">
+                                <option value="">Elige</option>
+                                <option value="Aventuras">Aventuras</option>
+                                <option value="Ciencia Ficcion">Ciencia Ficcion</option>
+                                <option value="Gotico"> Gotico</option>
+                                <option value="Policial">Policial</option>
+                                <option value="Fantastica">Fantastica </option>
+                            </select>
+                        </div> -->
+                        <div class="col-12 col-md-6 color">
+                            <label for="category" class="form-label">Categoría<span class="oblig">(obligatorio)</span></label>
+                            <select name="category" id="category" class="form-input">
+                                <option value="">Elige</option>
+                                <option value="destacado">Destacado</option>
+                                <option value="popular-spanish">Lo mas Popular en español</option>
+                                <option value="bestselling"> Mas vendidos</option>
+                                <option value="novedades">Novedades</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 ">
+                           <label for="image" class="form-label" >Agregar Imagen<span class="oblig">(obligatorio)</span></label>
+                           <input type="file" id='image' name='image'> 
+                        </div>
+                        <div class="col-12 color">
+                            <label for="description" class="form-label">Descripción<span class="oblig">(No obligatorio)</span></label>
+                            <textarea name="description" id="description" class="form-input"></textarea>
+                        </div>
+                            
+                         
+                          
+                        <div class="col-12  color align">
+                            <button type="submit" class="btn btn-primary">Guardar producto</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           </div>
+
+
+
+
+
+        </div>
+
+        <%-include('partials/footer')  %>
     </div>
 
-   <form action="" class="products d-flex w-100 flex-wrap text-center direccion">
-       <label for="" class="forma">Nombre</label>
-        <input type="text">
-        
-        <label for="" class="forma">Formato</label>
-          <select name="" id="">
-            <option value="">Tapa Blanda </option>
-            <option value="">Tapa Dura </option>
-            <option value="">Audio </option>
-            <option value="">Digital </option>
-        
-           </select>
-        
-        <label for="" class="forma">Editorial</label>
-        <input type="text">
-
-        <label for="" class="forma">Idioma</label>
-        <select name="" id="">
-            <option value="">Ingles </option>
-            <option value="">Español </option>
-            <option value="">Mandarin</option>
-            <option value="">Frances</option>
-        
-           </select>
-
-        <label for="">Categoria</label>
-        <select name="" id="">
-            <option value="">Aventuras </option>
-            <option value="">Ciencia Ficcion</option>
-            <option value=""> Gotico</option>
-            <option value="">Policial</option>
-            <option value="">Fantastica </option>
-        
-           </select>
-
-        <label for="">Codigo</label>
-        <input type="text">
-
-        <label for="">Ranking</label>
-        <input type="text">
-
-        <label for="">Autor</label>
-        <input type="text">
-
-        <label for="">Precio</label>
-        <input type="text">
-
-        <label for="">Autor</label>
-        <input type="text">
-
-        <label for="">Descripcion</label>
-        <textarea name="" id="" cols="30" rows="6"></textarea>
-
-        <button type="submit" class="btn btn-primary">Agregar</button>
-
-       
-   </form>
 
 
-
-
-</div>
-
-    
 
 
 
