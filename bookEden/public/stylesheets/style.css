@@ -7,12 +7,17 @@
   background-color: rgb(238, 236, 235);
 }
 
-header{
-  background-color: rgb(214,187,214)!important;
-  margin-bottom: 10px;
+.container{
+  background-color: rgb(243, 243, 243);
 }
 
-.bg-light{
+
+.top-header{
+  background-color: rgb(214,187,214)!important;
+}
+
+
+div.navigation-top nav.bg-light{
   background-color: rgb(214,187,214)!important;
 }
 
@@ -51,6 +56,7 @@ div.nav-bar ul li{
   display: inline-block;
   text-align: center;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 div.nav-bar ul li a{
@@ -97,7 +103,11 @@ button a{
 /*-------BANNER-------*/
 .banner{
   margin-bottom: 10px;
-  width:100%
+  margin-right: 10px;
+  width:100%;
+  background-color: white;
+  border-radius: 10px;
+
 }
 
 div.banner img{
@@ -119,6 +129,8 @@ h2{
 .products{
   background-color: white;
   margin: 0px 10px 10px 10px;
+  border-radius: 10px;
+
 }
 
 article.product-des{
@@ -126,10 +138,11 @@ article.product-des{
   margin: 0px 10px 10px 10px;
   padding: 10px 10px;
   min-width: 300px;
+
 }
 
 section article img {
-  width:50%;
+  width:58%;
 }
 
 section article a {
@@ -144,11 +157,13 @@ p.titulo{
 
 p.autor{
   margin-bottom: 5px;
+  text-align: center;
 }
 
 p.precio{
   color: rgb(73,10,72);
   font-weight: bold;
+  font-size: 20px;
   margin-bottom: 5px;
 }
 
@@ -227,6 +242,15 @@ div.bottom-footer ul li a{
   color: white;
 }
 
+/*-----320px-----*/
+
+@media(min-width:320px){
+  .form-control{
+    width: 79%;
+  }
+}
+
+
 /*-----768px-----*/
 
 
@@ -298,6 +322,13 @@ div.bottom-footer ul li a{
     padding: 10px 10px;
     min-width:0px;
     width: 29%;
+    position: relative;
+    height: 380px;
+  }
+
+  article button.btn-warning{
+    position: absolute;
+    bottom: 0px;
   }
 
   .izquierda{
@@ -323,6 +354,24 @@ div.bottom-footer ul li a{
     margin-bottom: 10px;
   }
 
+  .navigation{
+    width: 75%;
+  }
+
+  ul.navbar-nav li {
+    font-size: 13px;
+  }
+
+  .menu-b-der{
+    width: 25%;
+  }
+
+  ul.nav-bar-2 li{
+    font-size: 13px;
+    margin-right: 10px;
+  }
+
+
   div.bottom-footer ul li{
     list-style: none;
     margin-bottom: 5px;
@@ -340,21 +389,37 @@ div.bottom-footer ul li a{
     width: 22%;
   }
 
-  ul.nav-bar-2 li{
-    font-size: 15px;
-    margin-right: 10px;
-  }
-
   .izquierda{
     width:100%
   }
 
   .banner{
-    margin-left: 10px;
+    margin-left: 6px;
+    width:98%;
   }
 
   div.banner img{
     width:90%;
+  }
+
+  .navigation-top{
+    width: 80%;
+  }
+
+  .form-control{
+    width: 88%!important;
+  }
+
+  section article img {
+    width:54%;
+  }
+
+  .columna-izquierda{
+    width:41%;
+  }
+
+  aside article img {
+    margin-left: 35px;
   }
 
 }
@@ -365,16 +430,24 @@ div.bottom-footer ul li a{
   
   div.nav-bar ul li{
     font-size: 19px;
-    width: 83%;
+    width: 77%;
     text-align: center;
     margin-bottom: 10px;
   }
 
   ul.nav-bar-2 li{
-    font-size: 19px;
+    font-size: 16px;
   }
 
   h2{
     font-size: 22px;
+  }
+
+  ul.navbar-nav li {
+    font-size: 16px;
+  }
+
+  section article img {
+    width:54%;
   }
 }
