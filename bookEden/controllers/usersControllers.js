@@ -5,6 +5,8 @@ const bcrypt = require ('bcrypt');
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
+
+
 var registerController = {
     register: function (req, res, next){
         res.render("register");
@@ -32,8 +34,9 @@ var registerController = {
         usuariosJSON = JSON.stringify(usuarios);
         fs.writeFileSync(usersFilePath, usuariosJSON);
         
-        res.redirect ("/users");
-    }
+        res.redirect ("/products");
+    },
+    
 }
 
 module.exports = registerController;
