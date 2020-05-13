@@ -6,14 +6,8 @@ let {check, validationResult, body} = require('express-validator');
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
-<<<<<<< HEAD
-
-
-var registerController = {
-=======
 var usersController = {
     
->>>>>>> cc0ce2249fed90e90b5b67b94a71c846ccfa2ca5
     register: function (req, res, next){
         res.render("register");
     },
@@ -41,11 +35,6 @@ var usersController = {
         usuariosJSON = JSON.stringify(usuarios);
         fs.writeFileSync(usersFilePath, usuariosJSON);
         
-<<<<<<< HEAD
-        res.redirect ("/products");
-    },
-    
-=======
         res.redirect ("/users");
     },
 
@@ -111,7 +100,6 @@ var usersController = {
           })
       }
   } 
->>>>>>> cc0ce2249fed90e90b5b67b94a71c846ccfa2ca5
 }
 
 module.exports = usersController;

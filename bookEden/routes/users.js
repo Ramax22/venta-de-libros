@@ -18,8 +18,12 @@ var upload = multer({storage:storage});
 
 /* --- USERS REGISTER --- */
 
+router.get('/', function(req, res, next) {
+	res.render('user-registrado');
+  });
 router.get('/register', usersController.register);
 router.post('/register', upload.any(), usersController.create);
+
 
 /* --- USERS LOGIN --- */
 
