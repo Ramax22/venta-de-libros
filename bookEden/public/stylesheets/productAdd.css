@@ -32,7 +32,8 @@
   }
   div.color{
     /* background: linear-gradient(#DA9FEE , rgb(186, 157, 196)); */
-    background-color:#DA9FEE ;
+    /* background-color:#DA9FEE ; */
+    background-color: rgb(209, 164, 209);
   }
   div.align{
       text-align: center;
@@ -44,9 +45,14 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   div.align button{
-      background-color: rgb(51, 53, 167);
+      background-color: rgb(73,10,72);  
       border: none;
       border-radius: 15px;
       padding:10px 20px;
+      color: white;
       
+  }
+  div.align button:hover{
+    background: linear-gradient(rgb(100, 49, 100) ,rgba(71, 9, 70, 0.966)); 
+    border: solid rgb(46, 46, 46) 1px;
   }
