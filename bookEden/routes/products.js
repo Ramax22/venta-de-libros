@@ -4,6 +4,7 @@ var multer = require('multer');
 var path = require('path');
 
 
+
 var storage = multer.diskStorage({
 	destination:(req,file,cb)=>{
 		cb(null,'public/images/products');
@@ -22,7 +23,7 @@ router.get('/detail/:id', productsController.detail); /* GET - Product detail */
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); /* GET - Form to create */
-router.post('/create/',upload.any(), productsController.created); /* POST - Store in DB */
+router.post('/create/', upload.any(), productsController.created); /* POST - Store in DB */
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsController.edit); /* GET - Form to create */

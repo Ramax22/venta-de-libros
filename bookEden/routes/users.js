@@ -4,6 +4,8 @@ var usersController = require("../controllers/usersControllers");
 var multer = require('multer');
 var path = require('path');
 let {check, validationResult, body} = require('express-validator');
+var guestMiddlewares = require("../middlewares/guestMiddlewares");
+var authMiddlewares = require("../middlewares/authMiddlewares");
 
 
 var storage = multer.diskStorage({
@@ -21,7 +23,7 @@ var upload = multer({storage:storage});
 router.get('/', function(req, res, next) {
 	res.render('user-registrado');
   });
-router.get('/register', usersController.register);
+router.get('/register', guestMiddlewares, authMiddlewares, usersController.register);
 router.post('/register', upload.any(), usersController.create);
 
 
