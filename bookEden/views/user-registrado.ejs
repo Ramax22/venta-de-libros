@@ -3,14 +3,15 @@
 <head>
     <%- include('partials/head.ejs') %> 
     <link rel="stylesheet" href="/stylesheets/log-in.css">
-    <title><%= title %> </title>
+    <title>Usuario Registrado</title>
 </head>
 <body>
     
         <div class="container">
         <%- include('partials/header.ejs') %> 
-    
-        <h2 style="font-style: italic;"> ¡Has iniciado sesión <%= userLogged.id %>!</h2>
+         <div class="registrado">  
+        <h2 style="font-style: italic;"> ¡Tu registro fue exitoso!</h2>
+        </div> 
         <%- include('partials/footer.ejs') %> 
         </div>
  

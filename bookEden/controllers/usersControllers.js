@@ -23,8 +23,7 @@ var usersController = {
             password: bcrypt.hashSync(req.body.password, 10),
            // category: req.body.category,
             imagen: req.files[0].filename
-                   
-        }
+      }
        
         var archivoUsuario= fs.readFileSync(usersFilePath,{encoding:'utf-8'})
         let usuarios;
@@ -33,11 +32,16 @@ var usersController = {
          }else{
           usuarios=JSON.parse(archivoUsuario);
         }
+
         usuarios.push(usuario);
         usuariosJSON = JSON.stringify(usuarios);
         fs.writeFileSync(usersFilePath, usuariosJSON);
-        
-        res.redirect ("login");
+
+             
+        res.render('log-in',{
+          title: 'Login',
+          userLogged: req.session.userLogged,
+        });
     },
 
     login: function(req,res,next){

@@ -19,7 +19,9 @@ var upload = multer({storage:storage});
 /* --- USERS REGISTER --- */
 
 router.get('/register', usersController.register);
-router.post('/register', upload.any(), usersController.create);
+
+router.post('/login', upload.any(), usersController.create);
+
 
 /* --- USERS LOGIN --- */
 
@@ -30,18 +32,6 @@ router.post('/profile', [
 	check('password').isLength({min:6}).withMessage('La contrañseña debe tener mas de 6 caractéres')
   
   ], usersController.processLogin);
-
-router.get('/check', function(req, res){
-	if(req.session.userLogged == undefined){
-		res.send('no estás logueado')
-	} else {
-		res.send('el usuario logueado es: '+ req.session.userLogged.email);
-	}
-})
-
-router.get('login-hecho', function (req,res){
-	res.render('login-hecho')
-})
 
 router.get('/profile', usersController.profile)
 

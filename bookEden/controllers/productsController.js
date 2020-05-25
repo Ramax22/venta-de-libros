@@ -88,7 +88,8 @@ var productsController = {
         
       
 		let nuevoProducto={
-			id: ultimo,
+            id: ultimo,
+            title:req.body.title,
 			author: req.body.author,
 			price:req.body.price ,
             discount:req.body.discount ,
@@ -99,8 +100,8 @@ var productsController = {
             date:req.body.date,
             image:req.files[0].filename
         }
-        console.log(req.files)
-        console.log(nuevoProducto);
+        //console.log(req.files)
+        //console.log(nuevoProducto);
 		products.push(nuevoProducto)
 		let modificacion= JSON.stringify(products)
 		fs.writeFileSync(productsFilePath,modificacion)
