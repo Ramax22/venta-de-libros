@@ -9,7 +9,9 @@ const usersFilePath = path.join(__dirname, '../data/users.json');
 var usersController = {
     
     register: function (req, res, next){
-        res.render("register");
+        res.render("register", {
+          userLogged: req.session.userLogged
+        });
     },
 
     create: function (req, res, next){
@@ -21,8 +23,7 @@ var usersController = {
             password: bcrypt.hashSync(req.body.password, 10),
            // category: req.body.category,
             imagen: req.files[0].filename
-                   
-        }
+      }
        
         var archivoUsuario= fs.readFileSync(usersFilePath,{encoding:'utf-8'})
         let usuarios;
@@ -31,16 +32,22 @@ var usersController = {
          }else{
           usuarios=JSON.parse(archivoUsuario);
         }
+
         usuarios.push(usuario);
         usuariosJSON = JSON.stringify(usuarios);
         fs.writeFileSync(usersFilePath, usuariosJSON);
-        
-        res.redirect ("/users");
+
+             
+        res.render('log-in',{
+          title: 'Login',
+          userLogged: req.session.userLogged,
+        });
     },
 
     login: function(req,res,next){
       res.render('log-in', {
-        title: 'Login'
+        title: 'Login',
+        userLogged: req.session.userLogged
       });
     },
 
@@ -88,9 +95,16 @@ var usersController = {
           //aplicamos session acá con el usuario encontrado
           //para que se puede "mantener vivo" la ejecución debería terminar en algún lado
           req.session.userLogged = userToLogin;
-          res.render('login-hecho',{
-            title: 'login',
-            userLogged: req.session.userLogged
+          console.log(req.session.userLogged)
+
+          if(req.body.rememberMe != undefined){
+            res.cookie('rememberMe', userToLogin.email)
+          }
+
+          res.render('profile',{
+            title: 'Perfil',
+            userLogged: req.session.userLogged,
+            avatar: req.session.userLogged.imagen
           })
 
           } else {
@@ -99,7 +113,15 @@ var usersController = {
               title: 'Login'
           })
       }
-  } 
+  },
+  
+  profile: function(req, res, next){
+    res.render('profile',{
+      title: 'Perfil',
+      userLogged: req.session.userLogged,
+      avatar: req.session.userLogged.imagen
+    })
+  }
 }
 
 module.exports = usersController;

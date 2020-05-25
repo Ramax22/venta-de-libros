@@ -20,34 +20,29 @@ var upload = multer({storage:storage});
 
 /* --- USERS REGISTER --- */
 
+<<<<<<< HEAD
 router.get('/', function(req, res, next) {
 	res.render('user-registrado');
   });
 router.get('/register', guestMiddlewares, authMiddlewares, usersController.register);
 router.post('/register', upload.any(), usersController.create);
+=======
+router.get('/register', usersController.register);
+
+router.post('/login', upload.any(), usersController.create);
+>>>>>>> 1ee6eb1f0198f7128937814e5f30c1c088aa6268
 
 
 /* --- USERS LOGIN --- */
 
 router.get('/login', usersController.login);
 
-router.post('/login', [
+router.post('/profile', [
 	check('email').isEmail().withMessage('E-mail inválido'),
 	check('password').isLength({min:6}).withMessage('La contrañseña debe tener mas de 6 caractéres')
   
   ], usersController.processLogin);
 
-router.get('/check', function(req, res){
-	if(req.session.userLogged == undefined){
-		res.send('no estás logueado')
-	} else {
-		res.send('el usuario logueado es: '+ req.session.userLogged.email);
-	}
-})
-
-router.get('login-hecho', function (req,res){
-	res.render('login-hecho')
-})
-
+router.get('/profile', usersController.profile)
 
 module.exports = router;
