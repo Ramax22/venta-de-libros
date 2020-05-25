@@ -9,19 +9,24 @@ var productsController = {
     main: function(req, res){
 		res.render('products',{
 			title: 'BookEden | Products',
-			products: products
+            products: products,
+            userLogged: req.session.userLogged
 		})
     },
         
     create: function(req, res){
-        res.render('product-create');
+        res.render('product-create',{
+            title: 'Agregar producto',
+            userLogged: req.session.userLogged
+        })
     },
 
     detail : function (req, res) {
         var selectedProduct = getProduct(req.params.id);
         res.render('detail', {
             title: 'BookEden' + selectedProduct.name,
-            'selectedProduct' : selectedProduct
+            'selectedProduct' : selectedProduct,
+            userLogged: req.session.userLogged
         });
     },
 
@@ -29,7 +34,8 @@ var productsController = {
         var selectedProduct = getProduct(req.params.id);
         res.render('product-edit-form', {
             title: 'BookEden' + selectedProduct.name,
-            'selectedProduct' : selectedProduct
+            'selectedProduct' : selectedProduct,
+            userLogged: req.session.userLogged
         });
     },
 

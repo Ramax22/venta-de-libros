@@ -25,7 +25,7 @@ router.post('/register', upload.any(), usersController.create);
 
 router.get('/login', usersController.login);
 
-router.post('/login', [
+router.post('/profile', [
 	check('email').isEmail().withMessage('E-mail inválido'),
 	check('password').isLength({min:6}).withMessage('La contrañseña debe tener mas de 6 caractéres')
   
@@ -42,5 +42,7 @@ router.get('/check', function(req, res){
 router.get('login-hecho', function (req,res){
 	res.render('login-hecho')
 })
+
+router.get('/profile', usersController.profile)
 
 module.exports = router;

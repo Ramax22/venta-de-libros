@@ -12,9 +12,20 @@ var indexController = {
             return producto.category == "novedades";
         });
 
-        let bestselling = products.filter(function(producto){
+        /* TODOS LOS PRODUCTOS --*/
+        let bestsellingAll = products.filter(function(producto){
             return producto.category == "bestselling";
         });
+
+        //console.log(bestsellingAll);
+        let bestselling = []
+        
+        /* -- CICLO PARA TRAER SOLO 3 --*/
+        for(let i=0; i<3; i++){
+             bestselling.push(bestsellingAll[i]);
+        }
+           
+        //console.log(bestselling);
 
         let popularSpanish = products.filter(function(producto){
             return producto.category == "popular-spanish";
@@ -29,7 +40,8 @@ var indexController = {
             novedades: novedades,
             bestselling: bestselling,
             popularSpanish: popularSpanish,
-            destacado: destacado
+            destacado: destacado,
+            userLogged: req.session.userLogged
         });
 	},
 }
