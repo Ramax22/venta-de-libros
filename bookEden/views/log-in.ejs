@@ -8,8 +8,8 @@
 <body>
     
     <main> 
-        <div class="container">
-        <%- include('partials/header.ejs') %> 
+      <div class="container">
+        <%- include('partials/header.ejs', {userLogged}) %> 
 
         <div id="login" > 
             <div class="menu">
@@ -25,14 +25,14 @@
                        <% } %>
                    </ul>
                  <% } %>
-                 <form action="/users/profile" method="POST" class="align-items-center">
-                  <div class="form-group">
+                 <form action="/users/profile" method="POST" class="">
+                  <div class="form-group" >
                     <label for=""></label>
-                    <input type="email" name="email" placeholder="E-mail">
+                    <input  class="form-control"type="email" name="email" placeholder="&#128231; E-mail">
                   </div>
                   <div class="form-group">
                     <label for=""></label>
-                    <input type="password" name="password" placeholder="Contraseña">
+                    <input class="form-control" type="password" name="password" placeholder="&#128274; Contraseña">
                   </div>
                   <!-- BOTÓN DE "RECUÉRDAME -->
                   <label for="">Recuérdame</label>
@@ -42,11 +42,12 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/users/register">Sos nuevo aquí? Registrate</a>
                 <a class="dropdown-item" href="#">olvido su clave?</a>
-            </div>
-          
+          </div>
         </div>
+        <%- include('partials/footer.ejs') %> 
+      </div>
       </main>
-      <%- include('partials/footer.ejs') %> 
+     
         
 
      

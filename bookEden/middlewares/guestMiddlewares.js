@@ -1,10 +1,16 @@
 //Usuarios logueados
-
-    function guestMiddlewares(req, res, next){
-        if(req.session.userLogged == undefined){
+    
+    var guestMiddlewares =
+    function (req, res, next){
+        var userLogged = req.session.userLogged;
+        if(userLogged == undefined){
             next();
         }else{
-            res.render("log-in")
+            res.render('profile',{
+                title: 'Perfil',
+                userLogged: req.session.userLogged,
+                avatar: req.session.userLogged.imagen
+              });
         }
     }
      

@@ -87,6 +87,7 @@ var usersController = {
         if(userToLogin == undefined){
               res.render('log-in', {
                   title:'Login',
+                  userLogged: undefined,
                   errors: [
                   {msg: 'credenciales inválidas'}
               ]});
@@ -110,12 +111,14 @@ var usersController = {
           } else {
           res.render('log-in', {
               errors: errors.errors,
+              userLogged: undefined,
               title: 'Login'
           })
       }
   },
   
   profile: function(req, res, next){
+    console.log(req.session.userLogged)
     res.render('profile',{
       title: 'Perfil',
       userLogged: req.session.userLogged,

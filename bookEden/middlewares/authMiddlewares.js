@@ -1,10 +1,15 @@
 
-
- function authMiddlewares(req, res, next){
+var authMiddlewares =
+ function (req, res, next){
+    
     if(req.session.userLogged != undefined){
-        next();
+         next();
     }else{
-        res.render("register")
+        res.render('log-in',{
+            title: 'Login',
+            userLogged: undefined
+          });
+          
     }
 }
 
