@@ -99,7 +99,7 @@ var usersController = {
           console.log(req.session.userLogged)
 
           if(req.body.rememberMe != undefined){
-            res.cookie('rememberMe', userToLogin.email)
+            res.cookie('rememberMe', userToLogin.email, {maxAge: 240000})
           }
 
           res.render('profile',{

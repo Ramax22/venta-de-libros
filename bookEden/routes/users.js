@@ -27,7 +27,7 @@ router.post('/login', upload.any(), usersController.create);
 
 /* --- USERS LOGIN --- */
 
-router.get('/login', usersController.login);
+router.get('/login', guestMiddlewares, usersController.login);
 
 router.post('/profile', [
 	check('email').isEmail().withMessage('E-mail inválido'),
