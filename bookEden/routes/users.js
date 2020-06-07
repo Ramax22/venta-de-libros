@@ -37,4 +37,5 @@ router.post('/profile', [
 
 router.get('/profile', authMiddlewares, usersController.profile)
 
+
 module.exports = router;

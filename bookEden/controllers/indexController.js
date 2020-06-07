@@ -43,7 +43,12 @@ var indexController = {
             destacado: destacado,
             userLogged: req.session.userLogged
         });
-	},
+    },
+    
+    carrito: function(req, res, next) {
+        res.render('carrito',{userLogged: req.session.userLogged
+        });
+    }
 }
 
 module.exports = indexController;
