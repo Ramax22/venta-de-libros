@@ -15,6 +15,9 @@ var usersController = {
     },
 
     create: function (req, res, next){
+      let errors = validationResult(req);
+      console.log(errors);
+
       let usuario = {
             id: req.body.username,
             first_name: req.body.first_name,
@@ -54,6 +57,7 @@ var usersController = {
     processLogin: function(req, res, next){
       // Creamos la variable errores
       let errors = validationResult(req);
+      console.log('Aquí está el error!!!!')
       console.log(errors);
       //Verificamos si hay errores
       if(errors.isEmpty()){
@@ -68,8 +72,7 @@ var usersController = {
           users = JSON.parse(usersFile);
         };
         //verificamos e-mail y contraseña
-        
-        console.log(req.body);
+ 
         let userToLogin
         
         for(var i = 0; i<users.length; i++){
