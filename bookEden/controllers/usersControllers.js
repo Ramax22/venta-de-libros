@@ -4,6 +4,9 @@ const multer = require ('multer');
 const bcrypt = require ('bcrypt');
 let {check, validationResult, body} = require('express-validator');
 
+const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
 var usersController = {
@@ -16,6 +19,7 @@ var usersController = {
 
     create: function (req, res, next){
       let errors = validationResult(req);
+      console.log("errores del registro")
       console.log(errors);
 
       let usuario = {
@@ -127,7 +131,48 @@ var usersController = {
       userLogged: req.session.userLogged,
       avatar: req.session.userLogged.imagen
     })
+  },
+
+  logout: function(req, res){
+    console.log('estoy cerrando sesion, aveeeer')
+    req.session.userLogged = undefined
+
+    let novedades = products.filter(function(producto){
+      return producto.category == "novedades";
+  });
+
+  /* TODOS LOS PRODUCTOS --*/
+  let bestsellingAll = products.filter(function(producto){
+      return producto.category == "bestselling";
+  });
+
+  //console.log(bestsellingAll);
+  let bestselling = []
+  
+  /* -- CICLO PARA TRAER SOLO 3 --*/
+  for(let i=0; i<3; i++){
+       bestselling.push(bestsellingAll[i]);
   }
+     
+  //console.log(bestselling);
+
+  let popularSpanish = products.filter(function(producto){
+      return producto.category == "popular-spanish";
+  });
+
+  let destacado = products.filter(function(producto){
+      return producto.category == "destacado";
+  });
+    res.render('index', {
+      title: 'BookEden',
+      novedades: novedades,
+      bestselling: bestselling,
+      popularSpanish: popularSpanish,
+      destacado: destacado,
+      userLogged: undefined
+    })
+  }
+
 }
 
 module.exports = usersController;

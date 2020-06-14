@@ -5,7 +5,9 @@ var router = express.Router();
 const indexController = require('../controllers/indexController');
 
 /* GET home page. */
-router.get('/', indexController.main); /* GET - home page */
+router.get('/', indexController.main); 
+
+/* -- CARRITO -- */
 router.get('/cart', indexController.carrito);
 
 module.exports = router;
