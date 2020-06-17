@@ -4,9 +4,39 @@ const path = require('path');
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+//Testing - BORRAR
+let db = require('../database/models');
+//Testing - BORRAR
+
 var indexController = {
 
     main: function(req,res){
+
+        //Testing - BORRAR
+        db.Language.findAll()
+        .then(function(autores){
+            console.log(autores);
+        })
+        .catch(function(e) {
+            console.log("ERROR en Language");
+        });
+
+        db.Publisher.findAll()
+        .then(function(autores){
+            console.log(autores);
+        })
+        .catch(function(e) {
+            console.log("ERROR en Publisher");
+        });
+
+        db.User.findAll()
+        .then(function(autores){
+            console.log(autores);
+        })
+        .catch(function(e) {
+            console.log("ERROR en User");
+        });
+        //Testing - BORRAR
 
         let novedades = products.filter(function(producto){
             return producto.category == "novedades";
