@@ -10,7 +10,8 @@ var productsController = {
 		res.render('products',{
 			title: 'BookEden | Products',
             products: products,
-            userLogged: req.session.userLogged
+            userLogged: req.session.userLogged,
+            admin:req.session.admin
 		})
     },
         
@@ -26,7 +27,9 @@ var productsController = {
         res.render('detail', {
             title: 'BookEden' + selectedProduct.name,
             'selectedProduct' : selectedProduct,
-            userLogged: req.session.userLogged
+            userLogged: req.session.userLogged,
+            admin:req.session.admin
+
         });
     },
 

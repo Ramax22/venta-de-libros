@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+</head>
+<body>
+    <div class=conteiner>
+        <form action="" method="POST">
+            <div class="align">
+                <label class="dis-block" for="">username</label>
+                <p class="dis-block"><input type="text" name="user" class="dis-block"></p>
+            </div>
+            <div class="align">
+                <label for="" class="dis-block" >password</label>
+                <p class="dis-block"><input class="dis-block" name="password" type="password"></p>       
+            </div>
+            <input type="submit" class="dis-block">
+            </form>
+    </div>
+    <%- include('partials/footer.ejs') %> 
+</body>
+</html>

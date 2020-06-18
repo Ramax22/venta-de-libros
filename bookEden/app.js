@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var cartRouter = require('./routes/carrito');
+var adminRouter=require('./routes/admin');
 var rememberMeMiddleware = require('./middlewares/rememberMeMiddleware'); //declaramos la variable
 
 var app = express();
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method')); // Para poder pisar el method="POST" en el formulario por PUT y DELETE
 app.use(session({secret: 'bookEden'}));
 
+app.use('/admin',adminRouter);
 app.use('/index', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);

@@ -10,7 +10,8 @@ var usersController = {
     
     register: function (req, res, next){
         res.render("register", {
-          userLogged: req.session.userLogged
+          userLogged: req.session.userLogged,
+          admin:req.session.admin
         });
     },
 
@@ -41,13 +42,15 @@ var usersController = {
         res.render('log-in',{
           title: 'Login',
           userLogged: req.session.userLogged,
+          admin:req.session.admin
         });
     },
 
     login: function(req,res,next){
       res.render('log-in', {
         title: 'Login',
-        userLogged: req.session.userLogged
+        userLogged: req.session.userLogged,
+        admin:req.session.admin
       });
     },
 
@@ -112,7 +115,8 @@ var usersController = {
           res.render('log-in', {
               errors: errors.errors,
               userLogged: undefined,
-              title: 'Login'
+              title: 'Login',
+              admin:req.session.admin
           })
       }
   },
@@ -122,7 +126,8 @@ var usersController = {
     res.render('profile',{
       title: 'Perfil',
       userLogged: req.session.userLogged,
-      avatar: req.session.userLogged.imagen
+      avatar: req.session.userLogged.imagen,
+      admin:req.session.admin
     })
   }
 }

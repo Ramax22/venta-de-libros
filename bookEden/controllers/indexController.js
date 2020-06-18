@@ -41,7 +41,8 @@ var indexController = {
             bestselling: bestselling,
             popularSpanish: popularSpanish,
             destacado: destacado,
-            userLogged: req.session.userLogged
+            userLogged: req.session.userLogged,
+            admin:req.session.admin//Probando
         });
 	},
 }
