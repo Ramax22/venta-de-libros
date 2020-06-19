@@ -20,7 +20,7 @@
                             <div class="input-group-prepend">
                                 <label for="name" class="input-group-text" id="basic-addon1">Nombre</label>
                             </div>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Ej: Moby Dick" aria-label="Ej: Moby Dick" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Ej: Moby Dick" aria-label="Ej: Moby Dick" aria-describedby="basic-addon1" value="<%=selectedProduct.title  %> ">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -28,7 +28,7 @@
                             <div class="input-group-prepend">
                                 <label for="author" class="input-group-text" id="author">Autor:</label>
                             </div>
-                            <input type="text" class="form-control" id="author" name="author" placeholder="Ej: H.P. Lovecraft" aria-label="Ej: H.P. Lovecraft" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="author" name="author" placeholder="Ej: H.P. Lovecraft" aria-label="Ej: H.P. Lovecraft" aria-describedby="basic-addon1" >
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -36,7 +36,7 @@
                             <div class="input-group-prepend">
                                 <label for="price" class="input-group-text" id="price">Precio:</label>
                             </div>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="Ej: 1234.50" aria-label="Ej: 1234.50" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="price" name="price" placeholder="Ej: 1234.50" aria-label="Ej: 1234.50" aria-describedby="basic-addon1" value="<%=selectedProduct.price%> ">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -44,7 +44,7 @@
                             <div class="input-group-prepend">
                                 <label for="discount" class="input-group-text" id="discount">Descuento:</label>
                             </div>
-                            <input type="text" class="form-control" id="discount" name="discount" placeholder="Ej: 0-100" aria-label="Ej: 0-100" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="discount" name="discount" placeholder="Ej: 0-100" aria-label="Ej: 0-100" aria-describedby="basic-addon1" value="<%= selectedProduct.discount%> ">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -52,12 +52,23 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="category">Categoría:</label>
                             </div>
-                            <select class="custom-select" id="category">
-                                <option selected>Elegir...</option>
+                            <select class="custom-select" id="category" name="category">
+                                <%for (let i = 0; i < categoria.length; i++) {%>
+                                    <% if(categoria[i].id==selectedProduct.category_id){ %> 
+                                        <option value="<%=categoria[i].id%>" selected>
+                                            <%= categoria[i].name %> 
+                                        </option>
+                                    <% }else{%>
+                                        <option value="<%=categoria[i].id%>" >
+                                            <%= categoria[i].name %> 
+                                        </option>
+                                    <%} %> 
+                               <% }  %> 
+                                <!-- <option selected>Elegir...</option>
                                 <option value="bestselling">Bestselling</option>
                                 <option value="novedades">Novedad</option>
                                 <option value="popular-spanish">Populares en Español</option>
-                                <option value="destacado">Destacado</option>
+                                <option value="destacado">Destacado</option> -->
                             </select>
                         </div>
                     </div>
@@ -67,9 +78,20 @@
                                 <label class="input-group-text" for="language">Idioma:</label>
                             </div>
                             <select class="custom-select" id="language" name="language">
-                                <option selected>Elegir...</option>
+                                <%for (let i = 0; i < idioma.length; i++) {%>
+                                    <% if(idioma[i].id==selectedProduct.language_id){ %> 
+                                        <option value="<%=idioma[i].id%>" selected>
+                                            <%= idioma[i].language %> 
+                                        </option>
+                                    <% }else{%>
+                                        <option value="<%=idioma[i].id%>" >
+                                            <%= idioma[i].language %> 
+                                        </option>
+                                    <%} %> 
+                               <% }  %> 
+                                <!-- <option selected>Elegir...</option>
                                 <option value="Español">Español</option>
-                                <option value="Inglés">Inglés</option>
+                                <option value="Inglés">Inglés</option> -->
                             </select>
                         </div>
                     </div>
@@ -79,8 +101,19 @@
                                 <label class="input-group-text" for="format">Formato:</label>
                             </div>
                             <select class="custom-select" id="format" name="format">
-                                <option selected>Elegir...</option>
-                                <option value="Paperback">Paperback</option>
+                                <%for (let i = 0; i < formato.length; i++) {%>
+                                    <% if(formato[i].id==selectedProduct.format_id){ %> 
+                                        <option value="<%=formato[i].id%>" selected>
+                                            <%= formato[i].type %> 
+                                        </option>
+                                    <% }else{%>
+                                        <option value="<%=formato[i].id%>" >
+                                            <%= formato[i].type %> 
+                                        </option>
+                                    <%} %> 
+                               <% }  %> 
+                                <!-- <option selected>Elegir...</option>
+                                <option value="Paperback">Paperback</option> -->
                             </select>
                         </div>
                     </div>

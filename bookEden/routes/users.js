@@ -22,7 +22,9 @@ var upload = multer({storage:storage});
 
 router.get('/register', guestMiddlewares, usersController.register);
 
-router.post('/login', upload.any(), usersController.create);
+router.post('/login',upload.any(),[
+	check('email').isEmail().withMessage('E-mail inválido')
+], usersController.create);
 
 
 /* --- USERS LOGIN --- */
@@ -36,5 +38,8 @@ router.post('/profile', [
   ], usersController.processLogin);
 
 router.get('/profile', authMiddlewares, usersController.profile)
+
+router.get('/logout', usersController.logout)
+
 
 module.exports = router;

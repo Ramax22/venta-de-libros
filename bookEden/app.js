@@ -9,7 +9,7 @@ var session = require('express-session'); //requerimos session
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
-var cartRouter = require('./routes/carrito');
+// var cartRouter = require('./routes/carrito');
 var adminRouter=require('./routes/admin');
 var rememberMeMiddleware = require('./middlewares/rememberMeMiddleware'); //declaramos la variable
 
@@ -28,10 +28,9 @@ app.use(methodOverride('_method')); // Para poder pisar el method="POST" en el f
 app.use(session({secret: 'bookEden'}));
 
 app.use('/admin',adminRouter);
-app.use('/index', indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
-app.use('/cart', cartRouter);
 app.use(rememberMeMiddleware.rememberMe);
 
 
