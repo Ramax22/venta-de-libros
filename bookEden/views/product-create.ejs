@@ -27,9 +27,19 @@
                             <label for="title" class="form-label">Titulo<span class="oblig">(obligatorio)</span> </label>
                             <input type="text" id="title" name="title" placeholder="Ej: El Hobbit" class="form-input">
                         </div>
-                        <div class="col-12 col-md-6 color">
+                        <!-- <div class="col-12 col-md-6 color">
                             <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
                             <input type="text" id="author" name="author" placeholder="Ej:  J. R. R. Tolkien" class="form-input">
+                        </div> -->
+                        <div class="col-12 col-md-6 color">
+                            <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
+                            <select name="author" id="author" class="form-input">
+                                <%for (let i = 0; i < autores.length; i++) {%>
+                                    <option value="<%=autores[i].id%>">
+                                    <%=autores[i].name%>
+                                    </option>
+                                <%}  %>  
+                            </select>
                         </div>
                         <div class="col-12 col-md-6 color">
                             <label for="price" class="form-label">Precio<span class="oblig">(obligatorio)</span></label>
@@ -42,11 +52,11 @@
                         <div class="col-12 col-md-6 color">
                             <label for="lenguage" class="form-label">Idioma<span class="oblig">(obligatorio)</span></label>
                             <select name="lenguage" id="lenguage" class="form-input">
-                                <option value="">Elige</option>
-                                <option value="Inglés">Ingles</option>
-                                <option value="Español">Español</option>
-                                <option value="Arabe">Arabe</option>
-                                <option value="Portugues">Portugues</option>
+                                <%for (let i = 0; i < idiomas.length; i++) {%>
+                                    <option value="<%=idiomas[i].id%>">
+                                    <%=idiomas[i].language%>
+                                    </option>
+                                <%}  %>  
                             </select>
                         </div>
                         <div class="col-12 col-md-6 color">
@@ -56,12 +66,21 @@
                         <div class="col-12 col-md-6 color">
                             <label for="format" class="form-label">Formato<span class="oblig">(obligatorio)</span></label>
                             <select name="format" id="format" class="form-input">
-                                <option value="">Elige</option>
-                                <option value="Paperback">De Bolsillo</option>
-                                <option value="Tapa Blanda">Tapa Blanda</option>
-                                <option value="Tapa Dura">Tapa Dura</option>
-                                <option value="Audio">Audio</option>
-                                <option value="Digital">Digital</option>
+                                <%for (let i = 0; i < formatos.length; i++) {%>
+                                    <option value="<%=formatos[i].id%>">
+                                    <%=formatos[i].type%>
+                                    </option>
+                                <%}  %>  
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="genre" class="form-label">Genero<span class="oblig">(obligatorio)</span></label>
+                            <select name="genre" id="genre" class="form-input">
+                                <%for (let i = 0; i < generos.length; i++) {%>
+                                    <option value="<%=generos[i].id%>">
+                                    <%=generos[i].name%>
+                                    </option>
+                                <%}  %>  
                             </select>
                         </div>
                         <!-- <div class="col-12 col-md-6 color">
@@ -78,12 +97,11 @@
                         <div class="col-12 col-md-6 color">
                             <label for="category" class="form-label">Categoría<span class="oblig">(obligatorio)</span></label>
                             <select name="category" id="category" class="form-input">
-                                <option value="">Elige</option>
-                                <option value="destacado">Destacado</option>
-                                <option value="popular-spanish">Lo mas Popular en español</option>
-                                <option value="bestselling"> Mas vendidos</option>
-                                <option value="novedades">Novedades</option>
-                                
+                                <%for (let i = 0; i < categorias.length; i++) {%>
+                                    <option value="<%=categorias[i].id%>">
+                                    <%=categorias[i].name%>
+                                    </option>
+                                <%}  %>    
                             </select>
                         </div>
                         <div class="col-12 col-md-6 ">

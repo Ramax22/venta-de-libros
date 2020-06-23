@@ -22,12 +22,7 @@
                 </div>
         
                 <aside class="products d-flex justify-content-center">
-                    <% destacado.forEach(element => { %>
-                        <article class="izq-art d-flex flex-column align-items-center">
-                            <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.image %> " alt="<%= element.title %> "></a>
-                            <p class="autor"><%= element.author %> </p>
-                        </article>
-                    <% }) %> 
+                   
 
                 </aside>
             </div>
@@ -87,10 +82,10 @@
             <!--AQUÍ ESTÁ FOREACH-->
                 <% novedades.forEach(novedad => { %>
                     <article class="product-des d-flex flex-column align-items-center justify-content-center">
-                        <a href="/products/detail/<%= novedad.id %> "><img src="/images/products/<%= novedad.image %> " alt="<%= novedad.title %> "></a>
+                        <a href="/products/detail/<%= novedad.id %> "><img src="/images/products/<%= novedad.avatar %> " alt="<%= novedad.title %> "></a>
                         <p class="titulo"><%= novedad.title %> </p>
-                        <p class="autor"><%= novedad.author %> </p>
-                        <% let precioFinal = Math.round(novedad.price) %> 
+                        <p class="autor"><%= novedad.author_id %> </p>
+                        <% let precioFinal = Math.round(novedad.price) %>
                         <p class="precio">ARS$ <%= precioFinal%> </p>
                         <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
                     </article>
@@ -105,9 +100,9 @@
             <!--AQUÍ ESTÁ FOREACH-->
             <% bestselling.forEach(element => { %>
                 <article class="product-des d-flex flex-column align-items-center justify-content-center">
-                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.image %>" alt="<%= element.title %>"></a>
+                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.avatar %>" alt="<%= element.title %>"></a>
                     <p class="titulo"><%= element.title %> </p>
-                    <p class="autor"><%= element.author %> </p>
+                    <p class="autor"><%= element.author_id %> </p>
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
                     <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
@@ -124,9 +119,9 @@
             <!--AQUÍ ESTÁ FOREACH-->
             <% popularSpanish.forEach(element => { %>
                 <article class="product-des d-flex flex-column align-items-center justify-content-center">
-                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.image %>" alt="<%= element.title %> "></a>
+                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.avatar %>" alt="<%= element.title %> "></a>
                     <p class="titulo"><%= element.title %> </p>
-                    <p class="autor"><%= element.author %> </p>
+                    <p class="autor"><%= element.author_id %> </p>
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
                     <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
