@@ -31,22 +31,22 @@
                             <input type="text" class="form-control" id="author" name="author" placeholder="Ej: H.P. Lovecraft" aria-label="Ej: H.P. Lovecraft" aria-describedby="basic-addon1" >
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label for="price" class="input-group-text" id="price">Precio:</label>
+                                <label for="publisher" class="input-group-text" id="publisher">Editorial:</label>
                             </div>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="Ej: 1234.50" aria-label="Ej: 1234.50" aria-describedby="basic-addon1" value="<%=selectedProduct.price%> ">
+                            <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Editorial" aria-label="Editorial" aria-describedby="basic-addon1" value=" ">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label for="discount" class="input-group-text" id="discount">Descuento:</label>
+                                <label for="genre" class="input-group-text" id="genre">Género:</label>
                             </div>
-                            <input type="text" class="form-control" id="discount" name="discount" placeholder="Ej: 0-100" aria-label="Ej: 0-100" aria-describedby="basic-addon1" value="<%= selectedProduct.discount%> ">
+                            <input type="text" class="form-control" id="genre" name="genre" placeholder="Ej: Ficción" aria-label="Ej: Ficción" aria-describedby="basic-addon1" value=" ">
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-md-3">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -125,14 +125,30 @@
                             <input type="date" class="form-control" id="date" name="date" aria-label="Ej: 0-100" aria-describedby="basic-addon1">
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label for="price" class="input-group-text" id="price">Precio:</label>
+                            </div>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="Ej: 1234.50" aria-label="Ej: 1234.50" aria-describedby="basic-addon1" value="<%=selectedProduct.price%> ">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label for="discount" class="input-group-text" id="discount">Descuento:</label>
+                            </div>
+                            <input type="text" class="form-control" id="discount" name="discount" placeholder="Ej: 0-100" aria-label="Ej: 0-100" aria-describedby="basic-addon1" value="<%= selectedProduct.discount%> ">
+                        </div>
+                    </div>
                     <div class="input-group col-12">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Descipción:</span>
                         </div>
-                        <textarea name="description" class="form-control" aria-label="With textarea"><%= selectedProduct.description %></textarea>
+                        <textarea name="description" class="form-control" style="height: 130px;"  aria-label="With textarea"><%= selectedProduct.description %></textarea>
                     </div>
                     <div class="col-12">
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button type="submit" class="btn btn-primary mt-2 mb-2">Guardar</button>
 					</div>
                 </div>
             </form>
