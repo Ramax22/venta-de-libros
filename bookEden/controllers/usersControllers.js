@@ -13,7 +13,7 @@ var usersController = {
           userLogged: req.session.userLogged
         });
     },
-
+    
     create: function (req, res, next){
       let usuario = {
             id: req.body.username,
@@ -36,7 +36,7 @@ var usersController = {
         usuarios.push(usuario);
         usuariosJSON = JSON.stringify(usuarios);
         fs.writeFileSync(usersFilePath, usuariosJSON);
-
+     
              
         res.render('log-in',{
           title: 'Login',

@@ -22,7 +22,7 @@ var upload = multer({storage:storage});
 
 router.get('/register', guestMiddlewares, usersController.register);
 
-router.post('/login', upload.any(), usersController.create);
+router.post('/register', upload.any(), usersController.create);
 
 
 /* --- USERS LOGIN --- */
