@@ -18,7 +18,7 @@ var usersController = {
           admin:req.session.admin
         });
     },
-
+    
     create: function (req, res, next){
       let errors = validationResult(req);
       console.log("errores del registro")
@@ -54,7 +54,7 @@ var usersController = {
         usuarios.push(usuario);
         usuariosJSON = JSON.stringify(usuarios);
         fs.writeFileSync(usersFilePath, usuariosJSON);
-
+     
              
         res.render('log-in',{
           title: 'Login',
