@@ -7,8 +7,8 @@
 
                 <a class="navbar-brand" href="/"><img src="/images/logo.png" alt=""></a>
 
-                <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Buscar libros porpalabra clave" aria-label="Search">
+                <form action="/products/results" method="GET" class="form-inline">
+                  <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar libros por palabra clave" aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                 </form>
               </nav>
@@ -35,7 +35,7 @@
               <% } else { %>
                 <h2 class="username">Bienvenido, <%= userLogged.first_name %></h2>
                 <ul>
-                  <li><a href="/users/profile">Mi Cuenta</a></li>
+                  <li><a href="/users/profile">Mi Cuenta/</a><a href="/users/logout">Salir</a></li>
                   <li><a href="">Favoritos <i class="far fa-heart"></i></a></li>
                   <li><a href="">Pedidos <i class="far fa-list-alt"></i></a></li>
                 </ul>      

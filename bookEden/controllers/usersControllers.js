@@ -108,6 +108,7 @@ var usersController = {
               res.render('log-in', {
                   title:'Login',
                   userLogged: undefined,
+                  admin:req.session.admin,
                   errors: [
                   {msg: 'credenciales inválidas'}
               ]});
@@ -122,11 +123,23 @@ var usersController = {
             res.cookie('rememberMe', userToLogin.email, {maxAge: 240000})
           }
 
-          res.render('profile',{
-            title: 'Perfil',
-            userLogged: req.session.userLogged,
-            avatar: req.session.userLogged.imagen
-          })
+          if (userToLogin.email == "mayra.rinconess@gmail.com"){
+            res.render('admin',{
+              title: 'Admin',
+              userLogged: req.session.userLogged,
+              avatar: req.session.userLogged.imagen,
+              admin:req.session.admin
+            })
+          } else {
+            res.render('profile',{
+              title: 'Perfil',
+              userLogged: req.session.userLogged,
+              avatar: req.session.userLogged.imagen,
+              admin:req.session.admin
+            })
+          }
+
+          
 
           } else {
           res.render('log-in', {
@@ -139,7 +152,7 @@ var usersController = {
   },
   
   profile: function(req, res, next){
-    console.log(req.session.userLogged)
+    
     res.render('profile',{
       title: 'Perfil',
       userLogged: req.session.userLogged,
@@ -151,42 +164,46 @@ var usersController = {
   logout: function(req, res){
     console.log('estoy cerrando sesion, aveeeer')
     req.session.userLogged = undefined
+    db.Books.findAll({
+      where:{
+          category_id:1
+      }
+    })
+    .then((novedades)=>{
+        db.Books.findAll({
+            where:{
+                category_id:2
+            }
+        })
+      .then((bestselling)=>{
+          db.Books.findAll({
+              where:{
+                  category_id:4
+              }
+          })
+          .then((popularSpanish)=>{
+              res.render('index',{
+                title: 'BookEden',
+                novedades: novedades,
+                popularSpanish: popularSpanish,
+                bestselling: bestselling,
+                //destacado: destacado,
+                userLogged: undefined,
+                admin:req.session.admin//Probando
+               })   
+          })
+        })
+    })
+  },
 
-    let novedades = products.filter(function(producto){
-      return producto.category == "novedades";
-  });
-
-  /* TODOS LOS PRODUCTOS --*/
-  let bestsellingAll = products.filter(function(producto){
-      return producto.category == "bestselling";
-  });
-
-  //console.log(bestsellingAll);
-  let bestselling = []
-  
-  /* -- CICLO PARA TRAER SOLO 3 --*/
-  for(let i=0; i<3; i++){
-       bestselling.push(bestsellingAll[i]);
-  }
-     
-  //console.log(bestselling);
-
-  let popularSpanish = products.filter(function(producto){
-      return producto.category == "popular-spanish";
-  });
-
-  let destacado = products.filter(function(producto){
-      return producto.category == "destacado";
-  });
-    res.render('index', {
-      title: 'BookEden',
-      novedades: novedades,
-      bestselling: bestselling,
-      popularSpanish: popularSpanish,
-      destacado: destacado,
-      userLogged: undefined
+  admin: function(req, res){
+    res.render('admin', {
+      title: 'Administrador',
+      userLogged: req.session.userLogged,
+      admin:req.session.admin
     })
   }
+  
 
 }
 

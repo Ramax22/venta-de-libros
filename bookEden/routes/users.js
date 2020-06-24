@@ -6,6 +6,7 @@ var path = require('path');
 let {check, validationResult, body} = require('express-validator');
 var guestMiddlewares = require("../middlewares/guestMiddlewares");
 var authMiddlewares = require("../middlewares/authMiddlewares");
+var adminMiddlewares = require('../middlewares/adminMiddleware');
 
 
 var storage = multer.diskStorage({
@@ -37,9 +38,13 @@ router.post('/profile', [
   
   ], usersController.processLogin);
 
-router.get('/profile', authMiddlewares, usersController.profile)
+router.get('/profile', authMiddlewares, usersController.profile);
 
-router.get('/logout', usersController.logout)
+router.get('/logout', usersController.logout);
+
+/* --- ADMIN ROUTES --- */
+
+router.get('/admin', adminMiddlewares.check ,usersController.admin);
 
 
 module.exports = router;
