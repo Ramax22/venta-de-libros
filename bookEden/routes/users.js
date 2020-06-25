@@ -22,10 +22,13 @@ var upload = multer({storage:storage});
 
 router.get('/register', guestMiddlewares, usersController.register);
 
-router.post('/login',upload.any(),[
-	check('email').isEmail().withMessage('E-mail inválido')
+router.post('/register', upload.any(), [
+	check('first_name').isString().notEmpty().withMessage('Nombre inválido'),
+	check('last_name').isString().notEmpty().withMessage('Apellido inválido'),
+	check('email').isEmail().withMessage('E-mail inválido'),
+	check('password').isString().notEmpty().withMessage('Contraseña inválida'),
+	check('password').isLength({min:6}).withMessage('La contrañseña debe tener mas de 6 caractéres')
 ], usersController.create);
-
 
 /* --- USERS LOGIN --- */
 
@@ -40,6 +43,5 @@ router.post('/profile', [
 router.get('/profile', authMiddlewares, usersController.profile)
 
 router.get('/logout', usersController.logout)
-
 
 module.exports = router;

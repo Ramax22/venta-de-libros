@@ -11,19 +11,25 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
 var usersController = {
+  register: function (req, res, next){
+      res.render("register", {
+        userLogged: req.session.userLogged,
+        admin:req.session.admin
+      });
+  },
     
-    register: function (req, res, next){
-        res.render("register", {
-          userLogged: req.session.userLogged,
-          admin:req.session.admin
-        });
-    },
-    
-    create: function (req, res, next){
-      let errors = validationResult(req);
-      console.log("errores del registro")
-      console.log(errors);
-      
+  create: function (req, res, next) {
+    //Agarro los errores
+    let errors = validationResult(req);
+
+    console.log(errors);
+    if (req.files[0] == undefined) {
+      console.log("nope");
+    } else {
+      console.log("yep");
+    }
+
+    if (errors.isEmpty() && req.files[0] != undefined) {
       db.User.create({
         name:req.body.username,
         last_name: req.body.last_name,
@@ -32,36 +38,56 @@ var usersController = {
         avatar:req.files[0].filename,
         carrito_id:1
       })
-
+  
       let usuario = {
-            id: req.body.username,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            // password: bcrypt.hashSync(req.body.password, 10),
-           // category: req.body.category,
-            imagen: req.files[0].filename,
+        id: req.body.username,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        // password: bcrypt.hashSync(req.body.password, 10),
+        // category: req.body.category,
+        imagen: req.files[0].filename,
       }
-       
-        var archivoUsuario= fs.readFileSync(usersFilePath,{encoding:'utf-8'})
-        let usuarios;
-        if(archivoUsuario ==""){
-           usuarios=[];
-         }else{
-          usuarios=JSON.parse(archivoUsuario);
-        }
+        
+      var archivoUsuario= fs.readFileSync(usersFilePath,{encoding:'utf-8'})
+      let usuarios;
+      if(archivoUsuario ==""){
+          usuarios=[];
+        }else{
+        usuarios=JSON.parse(archivoUsuario);
+      }
+  
+      usuarios.push(usuario);
+      usuariosJSON = JSON.stringify(usuarios);
+      fs.writeFileSync(usersFilePath, usuariosJSON);
+    
+            
+      res.render('log-in',{
+        title: 'Login',
+        userLogged: req.session.userLogged,
+        admin:req.session.admin
+      });
+    } else {
 
-        usuarios.push(usuario);
-        usuariosJSON = JSON.stringify(usuarios);
-        fs.writeFileSync(usersFilePath, usuariosJSON);
-     
-             
-        res.render('log-in',{
-          title: 'Login',
-          userLogged: req.session.userLogged,
-          admin:req.session.admin
+      //Manejo el error de que no haya un usuario seleccionado
+      if (req.files[0] == undefined) {
+        //en caso de que no haya sido seleccionada un avatar, agrego al array de errores este error con un mensaje personalizado
+        errors.errors.push({
+          value: '',
+          msg: 'No se ha seleccionado una imagen',
+          param: 'avatar',
+          location: 'body'
         });
-    },
+      }
+
+      res.render('register', {
+        title: 'Register',
+        userLogged: req.session.userLogged,
+        admin: req.session.admin,
+        errors: errors.errors
+      });
+    }
+  },
 
     login: function(req,res,next){
       res.render('log-in', {
