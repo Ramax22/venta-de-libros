@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db=require("../database/models")
+let {check, validationResult, body} = require('express-validator');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -8,12 +9,16 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 var productsController = {
 
     main: function(req, res){
-		res.render('products',{
-			title: 'BookEden | Products',
-            products: products,
-            userLogged: req.session.userLogged,
-            admin:req.session.admin
-		})
+        db.Books.findAll()
+        .then(function(books){
+            return res.render('products', {
+                title: 'BookEden | Products',
+                books: books,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        })
+
     },
         
     create: function(req, res){
@@ -199,7 +204,108 @@ var productsController = {
 		fs.writeFileSync(productsFilePath,modificacion)
 
 		res.redirect('/products');
+    },
+
+    results: function(req,res){
+        let userSearch = req.query.search;
+        db.Books.findAll({
+            where: {
+                title: {[db.Sequelize.Op.substring]: userSearch}
+            },
+
+            order: [
+                ['title', "DESC"]
+            ]
+        })
+        .then(function(books){
+            console.log(books)
+            res.render('results', {
+                books:books,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin,
+                title: 'Resultados'//hacer resultados
+            })
+        })
+
+    },
+
+    /* --- AUTHORS ---*/
+
+    authors: function(req, res){
+        db.Authors.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
+        .then(function(authors){
+            res.render('authors', {
+                authors: authors,
+                title: 'Autores',
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        })
+    },
+
+    authorSafe: function(req,res){
+        let errors = validationResult(req);
+        if(errors.isEmpty()){
+            console.log(req.body.authorName)
+            db.Authors.create({
+                name: req.body.authorName
+            })
+            console.log(req.body.authorName)
+            res.redirect('/products/authors')
+
+        } else {
+            res.render('author-create', {
+                title: 'Crear un Autor',
+                errors: errors.errors,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        }
+    },
+
+    /* --- PUBLISHERS ---*/
+
+    publishers: function(req, res){
+        db.Publisher.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
+        .then(function(publishers){
+            res.render('publishers', {
+                publishers: publishers,
+                title: 'Editoriales',
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        })
+    },
+
+    publisherSafe: function(req,res){
+        let errors = validationResult(req);
+        if(errors.isEmpty()){
+            
+            db.Publisher.create({
+                name: req.body.publisher
+            })
+            
+            res.redirect('/products/publishers')
+
+        } else {
+            res.render('publisher-create', {
+                title: 'Ingresar una editorial',
+                errors: errors.errors,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        }
     }
+
+
 }
 
 module.exports = productsController;

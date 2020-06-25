@@ -9,15 +9,11 @@
 ul li {
     list-style: none;
     padding: 0px;
-    margin-left: 20px!important;
+    margin-left: 10px!important;
     padding-right: 10px;
     margin-bottom: 8px;  
 }
 
-ul li:nth-child(6){
-    margin-bottom: 0px;
-    
-}
 
 ul li a{
     color: black;
@@ -29,19 +25,21 @@ ul li a{
 
 .profile-title{
     color:rgb(73,10,72);
-    
 }
 
-.info-profile {
+
+.authorBox {
     margin-bottom: 25px;
+    width: 100%;
     
 }
 
-.admin-menu{
+.authorList{
     background-color: white;
     border-radius: 10px;
-    margin-bottom: 50px;
-    width: 30%;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    width: 50%;
 }
 
 .info-title{
@@ -52,6 +50,45 @@ ul li a{
     padding-bottom: 6px;
     background-color: rgb(214,187,214);
 }
+
+.author-right{
+    width:50%;
+}
+
+.author-form{
+    width:100%;
+    margin-right: 50px;
+}
+
+.author-buttons{
+    margin-right: 30px;
+    background: rgb(73,10,72);
+    color:white;
+    width: 50px;
+    display: block;
+    margin-top: 10px;
+}
+
+.volver{
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+span a {
+    color: rgb(73,10,72);
+    text-decoration: underline;
+    
+}
+
+.author-create{
+    color: rgb(73,10,72);
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 134px;
+}
+
+
+
+
 
 /*--- 1024 --- */
 @media(min-width:1024px){

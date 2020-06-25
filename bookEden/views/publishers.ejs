@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <!--AQUÍ ESTÁ EL HEAD-->
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/authors.css">
+    <title><%= title %> </title>
+</head>
+
+<body>
+
+<div class="container">
+<!--AQUÍ ESTÁ EL HEADER-->
+    <%- include('./partials/header', {userLogged})%>
+
+
+    <div class="d-flex flex-column align-items-center flex-lg-row author-main">
+
+ 
+        <div class="d-flex flex-column flex-lg-row justify-content-between authorBox">
+            <div class="d-flex flex-column authorList">
+                <h2 class="info-title">Listado de Editoriales</h2>
+                <ul>
+                    <ul>
+                        <% for( let i = 0; i < publishers.length; i++ ) { %>
+                            <li>
+                                <%= publishers[i].name %> </a>
+                                
+                            </li>
+                        <% } %>
+                </ul>
+            </div>
+
+            <div class="d-flex flex-column align-items-end author-right">
+
+                <div class="d-flex justify-content-right volver">
+                    <span> <a href="/users/admin">Regresar</a></span>
+                </div>
+
+                <div lass="d-flex flex-column flex-lg-column align-self-center author-form">
+                    <h2 class="author-create">Para cargar una nueva editorial, <br>ingresa nombre acá</h2>
+        
+                    <form action="/products/publishers" method="POST">
+                        <input type="text" name="publisher" placeholder="ej. Salamandra">
+                        <button class="author-buttons" type="submit">Crear</button>
+                    </form>
+                </div>
+    
+               
+                
+            </div>
+               
+      
+        </div>
+
+    </div>
+
+
+<%- include('./partials/footer') %>
+<!-------AQUÍ ESTÁ EL FOOTER--------->
+</div>
+</body>
+</html>
