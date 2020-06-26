@@ -54,17 +54,19 @@ var indexController = {
                     }
                 })
                 .then((popularSpanish)=>{
-                    
-                     res.render('index',{
-                     title: 'BookEden',
-                      novedades: novedades,
-                       bestselling: bestselling,
-                      popularSpanish: popularSpanish,
-                      // destacado: destacado,
-                     userLogged: req.session.userLogged,
-                     admin:req.session.admin//Probando
-                     })
-                    
+                    db.Authors.findAll()
+                    .then(function(autores){
+                        res.render('index',{
+                            title: 'BookEden',
+                             novedades: novedades,
+                              bestselling: bestselling,
+                             popularSpanish: popularSpanish,
+                             // destacado: destacado,
+                            userLogged: req.session.userLogged,
+                            admin:req.session.admin,
+                            autores:autores
+                            })
+                    })
                 })
             })
         })

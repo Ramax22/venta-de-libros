@@ -20,10 +20,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         avatar: {
             type: dataTypes.STRING
-        },
-        carrito_id: {
-            type: dataTypes.INTEGER
-        },
+        }
     };
     let config = {
         tableName: 'users',

@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-12 col-md-6 color">
                             <label for="date" class="form-label">Fecha<span class="oblig">(obligatorio)</span></label>
-                            <input type="text" id="date" name="date" placeholder="Ej: 04-may-01" class="form-input">
+                            <input type="date" id="date" name="date" placeholder="Ej: 04-may-01" class="form-input">
                         </div>
                         <div class="col-12 col-md-6 color">
                             <label for="format" class="form-label">Formato<span class="oblig">(obligatorio)</span></label>
@@ -102,6 +102,16 @@
                                     <%=categorias[i].name%>
                                     </option>
                                 <%}  %>    
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 color">
+                            <label for="format" class="form-label">Editorial<span class="oblig">(obligatorio)</span></label>
+                            <select name="publisher" id="publisher" class="form-input">
+                                <%for (let i = 0; i < editorial.length; i++) {%>
+                                    <option value="<%=editorial[i].id%>">
+                                    <%=editorial[i].name%>
+                                    </option>
+                                <%}  %>  
                             </select>
                         </div>
                         <div class="col-12 col-md-6 ">

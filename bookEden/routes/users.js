@@ -6,6 +6,7 @@ var path = require('path');
 let {check, validationResult, body} = require('express-validator');
 var guestMiddlewares = require("../middlewares/guestMiddlewares");
 var authMiddlewares = require("../middlewares/authMiddlewares");
+var adminMiddlewares = require('../middlewares/adminMiddleware');
 
 
 var storage = multer.diskStorage({
@@ -22,8 +23,12 @@ var upload = multer({storage:storage});
 
 router.get('/register', guestMiddlewares, usersController.register);
 
-router.post('/register',upload.any(),[
-	check('email').isEmail().withMessage('E-mail inválido')
+router.post('/register', upload.any(), [
+	check('first_name').isString().notEmpty().withMessage('Nombre inválido'),
+	check('last_name').isString().notEmpty().withMessage('Apellido inválido'),
+	check('email').isEmail().withMessage('E-mail inválido'),
+	check('password').isString().notEmpty().withMessage('Contraseña inválida'),
+	check('password').isLength({min:6}).withMessage('La contrañseña debe tener mas de 6 caractéres')
 ], usersController.create);
 
 /* --- USERS LOGIN --- */
@@ -36,9 +41,16 @@ router.post('/profile', [
   
   ], usersController.processLogin);
 
-router.get('/profile', authMiddlewares, usersController.profile)
+router.get('/profile', authMiddlewares, usersController.profile);
 
-router.get('/logout', usersController.logout)
+router.get('/logout', usersController.logout);
 
+/* --- ADMIN ROUTES --- */
+
+router.get('/admin', adminMiddlewares.check ,usersController.admin);
+router.delete('/delete/:id', usersController.destroy);
+
+router.get('/edit/:id', usersController.edit);
+router.put('/edit/:id',upload.any(), usersController.update); 
 
 module.exports = router;

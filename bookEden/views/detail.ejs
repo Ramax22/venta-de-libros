@@ -16,6 +16,10 @@
         <div id="book-description product-title" class="col-12 col-md-6">
           <h2><%= selectedProduct.title %></h2>
           <br>
+          <!-- no estoy seguro si el forma correcat lo del autor creo que deberia funcionar solo con association -->
+          <p style="margin-left: 10px;"><b>Autor: <%=autor[selectedProduct.author_id].name  %> </b></p>
+          <p style="margin-left: 10px;"><b>Editorial: <%=selectedProduct.publisher.name%> </b></p>
+          <br>
           <% var descriptionComplete = selectedProduct.description %>
           <% var descriptionPartOne = descriptionComplete.slice(0, 399); %>
           <% var descriptionPartTwo = descriptionComplete.slice(399, descriptionComplete.length); %>
@@ -29,6 +33,8 @@
           <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Leer mas
           </a>
+          
+
         </div>
         <div class="col-12 col-md-3 text-center">
           <h2>¡Compartelo en tus redes sociales!</h2>
@@ -49,7 +55,7 @@
           <a href="/products/edit/<%= selectedProduct.id %>" class="btn btn-warning">EDITAR</a>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="margin-top: 30px;">
         <div class="text-center col-12" col-md-8"">
           <label for="comment">Your Comment</label>
           <textarea name="comment" class="form-control" rows="3"></textarea>

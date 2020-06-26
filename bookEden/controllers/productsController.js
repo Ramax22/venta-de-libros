@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db=require("../database/models")
+let {check, validationResult, body} = require('express-validator');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -8,12 +9,16 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 var productsController = {
 
     main: function(req, res){
-		res.render('products',{
-			title: 'BookEden | Products',
-            products: products,
-            userLogged: req.session.userLogged,
-            admin:req.session.admin
-		})
+        db.Books.findAll()
+        .then(function(books){
+            return res.render('products', {
+                title: 'BookEden | Products',
+                books: books,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        })
+
     },
         
     create: function(req, res){
@@ -27,15 +32,19 @@ var productsController = {
                     .then((categorias)=>{
                         db.Authors.findAll()
                         .then((autores)=>{
-                            res.render('product-create',{
-                                title: 'Agregar producto',
-                                userLogged: req.session.userLogged,
-                                admin:req.session.admin,
-                                generos:generos,
-                                formatos:formatos,
-                                idiomas:idiomas,
-                                categorias:categorias,
-                                autores:autores
+                            db.Publisher.findAll()
+                            .then((editorial)=>{
+                                res.render('product-create',{
+                                    title: 'Agregar producto',
+                                    userLogged: req.session.userLogged,
+                                    admin:req.session.admin,
+                                    generos:generos,
+                                    formatos:formatos,
+                                    idiomas:idiomas,
+                                    categorias:categorias,
+                                    autores:autores,
+                                    editorial:editorial
+                            })     
                             })
                         })
                     })
@@ -54,16 +63,20 @@ var productsController = {
         //     admin:req.session.admin
 
         // });
-        db.Books.findByPk(req.params.id)
+        db.Books.findByPk(req.params.id,{
+            include:[{association:"genero"},{association:"booksAuthor"},{association:"publisher"}]
+        })
         .then((resultado)=>{
-            res.render('detail', {
-                title: 'BookEden' + resultado.title,
-                selectedProduct : resultado,
-                userLogged: req.session.userLogged,
-                admin:req.session.admin
-        
-            }); 
-
+            db.Authors.findAll()
+            .then(function(autor){
+                res.render('detail', {
+                    title: 'BookEden' + resultado.title,
+                    selectedProduct : resultado,
+                    userLogged: req.session.userLogged,
+                    admin:req.session.admin,
+                    autor:autor
+                }); 
+            })
         })
 
     },
@@ -77,14 +90,16 @@ var productsController = {
         //     admin:req.session.admin
         // });
         let pedidoLibro= db.Books.findByPk(req.params.id,{
-            include:[{association:"booksAuthor"},{association:"genero"},{association:"category"},{association:"format"},{association:"language"} ]
+            include:[{association:"booksAuthor"},{association:"genero"},{association:"category"},{association:"format"},{association:"language"},{association:"publisher"} ]
         })
         let pedidoCategoria= db.Category.findAll();
         let pedidoIdioma=db.Language.findAll();
         let pedidoFormato=db.Format.findAll();
-
-        Promise.all([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato])
-        .then(function([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato]){
+        let pedidoGenero=db.Genres.findAll();
+        let pedidoEditorial=db.Publisher.findAll();
+        let pedidoAuthor=db.Authors.findAll()
+        Promise.all([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor])
+        .then(function([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor]){
           
             console.log(pedidoLibro.category_id)
             res.render('product-edit-form', {
@@ -94,7 +109,10 @@ var productsController = {
                 idioma:pedidoIdioma,
                 formato:pedidoFormato,
                 userLogged: req.session.userLogged,
-                admin:req.session.admin
+                admin:req.session.admin,
+                editorial:pedidoEditorial,
+                genero:pedidoGenero,
+                autor:pedidoAuthor
             });
         })
     },
@@ -124,7 +142,10 @@ var productsController = {
             discount:req.body.discount,
             category_id:req.body.category,
             language_id:req.body.language,
-            format_id:req.body.format
+            format_id:req.body.format,
+            author_id:req.body.author,
+            publisher_id:req.body.publisher,
+            genre_id:req.body.genre
         },{
             where:{
                 id:req.params.id
@@ -175,7 +196,8 @@ var productsController = {
             category_id:req.body.category,
             genre_id:req.body.genre,
             avatar:req.files[0].filename,
-            publisher_id:req.body.author
+            publisher_id:req.body.publisher,
+            release_date:req.body.date
             
         })
       
@@ -199,7 +221,108 @@ var productsController = {
 		fs.writeFileSync(productsFilePath,modificacion)
 
 		res.redirect('/products');
+    },
+
+    results: function(req,res){
+        let userSearch = req.query.search;
+        db.Books.findAll({
+            where: {
+                title: {[db.Sequelize.Op.substring]: userSearch}
+            },
+
+            order: [
+                ['title', "DESC"]
+            ]
+        })
+        .then(function(books){
+            console.log(books)
+            res.render('results', {
+                books:books,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin,
+                title: 'Resultados'//hacer resultados
+            })
+        })
+
+    },
+
+    /* --- AUTHORS ---*/
+
+    authors: function(req, res){
+        db.Authors.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
+        .then(function(authors){
+            res.render('authors', {
+                authors: authors,
+                title: 'Autores',
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        })
+    },
+
+    authorSafe: function(req,res){
+        let errors = validationResult(req);
+        if(errors.isEmpty()){
+            console.log(req.body.authorName)
+            db.Authors.create({
+                name: req.body.authorName
+            })
+            console.log(req.body.authorName)
+            res.redirect('/products/authors')
+
+        } else {
+            res.render('author-create', {
+                title: 'Crear un Autor',
+                errors: errors.errors,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        }
+    },
+
+    /* --- PUBLISHERS ---*/
+
+    publishers: function(req, res){
+        db.Publisher.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
+        .then(function(publishers){
+            res.render('publishers', {
+                publishers: publishers,
+                title: 'Editoriales',
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        })
+    },
+
+    publisherSafe: function(req,res){
+        let errors = validationResult(req);
+        if(errors.isEmpty()){
+            
+            db.Publisher.create({
+                name: req.body.publisher
+            })
+            
+            res.redirect('/products/publishers')
+
+        } else {
+            res.render('publisher-create', {
+                title: 'Ingresar una editorial',
+                errors: errors.errors,
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
+        }
     }
+
+
 }
 
 module.exports = productsController;
