@@ -28,23 +28,59 @@
                             <div class="input-group-prepend">
                                 <label for="author" class="input-group-text" id="author">Autor:</label>
                             </div>
-                            <input type="text" class="form-control" id="author" name="author" placeholder="Ej: H.P. Lovecraft" aria-label="Ej: H.P. Lovecraft" aria-describedby="basic-addon1" >
-                        </div>
+                            <select class="custom-select" id="author" name="author">
+                                <%for (let i = 0; i < autor.length; i++) {%>
+                                    <% if(autor[i].id==selectedProduct.publisher_id){ %> 
+                                        <option value="<%=autor[i].id%>" selected>
+                                            <%= autor[i].name %> 
+                                        </option>
+                                    <% }else{%>
+                                        <option value="<%=autor[i].id%>" >
+                                            <%= autor[i].name %> 
+                                        </option>
+                                    <%} %> 
+                               <% }  %> 
+                            </select>
+                             </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label for="publisher" class="input-group-text" id="publisher">Editorial:</label>
                             </div>
-                            <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Editorial" aria-label="Editorial" aria-describedby="basic-addon1" value=" ">
-                        </div>
+                            <select class="custom-select" id="publisher" name="publisher">
+                                <%for (let i = 0; i < editorial.length; i++) {%>
+                                    <% if(editorial[i].id==selectedProduct.publisher_id){ %> 
+                                        <option value="<%=editorial[i].id%>" selected>
+                                            <%= editorial[i].name %> 
+                                        </option>
+                                    <% }else{%>
+                                        <option value="<%=editorial[i].id%>" >
+                                            <%= editorial[i].name %> 
+                                        </option>
+                                    <%} %> 
+                               <% }  %> 
+                            </select>
+                            </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label for="genre" class="input-group-text" id="genre">Género:</label>
                             </div>
-                            <input type="text" class="form-control" id="genre" name="genre" placeholder="Ej: Ficción" aria-label="Ej: Ficción" aria-describedby="basic-addon1" value=" ">
+                            <select class="custom-select" id="genre" name="genre">
+                                <%for (let i = 0; i < genero.length; i++) {%>
+                                    <% if(genero[i].id==selectedProduct.genre_id){ %> 
+                                        <option value="<%=genero[i].id%>" selected>
+                                            <%= genero[i].name %> 
+                                        </option>
+                                    <% }else{%>
+                                        <option value="<%=genero[i].id%>" >
+                                            <%= genero[i].name %> 
+                                        </option>
+                                    <%} %> 
+                               <% }  %> 
+                            </select>
                         </div>
                     </div> 
                     <div class="col-md-3">

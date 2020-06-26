@@ -48,5 +48,9 @@ router.get('/logout', usersController.logout);
 /* --- ADMIN ROUTES --- */
 
 router.get('/admin', adminMiddlewares.check ,usersController.admin);
+router.delete('/delete/:id', usersController.destroy);
+
+router.get('/edit/:id', usersController.edit);
+router.put('/edit/:id',upload.any(), usersController.update); 
 
 module.exports = router;

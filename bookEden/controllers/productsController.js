@@ -32,15 +32,19 @@ var productsController = {
                     .then((categorias)=>{
                         db.Authors.findAll()
                         .then((autores)=>{
-                            res.render('product-create',{
-                                title: 'Agregar producto',
-                                userLogged: req.session.userLogged,
-                                admin:req.session.admin,
-                                generos:generos,
-                                formatos:formatos,
-                                idiomas:idiomas,
-                                categorias:categorias,
-                                autores:autores
+                            db.Publisher.findAll()
+                            .then((editorial)=>{
+                                res.render('product-create',{
+                                    title: 'Agregar producto',
+                                    userLogged: req.session.userLogged,
+                                    admin:req.session.admin,
+                                    generos:generos,
+                                    formatos:formatos,
+                                    idiomas:idiomas,
+                                    categorias:categorias,
+                                    autores:autores,
+                                    editorial:editorial
+                            })     
                             })
                         })
                     })
@@ -59,16 +63,20 @@ var productsController = {
         //     admin:req.session.admin
 
         // });
-        db.Books.findByPk(req.params.id)
+        db.Books.findByPk(req.params.id,{
+            include:[{association:"genero"},{association:"booksAuthor"},{association:"publisher"}]
+        })
         .then((resultado)=>{
-            res.render('detail', {
-                title: 'BookEden' + resultado.title,
-                selectedProduct : resultado,
-                userLogged: req.session.userLogged,
-                admin:req.session.admin
-        
-            }); 
-
+            db.Authors.findAll()
+            .then(function(autor){
+                res.render('detail', {
+                    title: 'BookEden' + resultado.title,
+                    selectedProduct : resultado,
+                    userLogged: req.session.userLogged,
+                    admin:req.session.admin,
+                    autor:autor
+                }); 
+            })
         })
 
     },
@@ -82,14 +90,16 @@ var productsController = {
         //     admin:req.session.admin
         // });
         let pedidoLibro= db.Books.findByPk(req.params.id,{
-            include:[{association:"booksAuthor"},{association:"genero"},{association:"category"},{association:"format"},{association:"language"} ]
+            include:[{association:"booksAuthor"},{association:"genero"},{association:"category"},{association:"format"},{association:"language"},{association:"publisher"} ]
         })
         let pedidoCategoria= db.Category.findAll();
         let pedidoIdioma=db.Language.findAll();
         let pedidoFormato=db.Format.findAll();
-
-        Promise.all([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato])
-        .then(function([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato]){
+        let pedidoGenero=db.Genres.findAll();
+        let pedidoEditorial=db.Publisher.findAll();
+        let pedidoAuthor=db.Authors.findAll()
+        Promise.all([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor])
+        .then(function([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor]){
           
             console.log(pedidoLibro.category_id)
             res.render('product-edit-form', {
@@ -99,7 +109,10 @@ var productsController = {
                 idioma:pedidoIdioma,
                 formato:pedidoFormato,
                 userLogged: req.session.userLogged,
-                admin:req.session.admin
+                admin:req.session.admin,
+                editorial:pedidoEditorial,
+                genero:pedidoGenero,
+                autor:pedidoAuthor
             });
         })
     },
@@ -129,7 +142,10 @@ var productsController = {
             discount:req.body.discount,
             category_id:req.body.category,
             language_id:req.body.language,
-            format_id:req.body.format
+            format_id:req.body.format,
+            author_id:req.body.author,
+            publisher_id:req.body.publisher,
+            genre_id:req.body.genre
         },{
             where:{
                 id:req.params.id
@@ -180,7 +196,8 @@ var productsController = {
             category_id:req.body.category,
             genre_id:req.body.genre,
             avatar:req.files[0].filename,
-            publisher_id:req.body.author
+            publisher_id:req.body.publisher,
+            release_date:req.body.date
             
         })
       

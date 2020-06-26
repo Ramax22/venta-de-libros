@@ -38,6 +38,9 @@ module.exports = (sequelize, dataTypes) => {
         },
         avatar:{
             type: dataTypes.STRING
+        },
+        release_date:{
+            type: dataTypes.DATE
         }
     };
     let config = {

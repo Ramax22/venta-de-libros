@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('./partials/head') %>
+    <style>
+        .padding{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <%- include('./partials/header') %>
+        <div class="col-12">
+        <form action="/users/edit/<%=userLogged.id%> ?_method=PUT" method="POST" enctype="multipart/form-data">
+            <div class="row text-center padding">
+                <div class="col-6 offset-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label for="name" class="input-group-text" id="basic-addon1">Nombre</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Ej: Moby Dick" aria-label="Ej: Moby Dick" aria-describedby="basic-addon1" value="<%=userLogged.name  %>  ">
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center padding">
+                <div class="col-6 offset-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label for="username" class="input-group-text" id="basic-addon1">apellido</label>
+                        </div>
+                        <input type="text" class="form-control" id="username" name="username" aria-describedby="basic-addon1" value="<%=userLogged.last_name  %>">
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center padding">
+                <div class="col-6 offset-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label for="password" class="input-group-text" id="basic-addon1">Contraseña</label>
+                        </div>
+                        <input type="text" class="form-control" id="password" name="password" aria-describedby="basic-addon1" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-6 offset-3 ">
+                <label for="image" class="form-label" >Imagen</label>
+                <input type="file" id='image' name='image'> 
+             </div>
+            <!-- mejorar la vista muchooooo -->
+            <button type="submit" class="btn btn-secondary offset-5 padding">Guardar Cambios</button>
+            
+        </form>
+        </div>
+        <%- include('./partials/footer') %>
+    </div> 
+   
+</body>
+
+</html>
