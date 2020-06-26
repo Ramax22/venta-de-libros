@@ -32,5 +32,6 @@ module.exports = (sequelize, dataTypes) => {
 
     const Publisher = sequelize.define(alias, cols, config);
 
+    
     return Publisher;
 };

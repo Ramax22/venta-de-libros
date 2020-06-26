@@ -22,10 +22,9 @@ var upload = multer({storage:storage});
 
 router.get('/register', guestMiddlewares, usersController.register);
 
-router.post('/login',upload.any(),[
+router.post('/register',upload.any(),[
 	check('email').isEmail().withMessage('E-mail inválido')
 ], usersController.create);
-
 
 /* --- USERS LOGIN --- */
 
