@@ -48,10 +48,12 @@
           <h5>COSTOS DE ENVIO: ¡GRATIS!</h5>
 
           <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO-->
-          <% if(userLogged == undefined) { %>
-            <button type="button" class="btn btn-success">COMPRAR</button>
+          <form action="" method="POST">
+            <button type="submit" class="btn btn-success">COMPRAR</button>
+          </form>
+          
 
-            <% } else if (userLogged.isAdmin == 1) { %>
+            <% if (userLogged.isAdmin == 1) { %>
               <a href="/products/edit/<%= selectedProduct.id %>" class="btn btn-warning">EDITAR</a>
               <br>
               
@@ -59,8 +61,6 @@
                 <button type="submit" class="btn btn-danger">ELIMINAR</button>
               </form>
 
-          <% } else { %>
-            <button type="button" class="btn btn-success">COMPRAR</button>
           <% } %>
 
         

@@ -30,8 +30,15 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false
     };
 
-    const Publisher = sequelize.define(alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
+
+    User.associate = function(modelos){
+        User.hasMany(modelos.Cart,{
+            as: 'Cart',
+            foreignKey: 'user_id'
+        });
+    }
 
     
-    return Publisher;
+    return User;
 };
