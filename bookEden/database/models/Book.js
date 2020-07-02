@@ -21,6 +21,9 @@ module.exports = (sequelize, dataTypes) => {
         format_id: {
             type: dataTypes.INTEGER
         },
+        genre_id: {
+            type: dataTypes.INTEGER
+        },
         price: {
             type: dataTypes.FLOAT
         },
@@ -83,7 +86,7 @@ module.exports = (sequelize, dataTypes) => {
 
         Book.belongsTo(modelos.Authors, {
             as: 'Authors',
-            foreignKey: author_id
+            foreignKey: 'author_id'
         })
 
         Book.belongsToMany(modelos.Cart,{

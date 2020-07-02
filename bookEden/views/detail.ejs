@@ -48,23 +48,19 @@
           <h5>COSTOS DE ENVIO: ¡GRATIS!</h5>
 
           <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO-->
-          <form action="" method="POST">
-            <button type="submit" class="btn btn-success">COMPRAR</button>
+          <form action="/cart" method="POST">
+            <button type="submit" class="btn btn-success" name="book" value="<%= selectedProduct.id %>">COMPRAR</button>
           </form>
           
-
+          <% if(userLogged != undefined) { %>
             <% if (userLogged.isAdmin == 1) { %>
               <a href="/products/edit/<%= selectedProduct.id %>" class="btn btn-warning">EDITAR</a>
               <br>
-              
               <form action="/products/delete/<%= selectedProduct.id %>?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger">ELIMINAR</button>
               </form>
-
+            <% } %>
           <% } %>
-
-        
-          
         </div>
       </div>
       <div class="row" style="margin-top: 30px;">

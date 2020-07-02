@@ -52,7 +52,7 @@ var productsController = {
 
     detail : function (req, res) {
         db.Books.findByPk(req.params.id,{
-            include:[{association:"genero"},{association:"booksAuthor"},{association:"publisher"}]
+            include:[{association:"genero"}, {association:"publisher"}]
         })
         .then((resultado)=>{
             db.Authors.findAll()

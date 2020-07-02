@@ -27,17 +27,18 @@ module.exports = (sequelize, dataTypes) => {
     };
     let config = {
         tableName: 'users',
-        timestamps: false
+        timestamps: false,
+        underscore: true 
     };
 
     const User = sequelize.define(alias, cols, config);
 
-    User.associate = function(modelos){
-        User.hasMany(modelos.Cart,{
-            as: 'Cart',
-            foreignKey: 'user_id'
-        });
-    }
+    // User.associate = function(modelos){
+    //     User.hasMany(modelos.Cart,{
+    //         as: 'Cart',
+    //         foreignKey: 'user_id'
+    //     });
+    // }
 
     
     return User;

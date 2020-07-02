@@ -2,8 +2,8 @@ const path = require('path');
 const fs=require('fs');
 
 
-const productsFilePath = path.join(__dirname, '../data/admin.json');
-const admins = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+// const productsFilePath = path.join(__dirname, '../data/admin.json');
+// const admins = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 var adminController = {
     login:function(req,res){
