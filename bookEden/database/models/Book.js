@@ -75,15 +75,6 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey:"publisher_id"
         })
 
-        
-        /*Book.belongsToMany(modelos.Authors,{
-            as:"booksAuthor",
-            through:"author_book",
-            foreignKey:"book_id",
-            otherKey:"author_id",
-            timestamps:false
-        })*/
-
         Book.belongsTo(modelos.Authors, {
             as: 'Authors',
             foreignKey: 'author_id'
