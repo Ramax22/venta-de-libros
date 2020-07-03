@@ -2,7 +2,7 @@ const db = require("../database/models");
 
 var cartController = {
     carrito: function(req, res, next) {
-        res.render('carrito',{
+        res.render('cart',{
             userLogged: req.session.userLogged,
             admin:req.session.admin
         });
@@ -13,15 +13,12 @@ var cartController = {
         if (user == undefined) {
             res.redirect('/users/login');
         }
-        db.Cart.findAll({
-            where: {
-                user_id: user.id
-            }
-        })
-        .then((carrito) => {
-            res.send(carrito);
-        })
-
+        console.log(req.body.book)
+       db.Cart.create({
+           user_id:req.body.book,
+           status: 0
+       })
+       res.send("tienes un carrito")
 
         //req.body.book;
     }
