@@ -1,108 +1,134 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%- include('./partials/head') %>
-    <link rel='stylesheet' href='/stylesheets/carrito.css' />
-  </head>
-  <body>
-    
-    <div class="container">
-      <%- include('partials/header.ejs', {userLogged}) %> 
+
+<head>
+  <%- include('./partials/head') %>
+  <link rel='stylesheet' href='/stylesheets/carrito.css' />
+</head>
+
+<body>
+
+  <div class="container">
+    <%- include('partials/header.ejs', {userLogged}) %>
     <div class="row contenido">
       <div class="row carrito">
         <div class=" row col-12 compra align-items:center">
-          <h4>Tu compra</h4> </div>
+          <h4>Tu compra</h4>
+        </div>
         <div class="row col-12 cesta">
           <div id="cesta" class="column col-2 col-md-1 col-xl-1 p-0-3"><i class="fas fa-shopping-basket"></i></div>
-          <div id="articulo" class="col-10 col-md-7 col-xl-11 p-0 ml-0">Tiene 1 articulo con un total de <span id="valor" >ARP867,00 </span>en tu compra</div>
-          <div  id="btn" class="col offset-1 m-0">
+          <div id="articulo" class="col-10 col-md-7 col-xl-11 p-0 ml-0">Tiene 1 articulo con un total de <span
+              id="valor">ARP867,00 </span>en tu compra</div>
+          <div id="btn" class="col offset-1 m-0">
             <a class="btn btn-primary" href="#" role="button">Proceder al pago</a>
             <hr class="">
           </div>
           <div class="row col-12 condiciones">
             <p>Al realizar tu pedido confirmas que has leído y aceptas nuestros
-            <a href="">Terminos y condiciones</a></p>
+              <a href="">Terminos y condiciones</a></p>
           </div>
         </div>
         <div class="row col-12 cesta">
-          <div class="detalle-de-cesta"><h5 class="m-0"> Detalle de tu cesta</h5> <hr></div>
+
+
+          <div class="detalle-de-cesta">
+            <h5 class="m-0"> Detalle de tu cesta</h5>
+            <hr>
+          </div>
+          <% books.forEach(book => { %>
+
+
           <div class="detalle row">
             <div class="col-5 col-md-2 col-xl-2 p-0">
-              <img src="/images/products/nov1.jpg" alt="">
+              <img src="/images/products/<%=book.avatar%>" alt="">
             </div>
             <div class="col-6 offset-1 col-md-5 col-xl-5 p-0" id="descripcion">
-            <div>
-              <h5>El Traidor</h5>
+              <div>
+                <h5><%=book.title %> </h5>
+              </div>
+              <div class="estrellas">
+                <span><i class="far fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+              </div>
+              <div class="estrellas">
+                <span>Idioma:<%=book.language %> </span>
+                <span>Autor:<%=book.author  %> </span>
+              </div>
+              <div class="estrellas">
+                <span id="valor">ARS$<%=book.price%></span>
+                <p>Disponible - Producto despachado en dos dias hábiles</p>
+              </div>
             </div>
-            <div class="estrellas">
-             <span><i class="far fa-star"></i></span>
-             <span><i class="far fa-star"></i></span>
-             <span><i class="far fa-star"></i></span>
-             <span><i class="far fa-star"></i></span>
-             <span><i class="far fa-star"></i></span>
+
+            <div class="total row col-md-4 col-xl-5 m-0 p-0 w-100">
+              <form class=" cantidad1 col-6 col-md-12 col-xl-12" action="">
+                <label for="cantidad" class="cantidad">Cantidad </label>
+                <select name="" id="cantidad">
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                </select>
+              </form>
             </div>
-            <div class="estrellas">
-              <span>Idioma:Español</span>
-              <span>Autor:Allende Isabel</span>
-            </div>
-            <div class="estrellas">
-              <span id="valor">ARS$867,00</span>
-              <p>Disponible - Producto despachado en dos dias hábiles</p>
-            </div>
+            <!-- <div class="eliminar"> -->
+              <form action="/cart/delete/<%=book.id%>?_method=DELETE" method="POST"   >
+                <button type="submit" name="book" value="<%=book.id%>">ELIMINAR</button>
+              </form>
+              <!-- <input class="btn btn-primary" type="reset" value="Eliminar"> -->
+            <!-- </div> -->
           </div>
-          <div class="total row col-md-4 col-xl-5 m-0 p-0 w-100">
-            <form class=" cantidad1 col-6 col-md-12 col-xl-12" action="">
-              <label for="cantidad" class="cantidad">Cantidad </label>
-              <select name="" id="cantidad">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-              </select>
-            </form>
-            <p id="valor" class="form col-6 col-md-12 col-xl-12">ARP$867,00</p></div>
-            <div class="eliminar" >
-              <input class="btn btn-primary" type="reset" value="Eliminar">
-            </div>
-           
-          </div>
+          <% }) %>       
+          <!--aca termina el forEach  -->
         </div>
         <div class="pago-final">
           <div class="row envio mt-4">
-            <div id="leyenda" class="col-8 col-xl-9"><p>Gastos de Envio</p></div>
-            <div id="total" class="col-4 col-xl-3"><p>GRATIS</p></div>
+            <div id="leyenda" class="col-8 col-xl-9">
+              <p>Gastos de Envio</p>
+            </div>
+            <div id="total" class="col-4 col-xl-3">
+              <p>GRATIS</p>
+            </div>
           </div>
           <div class="row envio">
-            <div id="leyenda" class="col-7 col-xl-9"><p>Total</p></div>
-            <div id="total" class="col-5 col-xl-3"><p id="valor">ARP$867,00</p></div>
+            <div id="leyenda" class="col-7 col-xl-9">
+              <p>Total</p>
+            </div>
+            <div id="total" class="col-5 col-xl-3">
+              <p id="valor">ARP$867,00</p>
+            </div>
           </div>
           <div class="row envio">
-          <div id="btn" class="button-final col-xl-12">
-            <hr class="">
-            <a class="btn btn-primary" href="#" role="button">Proceder al pago</a>
-          </div>
-          <div class="cards col-md-7 col-xl-12">
-            <img class="cards" src="/images/visa.gif" alt="">
-            <img class="cards" src="/images/maestro.gif" alt="">
-            <img class="cards" src="/images/mastercard.gif" alt="">
-            <img class="cards" src="/images/visad.gif" alt="">
-            <img class="cards" src="/images/visae.gif" alt="">
-          </div> 
+            <div id="btn" class="button-final col-xl-12">
+              <hr class="">
+              <a class="btn btn-primary" href="#" role="button">Proceder al pago</a>
+            </div>
+            <div class="cards col-md-7 col-xl-12">
+              <img class="cards" src="/images/visa.gif" alt="">
+              <img class="cards" src="/images/maestro.gif" alt="">
+              <img class="cards" src="/images/mastercard.gif" alt="">
+              <img class="cards" src="/images/visad.gif" alt="">
+              <img class="cards" src="/images/visae.gif" alt="">
+            </div>
           </div>
         </div>
         <div class="continuar">
-        <div class="continuar-comprando">
-          <a href="">Seguir comprando</a>
+          <div class="continuar-comprando">
+            <a href="">Seguir comprando</a>
+          </div>
+
+
         </div>
-    
-        
       </div>
-    </div>
-    
+
     </div>
 
     <%- include('./partials/footer') %>
 
-      
-    </div>
-  </body>
-  </html>
+
+  </div>
+</body>
+
+</html>

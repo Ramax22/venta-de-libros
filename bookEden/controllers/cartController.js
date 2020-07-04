@@ -2,10 +2,39 @@ const db = require("../database/models");
 
 var cartController = {
     carrito: function(req, res, next) {
-        res.render('cart',{
-            userLogged: req.session.userLogged,
-            admin:req.session.admin
-        });
+        let user = req.session.userLogged;
+        if (user == undefined) {
+            res.redirect('/users/login');
+        }
+
+        db.Cart.findOne({
+            where: {
+                user_id: user.id,
+                status: 1
+            },
+            include:[{association:"books"}]
+        })
+        .then((carrito) => {
+            //Pregunto si hay carrito activo
+            if(carrito){
+                console.log(carrito)
+                res.render("carrito",{
+                    userLogged: req.session.userLogged,
+                    //admin:req.session.admin,
+                    books:carrito.books
+                })
+
+            }else{
+              console.log("raja")
+            }
+        })
+        
+
+        // res.render('cart',{
+        //     userLogged: req.session.userLogged,
+        //     admin:req.session.admin,
+
+        // });
     },
     create: (req, res, next) => {
         //Verifico que el usuario este logueado
@@ -13,14 +42,93 @@ var cartController = {
         if (user == undefined) {
             res.redirect('/users/login');
         }
-        console.log(req.body.book)
-       db.Cart.create({
-           user_id:req.body.book,
-           status: 0
-       })
-       res.send("tienes un carrito")
+       
+        db.Cart.findAll({
+            where: {
+                user_id: user.id
+            }
+        })
+        .then((carrito) => {
+            console.log()
+            var hayCarrito
+            for (let i = 0; i < carrito.length; i++) {
+                if(carrito[i].status==1){
+                    hayCarrito= carrito[i].id
+                }      
+            }
+            //Pregunto si hay carrito activo
+            if(hayCarrito==undefined){
+                //creo un carrito y agrego producto
+                db.Cart.create({ 
+                    user_id: user.id,
+                    status: 1
+                    }).then(function(newCart){
+                        newCart.addBook(req.body.book)
+                        console.log(newCart)
+                        res.redirect('/cart')
+                    })
+            }
+            else{
+                db.cart_product.create({
+                    book_id: req.body.book,
+                    cart_id: hayCarrito
+                }).then(function(newBook){
+                    res.redirect('/cart')
+                })
+            }
 
-        //req.body.book;
+        })
+        
+
+
+    
+
+        
+    },
+    delete:function(req,res,next){
+        let user = req.session.userLogged;
+        // db.Cart.destroy({
+        //     where: {
+        //         user_id: user.id,
+        //         status: 1
+                
+        //     },
+        //     include:[{association:"books", where:{
+        //         book_id:req.body.book
+        //     }}],
+            
+        // })
+        db.Cart.findOne({
+            where:{
+                user_id: user.id,
+                status: 1
+            }
+        })
+            .then(function(newCart){
+                newCart.removeBook(req.body.book)
+                console.log(newCart)
+                res.redirect('/cart')
+            })
+        
+        // .then((carrito) => {
+        //     //Pregunto si hay carrito activo
+        //     if(carrito){
+        //         console.log(carrito)
+        //         res.render("carrito",{
+        //             userLogged: req.session.userLogged,
+        //             //admin:req.session.admin,
+        //             books:carrito.books
+        //         })
+
+        //     }else{
+        //       console.log("raja")
+        //     }
+        // })
+        // db.Books.destroy({
+        //     where:{
+        //         id: req.params.id
+        //     }
+        // })
     }
 }
 

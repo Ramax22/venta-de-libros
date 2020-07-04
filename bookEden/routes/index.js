@@ -8,6 +8,6 @@ const indexController = require('../controllers/indexController');
 router.get('/', indexController.main); 
 
 /* -- CARRITO -- */
-router.get('/cart', indexController.carrito);
+//router.get('/cart', indexController.carrito);
 
 module.exports = router;

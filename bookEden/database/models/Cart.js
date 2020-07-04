@@ -7,9 +7,13 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true
         },
         user_id: {
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER,
+            unique: false
         },
         status: {
+            type:dataTypes.INTEGER
+        },
+        total: {
             type:dataTypes.INTEGER
         }
     };
@@ -21,15 +25,15 @@ module.exports = (sequelize, dataTypes) => {
 
     const Cart = sequelize.define(alias, cols, config);
 
-    Cart.associate = function(modelos){
-        Cart.belongsTo(modelos.User,{
-            as: 'User',
-            foreingKey: 'user_id'
-        })
+     Cart.associate = function(modelos){
+            Cart.belongsTo(modelos.User,{
+                as: 'user',
+                foreignKey: 'user_id'
+            })
 
         Cart.belongsToMany(modelos.Books, {
             as: 'books',
-            through: 'cart_product',
+            through: 'cart_products',
             foreignKey: 'cart_id',
             otherKey: 'book_id',
             timestamps: false
