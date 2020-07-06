@@ -80,13 +80,13 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: 'author_id'
         })
 
-        // Book.belongsToMany(modelos.Cart,{
-        //     as: 'cart',
-        //     through: 'cart_product',
-        //     foreignKey: 'book_id',
-        //     otherKey: 'cart_id',
-        //     timestamps: false
-        // })
+        Book.belongsToMany(modelos.Cart,{
+            as: 'cart',
+            through: 'cart_product',
+            foreignKey: 'book_id',
+            otherKey: 'cart_id',
+            timestamps: false
+        })
         
         
     }
