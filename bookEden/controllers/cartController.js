@@ -59,20 +59,39 @@ var cartController = {
             //Pregunto si hay carrito activo
             if(hayCarrito==undefined){
                 //creo un carrito y agrego producto
-                db.Cart.create({ 
-                    user_id: user.id,
-                    status: 1
-                    }).then(function(newCart){
-                        newCart.addBook(req.body.book)
-                        console.log(newCart)
-                        res.redirect('/cart')
-                    })
+
+                db.Cart_Product.create({
+                    book_id: req.body.book,
+                    cart_id: hayCarrito,
+                    quantity:req.body.quantity
+                }).then(function(newBook){
+                    res.redirect('/cart')
+                })
+
+                //ACAAAAAAAAAAAAAAAAAAA
+                // db.Cart.create({ 
+                //     user_id: user.id,
+                //     status: 1,
+                //     total:0
+                //     }).then(function(newCart){
+                //         console.log(req.body.quantity+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                //         newCart.addBook(req.body.book,{
+                //             through:{quantity:req.body.quantity}}
+                //             )
+                //         console.log(newCart)
+                //         res.redirect('/cart')
+                //     })
             }
             else{
-                db.cart_product.create({
-                    book_id: req.body.book,
-                    cart_id: hayCarrito
+                db.Cart.findOne({
+                    where:{
+                        user_id: user.id,
+                        status:1
+                    }
                 }).then(function(newBook){
+                    newBook.addBook(req.body.book)
+                    console.log(newBook)
+                    
                     res.redirect('/cart')
                 })
             }

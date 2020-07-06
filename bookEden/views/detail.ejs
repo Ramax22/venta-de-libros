@@ -46,9 +46,15 @@
           </div>
           <h3>$<%= selectedProduct.price %></h3>
           <h5>COSTOS DE ENVIO: ¡GRATIS!</h5>
-
+          
           <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO-->
           <form action="/cart" method="POST">
+              <label for="cantidad" class="cantidad">Cantidad </label>
+              <select name="quantity" id="cantidad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             <button type="submit" class="btn btn-success" name="book" value="<%= selectedProduct.id %>">COMPRAR</button>
           </form>
           
