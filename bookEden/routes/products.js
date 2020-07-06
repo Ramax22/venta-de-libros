@@ -26,13 +26,18 @@ router.get('/detail/:id', productsController.detail); /* GET - Product detail */
 router.get('/create/', productsController.create); /* GET - Form to create */
 router.post('/create/', upload.any(), productsController.created); /* POST - Store in DB */
 
+/*** EDIT ONE PRODUCT ***/ 
+router.get('/edit/:id', productsController.edit); /* GET - Form to create */
+router.put('/edit/:id', productsController.update); /* PUT - Update in DB */
 
-/*** CREATE AUTHOR ***/
+/*** DELETE ONE PRODUCT***/ 
+router.delete('/delete/:id', productsController.destroy); /* DELETE - Delete from DB */
+
+/*** AUTHOR ***/
 router.get('/authors', productsController.authors);
 router.post('/authors',[
 	check('authorName').isLength().withMessage('Este campo debe estar lleno'),
 ], productsController.authorSafe);
-
 
 /*** PUBLISHER ***/
 router.get('/publishers', productsController.publishers);
@@ -40,12 +45,6 @@ router.post('/publishers',[
 	check('publisher').isLength().withMessage('Este campo debe estar lleno'),
 ], productsController.publisherSafe);
 
-/*** EDIT ONE PRODUCT ***/ 
-router.get('/edit/:id', productsController.edit); /* GET - Form to create */
-router.put('/edit/:id', productsController.update); /* PUT - Update in DB */
-
-/*** DELETE ONE PRODUCT***/ 
-router.delete('/delete/:id', productsController.destroy); /* DELETE - Delete from DB */
 
 /*** SEARCH ***/
 router.get('/results', productsController.results);

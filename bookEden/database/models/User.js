@@ -20,15 +20,26 @@ module.exports = (sequelize, dataTypes) => {
         },
         avatar: {
             type: dataTypes.STRING
+        },
+        isAdmin: {
+            type: dataTypes.INTEGER
         }
     };
     let config = {
         tableName: 'users',
-        timestamps: false
+        timestamps: false,
+        underscore: true 
     };
 
-    const Publisher = sequelize.define(alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
+
+    User.associate = function(modelos){
+        User.hasMany(modelos.Cart,{
+            as: 'cart',
+            foreignKey: 'user_id'
+        });
+    }
 
     
-    return Publisher;
+    return User;
 };

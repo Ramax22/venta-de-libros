@@ -46,13 +46,22 @@
           </div>
           <h3>$<%= selectedProduct.price %></h3>
           <h5>COSTOS DE ENVIO: ¡GRATIS!</h5>
-          <button type="button" class="btn btn-success">COMPRAR</button>
-          <br><br>
-          <form action="/products/delete/<%= selectedProduct.id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-danger">ELIMINAR</button>
+
+          <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO-->
+          <form action="/cart" method="POST">
+            <button type="submit" class="btn btn-success" name="book" value="<%= selectedProduct.id %>">COMPRAR</button>
           </form>
-          <br>
-          <a href="/products/edit/<%= selectedProduct.id %>" class="btn btn-warning">EDITAR</a>
+          
+          <% if(userLogged != undefined) { %>
+            <% if (userLogged.isAdmin == 1) { %>
+              <a href="/products/edit/<%= selectedProduct.id %>" class="btn btn-warning">EDITAR</a>
+              <br>
+              <form action="/products/delete/<%= selectedProduct.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">ELIMINAR</button>
+              </form>
+            <% } %>
+          <% } %>
+ 
         </div>
       </div>
       <div class="row" style="margin-top: 30px;">

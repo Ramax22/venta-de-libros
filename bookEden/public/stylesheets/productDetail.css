@@ -19,6 +19,14 @@
   margin: 10px;
 }
 
+div.redes a{
+  color: rgb(73,10,72);
+}
+
+h3{
+  color: chocolate;
+}
+
 @media (min-width: 768px){
   #text-center {
     text-align: left!important;

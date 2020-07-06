@@ -31,6 +31,7 @@ router.post('/register', upload.any(), [
 	check('password').isLength({min:6}).withMessage('La contrañseña debe tener mas de 6 caractéres')
 ], usersController.create);
 
+
 /* --- USERS LOGIN --- */
 
 router.get('/login', guestMiddlewares, usersController.login);
@@ -45,9 +46,14 @@ router.get('/profile', authMiddlewares, usersController.profile);
 
 router.get('/logout', usersController.logout);
 
+
 /* --- ADMIN ROUTES --- */
 
 router.get('/admin', adminMiddlewares.check ,usersController.admin);
+
+
+/* --- USERS CRUD --- */
+
 router.delete('/delete/:id', usersController.destroy);
 
 router.get('/edit/:id', usersController.edit);

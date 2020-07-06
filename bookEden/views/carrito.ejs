@@ -29,10 +29,16 @@
           </div>
         </div>
         <div class="row col-12 cesta">
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 0b42049cdbce2dabfe94ce018bbb082aca5d8212
           <div class="detalle-de-cesta">
             <h5 class="m-0"> Detalle de tu cesta</h5>
             <hr>
           </div>
+<<<<<<< HEAD
           <div class="detalle row">
             <div class="col-5 col-md-2 col-xl-2 p-0">
               <img src="/images/products/" alt="" 
@@ -44,6 +50,18 @@
             <div class="col-6 offset-1 col-md-5 col-xl-5 p-0" id="descripcion">
               <div>
                 <h5>titulo</h5>
+=======
+          <% books.forEach(book => { %>
+
+
+          <div class="detalle row">
+            <div class="col-5 col-md-2 col-xl-2 p-0">
+              <img src="/images/products/<%=book.avatar%>" alt="">
+            </div>
+            <div class="col-6 offset-1 col-md-5 col-xl-5 p-0" id="descripcion">
+              <div>
+                <h5><%=book.title %> </h5>
+>>>>>>> 0b42049cdbce2dabfe94ce018bbb082aca5d8212
               </div>
               <div class="estrellas">
                 <span><i class="far fa-star"></i></span>
@@ -53,6 +71,7 @@
                 <span><i class="far fa-star"></i></span>
               </div>
               <div class="estrellas">
+<<<<<<< HEAD
                 <span>Idioma:Español</span>
                 <span>Autor:Allende Isabel</span>
               </div>
@@ -76,7 +95,36 @@
               <input class="btn btn-primary" type="reset" value="Eliminar">
             </div>
 
+=======
+                <span>Idioma:<%=book.language %> </span>
+                <span>Autor:<%=book.author  %> </span>
+              </div>
+              <div class="estrellas">
+                <span id="valor">ARS$<%=book.price%></span>
+                <p>Disponible - Producto despachado en dos dias hábiles</p>
+              </div>
+            </div>
+
+            <div class="total row col-md-4 col-xl-5 m-0 p-0 w-100">
+              <form class=" cantidad1 col-6 col-md-12 col-xl-12" action="">
+                <label for="cantidad" class="cantidad">Cantidad </label>
+                <select name="" id="cantidad">
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                </select>
+              </form>
+            </div>
+            <!-- <div class="eliminar"> -->
+              <form action="/cart/delete/<%=book.id%>?_method=DELETE" method="POST"   >
+                <button type="submit" name="book" value="<%=book.id%>">ELIMINAR</button>
+              </form>
+              <!-- <input class="btn btn-primary" type="reset" value="Eliminar"> -->
+            <!-- </div> -->
+>>>>>>> 0b42049cdbce2dabfe94ce018bbb082aca5d8212
           </div>
+          <% }) %>       
+          <!--aca termina el forEach  -->
         </div>
         <div class="pago-final">
           <div class="row envio mt-4">
@@ -124,11 +172,14 @@
 
 
   </div>
+<<<<<<< HEAD
   <script>
     $(function () {
   $('[data-toggle="popover"]').popover()
 })
   </script>
+=======
+>>>>>>> 0b42049cdbce2dabfe94ce018bbb082aca5d8212
 </body>
 
 </html>
