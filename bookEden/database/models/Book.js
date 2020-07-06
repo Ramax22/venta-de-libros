@@ -75,23 +75,6 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey:"publisher_id"
         })
 
-<<<<<<< HEAD
-        
-            Book.belongsToMany(modelos.Authors,{
-                as:"booksAuthor",
-                through:"author_book",
-                foreignKey:"book_id",
-                otherKey:"author_id",
-                timestamps:false
-            })
-            Book.belongsToMany(modelos.Authors,{
-                as:"carrito",
-                through:"cart_product",
-                foreignKey:"cart_id",
-                otherKey:"book_id",
-                timestamps:false
-            })
-=======
         Book.belongsTo(modelos.Authors, {
             as: 'Authors',
             foreignKey: 'author_id'
@@ -105,7 +88,6 @@ module.exports = (sequelize, dataTypes) => {
         //     timestamps: false
         // })
         
->>>>>>> 0b42049cdbce2dabfe94ce018bbb082aca5d8212
         
     }
 

@@ -9,13 +9,6 @@ const cartControllers = require('../controllers/cartControllers');
 router.get('/', indexController.main); 
 
 /* -- CARRITO -- */
-<<<<<<< HEAD
-/*router.get('/cart', cartControllers.carga);
-router.get('/agrgar:externo', cartControllers.agregar);*/
-router.get('/cart', cartControllers.carrito);
-
-=======
 //router.get('/cart', indexController.carrito);
->>>>>>> 0b42049cdbce2dabfe94ce018bbb082aca5d8212
 
 module.exports = router;
