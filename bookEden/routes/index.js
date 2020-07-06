@@ -3,7 +3,7 @@ var router = express.Router();
 
 // ************ Controller Require ************
 const indexController = require('../controllers/indexController');
-const cartControllers = require('../controllers/cartControllers');
+
 
 /* GET home page. */
 router.get('/', indexController.main); 
