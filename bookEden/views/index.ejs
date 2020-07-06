@@ -87,7 +87,7 @@
                         <p class="autor"><%= autores[novedad.author_id].name %> </p>
                         <% let precioFinal = Math.round(novedad.price) %>
                         <p class="precio">ARS$ <%= precioFinal%> </p>
-                        <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
+                        <input type="submit" value="Agregar al carrito"class="btn btn-warning"></input>
                     </article>
                     <% }) %> 
             </section>
@@ -106,7 +106,7 @@
                     <p class="autor"><%= autores[element.author_id].name %> </p>  
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
-                    <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
+                    <button type="button" class="btn btn-warning"><a href="/cart">Añadir al carrito</a></button>
                 </article>
             <% }) %>
 
@@ -125,7 +125,7 @@
                     <p class="autor"><%= autores[element.author_id].name %> </p>
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
-                    <button type="button" class="btn btn-warning"><a href="/carrito">Añadir al carrito</a></button>
+                    <button type="submit" class="btn btn-warning">Añadir al carrito</button>
                 </article>
             <% }) %>
 
