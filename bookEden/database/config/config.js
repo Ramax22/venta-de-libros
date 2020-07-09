@@ -1,8 +1,8 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "brandsen5347",
-    "database": "bookeden",
+    "password": null,
+    "database": "bookeden_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false

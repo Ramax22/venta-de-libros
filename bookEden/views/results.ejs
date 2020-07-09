@@ -3,7 +3,7 @@
 <head>
        <!--AQUÍ ESTÁ EL HEAD-->
     <%- include('./partials/head') %>
-    <link rel="stylesheet" href="/stylesheets/products.css">
+    <link rel="stylesheet" href="/stylesheets/results.css">
     <title><%= title %> </title>
 </head>
 
@@ -13,10 +13,12 @@
         <!--AQUÍ ESTÁ EL HEADER-->
     <%- include('./partials/header') %>
     <!--AQUÍ ESTÁ EL CENTRO-->
-    <div class="d-flex">
+    <div class="d-flex flex-column resultados">
         <!--AQUÍ ESTÁ EL SECTIÓN-->
 
+            <h2>Resultados de buscar: <span><%= busqueda %></span> </h2>
             <section class="products d-flex flex-wrap justify-content-center">
+                
             <!--AQUÍ ESTÁ FOREACH-->
                 <% books.forEach(book => { %>
                     <article class="product-des d-flex flex-column align-items-center">

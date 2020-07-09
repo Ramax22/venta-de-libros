@@ -104,7 +104,7 @@ var usersController = {
           req.session.userLogged = userToLogin;
 
           if(req.body.rememberMe != undefined){
-            res.cookie('rememberMe', userToLogin.email, {maxAge: 240000})
+            res.cookie('rememberMe', userToLogin.email, {maxAge: 2628000000000})
           }
 
           console.log(userToLogin)

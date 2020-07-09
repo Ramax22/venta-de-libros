@@ -25,12 +25,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method')); // Para poder pisar el method="POST" en el formulario por PUT y DELETE
 app.use(session({secret: 'bookEden'}));
+app.use(rememberMeMiddleware.rememberMe);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/cart', cartRouter);
-app.use(rememberMeMiddleware.rememberMe);
+
 
 
 // catch 404 and forward to error handler
