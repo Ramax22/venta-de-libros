@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const Cart = require("../database/models/Cart");
 
 var cartController = {
     carrito: function(req, res, next) {
@@ -18,7 +19,46 @@ var cartController = {
         .then((carrito) => {
             //Pregunto si hay carrito activo
             if(carrito){
-                console.log(carrito)
+               // console.log(carrito)
+               db.Cart_Product.findAll({
+                   where:{
+                       cart_id:carrito.id
+                   }
+               })
+               .then(function(compras){
+                
+                db.Books.findAll()
+                .then(function(book){
+                    
+                    var valor=0;
+                    for (let i = 0; i < compras.length; i++) {
+                        for (let j = 0; j < book.length; j++) {
+                            if(compras[i].book_id==book[j].id){
+                                
+                                valor+= parseFloat(compras[i].quantity)* parseFloat(book[j].price)
+                            }
+                        
+                        }
+                    }
+                    db.Cart.update
+                })
+                //    for (let i = 0; i < compras.length; i++) {
+                //        //console.log(compras[i].book_id);
+                       
+                //        db.Books.findOne({
+                //            where:{
+                //                id:compras[i].book_id
+                //            }
+                //        })
+                //        .then(function(book){
+                //            valor+=book.price
+                //             console.log(valor);
+                //        })
+
+                //     }
+                //     res.send(valor)
+                    
+               })
                 res.render("carrito",{
                     userLogged: req.session.userLogged,
                     //admin:req.session.admin,
@@ -50,7 +90,7 @@ var cartController = {
             }
         })
         .then((carrito) => {
-            console.log()
+          //  console.log()
             var hayCarrito
             for (let i = 0; i < carrito.length; i++) {
                 if(carrito[i].status==1){
@@ -60,16 +100,23 @@ var cartController = {
             //Pregunto si hay carrito activo
             if(hayCarrito==undefined){
                 //creo un carrito y agrego producto
-                console.log(hayCarrito)
-                db.CartProduct.create({
-                   book_id: req.body.book,
-                    cart_id: req.body.Cart,
-                    quantity:req.body.quantity,
-                  
-                    
-                }).then(function(newBook){
-                    res.redirect('/cart')
-                })
+                  //ACAAAAAAAAAAAAAAAAAAA
+                db.Cart.create({ 
+                    user_id: user.id,
+                    status: 1,
+                    total:0
+                    }).then(function(newCart){
+                        db.Cart_Product.create({
+                            book_id: req.body.book,
+                            cart_id: newCart.id,
+                            quantity:req.body.quantity
+                        }).then(function(newBook){
+                            res.redirect('/cart')
+                        })
+                            
+                        
+                    })
+               
 
                 //ACAAAAAAAAAAAAAAAAAAA
                 // db.Cart.create({ 
@@ -86,6 +133,7 @@ var cartController = {
                 //     })
             }
             else{
+                console.log("esta entrando al ELSEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                 db.Cart.findOne({
                     where:{
                         user_id: user.id,
@@ -93,10 +141,28 @@ var cartController = {
                      
                     }
                 }).then(function(newBook){
-                    newBook.addBook(req.body.book)
-                    console.log(newBook)
+                    //newBook.addBook(req.body.book,req.body.quantity)
                     
-                    res.redirect('/cart')
+                    //db.Cart_Product.findAll()
+                    db.Cart_Product.create({
+                        cart_id:newBook.id,
+                        book_id:req.body.book,
+                        quantity:req.body.quantity
+                    })
+                    .then(function(quehay){
+                        res.redirect("/cart")
+                    })
+                    // .then(function(cart){
+                    //     db.Cart_Product.update({quantity:req.body.quantity},{where:{id:cart.id} })
+                    //     .then(quantity=>{
+                    //         res.redirect("/cart")
+                    //     })
+                    //     console.log(cart[0])
+                    //     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                    // })
+                   // console.log(newBook)
+                    
+                 //   res.redirect('/cart')
                 })
             }
 
