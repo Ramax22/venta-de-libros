@@ -21,11 +21,14 @@
             </div>
            <div class="color border">
             <div class="col-12 ">
-                <form action="/products/create" method="POST" enctype="multipart/form-data">
+                <div class="errores">
+                    <ul></ul>
+                </div>
+                <form action="/products/create" class="form-create" method="POST" enctype="multipart/form-data">
                     <div class="row product-detail">
                         <div class="col-12 col-md-6 color">
                             <label for="title" class="form-label">Titulo<span class="oblig">(obligatorio)</span> </label>
-                            <input type="text" id="title" name="title" placeholder="Ej: El Hobbit" class="form-input">
+                            <input type="text" id="title" name="title" placeholder="Ej: El Hobbit" class=" title form-input">
                         </div>
                         <!-- <div class="col-12 col-md-6 color">
                             <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
@@ -33,7 +36,7 @@
                         </div> -->
                         <div class="col-12 col-md-6 color">
                             <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
-                            <select name="author" id="author" class="form-input">
+                            <select name="author" id="author" class=" title form-input">
                                 <%for (let i = 0; i < autores.length; i++) {%>
                                     <option value="<%=autores[i].id%>">
                                     <%=autores[i].name%>
@@ -151,6 +154,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+    
 </body>
+<script src="/javascripts/products.js"></script>
 </html>

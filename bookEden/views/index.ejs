@@ -23,6 +23,8 @@
         
                 <aside class="products d-flex justify-content-center">
                    
+                       
+                      
 
                 </aside>
             </div>
@@ -88,7 +90,7 @@
                         <p class="autor"><%= autores[novedad.author_id].name %> </p>
                         <% let precioFinal = Math.round(novedad.price) %>
                         <p class="precio">ARS$ <%= precioFinal%> </p>
-                        <input type="submit" value="Agregar al carrito"class="btn btn-warning"></input>
+                        <button type="button" class="btn btn-warning"><a href="/products/detail/<%= novedad.id %>">Leer más</a></button> 
                     </article>
                     <% }) %> 
             </section>
@@ -107,7 +109,7 @@
                     <p class="autor"><%= autores[element.author_id].name %> </p>  
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
-                    <button type="button" class="btn btn-warning"><a href="/cart">Añadir al carrito</a></button>
+                   <button type="button" class="btn btn-warning"><a href="/products/detail/<%= element.id %>">Leer más</a></button> 
                 </article>
             <% }) %>
 
@@ -126,7 +128,7 @@
                     <p class="autor"><%= autores[element.author_id].name %> </p>
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
-                    <button type="submit" class="btn btn-warning">Añadir al carrito</button>
+                    <button type="button" class="btn btn-warning"><a href="/products/detail/<%= element.id %>">Leer más</a></button> 
                 </article>
             <% }) %>
 

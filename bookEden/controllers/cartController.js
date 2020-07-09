@@ -10,7 +10,8 @@ var cartController = {
         db.Cart.findOne({
             where: {
                 user_id: user.id,
-                status: 1
+                status: 1,
+               
             },
             include:[{association:"books"}]
         })
@@ -59,11 +60,13 @@ var cartController = {
             //Pregunto si hay carrito activo
             if(hayCarrito==undefined){
                 //creo un carrito y agrego producto
-
-                db.Cart_Product.create({
-                    book_id: req.body.book,
-                    cart_id: hayCarrito,
-                    quantity:req.body.quantity
+                console.log(hayCarrito)
+                db.CartProduct.create({
+                   book_id: req.body.book,
+                    cart_id: req.body.Cart,
+                    quantity:req.body.quantity,
+                  
+                    
                 }).then(function(newBook){
                     res.redirect('/cart')
                 })
@@ -86,7 +89,8 @@ var cartController = {
                 db.Cart.findOne({
                     where:{
                         user_id: user.id,
-                        status:1
+                        status:1,
+                     
                     }
                 }).then(function(newBook){
                     newBook.addBook(req.body.book)

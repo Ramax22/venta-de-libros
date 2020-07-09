@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Cart_Product';
+    let alias = 'CartProduct';
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -23,19 +23,9 @@ module.exports = (sequelize, dataTypes) => {
     };
 
     const CartProducts = sequelize.define(alias, cols, config);
-    // CartProducts.associate = function(modelos){
-
-        // CartProducts.hasMany(modelos.Books, {
-        //     as:"books"
-        // })
-
-        // CartProducts.hasMany(modelos.Cart,{
-        //     as:"cart"
-        // })
-    // CartProducts.associate=function(modelos){
-    //     Cart_products.belongsTooks, { througMany(modelos.Boh: cart_products });
-    //     Books.belongsToMany(modelos.Cart, { through: cart_products });
-    // }
-    //}
+    
+    CartProducts.associate = function(modelos){
+    }
+      
     return CartProducts;
 };

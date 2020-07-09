@@ -26,6 +26,12 @@ var indexController = {
                         category_id:4
                     }
                 })
+                .then((destacado)=>{
+                    db.Books.findAll({
+                        where:{
+                            category_id:5
+                        }
+                    })
                 .then((popularSpanish)=>{
                     db.Authors.findAll()
                     .then(function(autores){
@@ -39,7 +45,7 @@ var indexController = {
                             admin:req.session.admin,
                             autores:autores
                             })
-                    })
+                    
                 })
             })
         })
@@ -54,9 +60,9 @@ var indexController = {
         //     destacado: destacado,
         //     userLogged: req.session.userLogged,
         //     admin:req.session.admin//Probando
-        // });
-    },
-    
+        })
+    }
+}
    
 }
 

@@ -284,7 +284,7 @@ var productsController = {
 module.exports = productsController;
 
 // Funcion que retorna un producto (El filter no me funciona por alguna razón)
-/*function getProduct (id) {
+function getProduct (id) {
     for (let i = 0; i <= products.length; i++) {
         if (id == products[i].id) {
             var selectedProduct = products[i];
@@ -292,4 +292,4 @@ module.exports = productsController;
         }
     }
     return selectedProduct;
-}*/
+}
