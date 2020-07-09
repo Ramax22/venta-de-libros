@@ -68,7 +68,7 @@ var usersController = {
     processLogin: function(req, res, next){
       // Creamos la variable errores
       let errors = validationResult(req);
-      console.log('Aquí está el error!!!!')
+     // console.log('Aquí está el error!!!!')
 
       //Verificamos si hay errores
       if(errors.isEmpty()){
@@ -79,7 +79,7 @@ var usersController = {
         
         db.User.findAll()
         .then(function(resultados){
-          console.log(resultados[0].name)
+         // console.log(resultados[0].name)
           for (let i = 0; i < resultados.length; i++) {
               if(resultados[i].email==req.body.email){
                 if(bcrypt.compareSync(req.body.password, resultados[i].password)){

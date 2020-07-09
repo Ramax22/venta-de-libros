@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('./partials/head') %>
+  <link rel='stylesheet' href='/stylesheets/carrito.css' />
+</head>
+
+<body>
+
+  <div class="container">
+    <%- include('partials/header.ejs', {userLogged}) %>
+    <div class="row contenido">
+      <div class="row carrito">
+        <div class=" row col-12 compra align-items:center">
+          <h4>Tu compra</h4>
+        </div>
+       
+        </div>
+        
+          
+            
+          <!--aca termina el forEach  -->
+        </div>
+        <div class="pago-final">
+          <div class="row envio mt-4">
+            <div id="leyenda" class="col-8 col-xl-9">
+              <p>Gastos de Envio</p>
+            </div>
+            <div id="total" class="col-4 col-xl-3">
+              <p>GRATIS</p>
+            </div>
+          </div>
+          <div class="row envio">
+            <div id="leyenda" class="col-7 col-xl-9">
+              <p>Total</p>
+            </div>
+            <div id="total" class="col-5 col-xl-3">
+             
+            </div>
+          </div>
+          <div class="row envio">
+            <div id="btn" class="button-final col-xl-12">
+              <hr class="">
+              <form action="/cart/delete/<%=book.id%>?_method=DELETE" method="POST"   >
+                <button  type="submit"   value="<%=%>" class="eliminar btn btn-primary">ELIMINAR</button>
+              </form>
+              <a class="btn btn-primary" href="#" role="button">Finalizar</a>
+            </div>
+            <div class="cards col-md-7 col-xl-12">
+              <img class="cards" src="/images/visa.gif" alt="">
+              <img class="cards" src="/images/maestro.gif" alt="">
+              <img class="cards" src="/images/mastercard.gif" alt="">
+              <img class="cards" src="/images/visad.gif" alt="">
+              <img class="cards" src="/images/visae.gif" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="continuar">
+          <div class="continuar-comprando">
+            <a href="">Seguir comprando</a>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <%- include('./partials/footer') %>
+
+
+  </div>
+</body>
+
+</html>

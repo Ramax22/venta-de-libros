@@ -71,7 +71,7 @@ var productsController = {
 
     edit : function (req, res) {
         let pedidoLibro= db.Books.findByPk(req.params.id,{
-            include:[{association:"booksAuthor"},{association:"genero"},{association:"category"},{association:"format"},{association:"language"},{association:"publisher"} ]
+            include:[{association:"genero"},{association:"category"},{association:"format"},{association:"language"},{association:"publisher"} ]
         })
         let pedidoCategoria= db.Category.findAll();
         let pedidoIdioma=db.Language.findAll();
@@ -130,14 +130,6 @@ var productsController = {
     
     created:function(req,res,next){
       //funciona para un array vacio o ya empezado
-        var ultimo;
-        
-        if(products.length>0){
-             ultimo=products[products.length-1]
-             ultimo= ultimo.id+1
-        }else{
-             ultimo=1;
-        }
         
         db.Books.create({
             title:req.body.title,
@@ -155,27 +147,10 @@ var productsController = {
             release_date:req.body.date
             
         })
+        .then(function(algo){
+            res.redirect('/products');
+        })
       
-		let nuevoProducto={
-            id: ultimo,
-            title:req.body.title,
-			author: req.body.author,
-			price:req.body.price ,
-            discount:req.body.discount ,
-            category:req.body.category,
-			description:req.body.description ,
-            lenguage:req.body.lenguage,
-            format: req.body.format,
-            date:req.body.date,
-            image:req.files[0].filename
-        }
-        //console.log(req.files)
-        //console.log(nuevoProducto);
-		products.push(nuevoProducto)
-		let modificacion= JSON.stringify(products)
-		fs.writeFileSync(productsFilePath,modificacion)
-
-		res.redirect('/products');
     },
 
     /* --- SEARCH ---*/
