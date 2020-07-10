@@ -11,6 +11,7 @@ var indexController = {
             where:{
                 category_id:1
             }
+            
         })
         .then((novedades)=>{
             db.Books.findAll({
@@ -22,21 +23,30 @@ var indexController = {
                 db.Books.findAll({
                     where:{
                         category_id:4
-                    }
+                    },
+                    include:[{association:"Authors"}]
                 })
                 .then((popularSpanish)=>{
-                    db.Authors.findAll()
-                    .then(function(autores){
-                        res.render('index',{
-                            title: 'BookEden',
-                             novedades: novedades,
-                              bestselling: bestselling,
-                             popularSpanish: popularSpanish,
-                             // destacado: destacado,
-                            userLogged: req.session.userLogged,
-                            admin:req.session.admin,
-                            autores:autores
-                            })
+                    db.Books.findAll({
+                        where:{
+                            category_id:5
+                        },
+                        include:[{association:"Authors"}]
+                    })
+                    .then((destacado)=>{
+                        db.Authors.findAll()
+                        .then(function(autores){
+                            res.render('index',{
+                                title: 'BookEden',
+                                novedades: novedades,
+                                bestselling: bestselling,
+                                popularSpanish: popularSpanish,
+                                destacado: destacado,
+                                userLogged: req.session.userLogged,
+                                autores:autores
+                                })
+                    })
+
                     })
                 })
             })

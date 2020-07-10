@@ -3,69 +3,78 @@
 
 <head>
   <%- include('./partials/head') %>
-  <link rel='stylesheet' href='/stylesheets/carrito.css' />
+  <link rel='stylesheet' href='/stylesheets/payment.css' />
 </head>
 
 <body>
 
   <div class="container">
     <%- include('partials/header.ejs', {userLogged}) %>
-    <div class="row contenido">
-      <div class="row carrito">
-        <div class=" row col-12 compra align-items:center">
-          <h4>Tu compra</h4>
-        </div>
-       
-        </div>
-        
-          
-            
-          <!--aca termina el forEach  -->
-        </div>
-        <div class="pago-final">
-          <div class="row envio mt-4">
-            <div id="leyenda" class="col-8 col-xl-9">
-              <p>Gastos de Envio</p>
-            </div>
-            <div id="total" class="col-4 col-xl-3">
-              <p>GRATIS</p>
-            </div>
-          </div>
-          <div class="row envio">
-            <div id="leyenda" class="col-7 col-xl-9">
-              <p>Total</p>
-            </div>
-            <div id="total" class="col-5 col-xl-3">
-             
-            </div>
-          </div>
-          <div class="row envio">
-            <div id="btn" class="button-final col-xl-12">
-              <hr class="">
-              <form action="/cart/delete/<%=book.id%>?_method=DELETE" method="POST"   >
-                <button  type="submit"   value="<%=%>" class="eliminar btn btn-primary">ELIMINAR</button>
-              </form>
-              <a class="btn btn-primary" href="#" role="button">Finalizar</a>
-            </div>
-            <div class="cards col-md-7 col-xl-12">
-              <img class="cards" src="/images/visa.gif" alt="">
-              <img class="cards" src="/images/maestro.gif" alt="">
-              <img class="cards" src="/images/mastercard.gif" alt="">
-              <img class="cards" src="/images/visad.gif" alt="">
-              <img class="cards" src="/images/visae.gif" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="continuar">
-          <div class="continuar-comprando">
-            <a href="">Seguir comprando</a>
-          </div>
 
+    <div class="d-flex flex-column align-items-center flex-lg-row justify-content-between">
 
-        </div>
+ 
+      <div class="d-flex flex-column flex-lg-row justify-content-around info-profile">
+
+        <!-- CAJA IZQUIERDA -->
+          <div class="d-flex flex-column info-user">
+              <h2 class="info-title">Rellena los datos para este pedido</h2>
+              <p>Correo Electrónico</p>
+              <input type="text">
+              <p>Lo necesitamos para enviarte la infomación de tu pedido</p>
+              <hr>
+              <h2 class="info-title">1. Dirección de Entrega</h2>
+              <p>Nombre completo</p>
+              <input type="text">
+              <p>Nombre Completo. Por ejemplo: Pedro Pérez</p>
+              <p>País de entrega</p>
+              <p>Dirección de envío</p>
+              <input type="text">
+              <hr>
+              <h2 class="info-title">1. Dirección de Facturación</h2>
+              <p>Hcaer un select</p>
+              <hr>
+
+          </div>
+  
+          <!-- CAJA DERECHA -->
+          <div class="d-flex flex-column info-compra">
+            <!-- TITULO -->
+            <div class="d-flex flex-column info-payment">
+              <h2>Resumen del Pedido</h2>
+              <div class="d-flex justify-content-between">
+                <h2><i class="fas fa-shopping-basket"></i> 1 artículo</h2>
+                <h2>precio</h2>
+              </div>
+            </div>
+            <!-- COMPRA --> 
+            <div class="d-flex flex-column compra">
+              <!-- LIBROS --> 
+              <div class="d-flex justify-content-between bookPrice">
+                <div class="book">libro</div>
+                <div class="price">Precio</div>
+              </div>
+              <!-- SUBTOTAL --> 
+              <div class="d-flex justify-content-between bookPrice">
+                <div class="book">SUBTOTAL</div>
+                <div class="price">MONTO</div>
+              </div>
+              <!-- ENVÍO --> 
+              <div class="d-flex justify-content-between envio">
+                <div class="book">Envío</div>
+                <div class="gratis">GRATIS</div>
+              </div>
+              <div class="d-flex justify-content-between bookPrice">
+                <div class="book">libro</div>
+                <div class="total">TOTAL</div>
+              </div>
+                
+            </div>
+          </div>
       </div>
+      
 
-    </div>
+  </div>
 
     <%- include('./partials/footer') %>
 

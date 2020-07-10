@@ -1,0 +1,80 @@
+.avatar img{
+    max-width:300px;
+    max-height: 200px;
+    border-radius: 15%;
+    border: 10px, solid, black;
+    margin-top: 10px;
+}
+
+ul li {
+    list-style: none;
+    padding: 0px;
+    margin-left: 10px!important;
+    padding-right: 10px;
+    margin-bottom: 8px;  
+}
+
+ul li:nth-child(5){
+    margin-bottom: 0px;
+}
+
+ul li a{
+    color: black;
+}
+
+.profile {
+    margin-bottom: 30px;
+}
+
+.profile-title{
+    color:rgb(73,10,72);
+}
+
+.info-profile {
+    margin-bottom: 25px;
+    width: 100%
+}
+
+.info-user{
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    width: 60%;
+    
+}
+
+.info-compra{
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width:40%
+    
+}
+
+.info-title{
+    border-bottom: 1px solid lightgray;
+    color: rgb(73,10,72);
+    margin-left: 0px;
+    padding-left: 10px;
+    padding-bottom: 6px;
+    
+}
+
+.info-payment{
+    border-bottom: 1px solid lightgray;
+    color: white;
+    margin-left: 0px;
+    padding-left: 10px;
+    padding-bottom: 6px;
+    background-color:  rgb(73,10,72)
+}
+
+/*--- 1024 --- */
+@media(min-width:1024px){
+    .info-menu{
+        margin-right: 30px;
+    }
+    
+}
+

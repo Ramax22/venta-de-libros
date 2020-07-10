@@ -18,7 +18,6 @@ var cartController = {
         .then((carrito) => {
             //Pregunto si hay carrito activo
             if(carrito){
-               // console.log(carrito)
                db.Cart_Product.findAll({
                    where:{
                        cart_id:carrito.id
@@ -47,9 +46,7 @@ var cartController = {
                         }
                     })
                     .then(function(carritoActual){
-                        console.log(compras)
-                        //console.log(carritoActual)
-                        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                        
                         res.render('carrito',{
                             userLogged: req.session.userLogged,
                             books:carrito.books,
@@ -61,23 +58,9 @@ var cartController = {
                 })
      
                })
-                // res.render("carrito",{
-                //     userLogged: req.session.userLogged,
-                //     //admin:req.session.admin,
-                //     books:carrito.books
-                // })
 
-            }else{
-              console.log("raja")
-            }
+            } //aquí estaba el else"raja"
         })
-        
-
-        // res.render('cart',{
-        //     userLogged: req.session.userLogged,
-        //     admin:req.session.admin,
-
-        // });
 
     },
     create: (req, res, next) => {

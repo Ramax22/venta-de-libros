@@ -4,6 +4,7 @@ const multer = require ('multer');
 const bcrypt = require ('bcrypt');
 const db=require('../database/models')
 let {check, validationResult, body} = require('express-validator');
+const { EADDRINUSE } = require('constants');
 
 
 var usersController = {
@@ -157,8 +158,11 @@ var usersController = {
   },
 
   logout: function(req, res){
-    console.log('estoy cerrando sesion, aveeeer')
+    // En caso de que el usuario haya se quiera desloguear y haya tildado "recuérdame", hay que eliminar la cookie sobreescribiendo la que ya teníamos pero agregándole una fecha de expiración
+    var expiresDate = new Date(2019, 6, 9)
+    res.cookie('rememberMe', {expires: expiresDate})
     req.session.userLogged = undefined
+
     db.Books.findAll({
       where:{
           category_id:1
@@ -177,7 +181,13 @@ var usersController = {
               }
           })
           .then((popularSpanish)=>{
-            db.Authors.findAll()
+            db.Books.findAll({
+              where:{
+                category_id:5
+              }
+            })
+            .then((destacado)=>{
+              db.Authors.findAll()
             .then(function(autores){
               
               res.render('index',{
@@ -185,10 +195,12 @@ var usersController = {
                 novedades: novedades,
                 popularSpanish: popularSpanish,
                 bestselling: bestselling,
-                //destacado: destacado,
+                destacado: destacado,
                 autores:autores,
                 userLogged: undefined,
-                admin:req.session.admin//Probando
+                
+            })
+            
               })
               
             })   
