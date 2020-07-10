@@ -61,8 +61,8 @@ var indexController = {
         //     userLogged: req.session.userLogged,
         //     admin:req.session.admin//Probando
         })
-    }
-}
+    })
+} 
    
 }
 

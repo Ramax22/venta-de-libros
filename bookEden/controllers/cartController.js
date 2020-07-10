@@ -42,21 +42,8 @@ var cartController = {
                     }
                     db.Cart.update
                 })
-                //    for (let i = 0; i < compras.length; i++) {
-                //        //console.log(compras[i].book_id);
-                       
-                //        db.Books.findOne({
-                //            where:{
-                //                id:compras[i].book_id
-                //            }
-                //        })
-                //        .then(function(book){
-                //            valor+=book.price
-                //             console.log(valor);
-                //        })
-
-                //     }
-                //     res.send(valor)
+               
+              
                     
                })
                 res.render("carrito",{
@@ -71,11 +58,7 @@ var cartController = {
         })
         
 
-        // res.render('cart',{
-        //     userLogged: req.session.userLogged,
-        //     admin:req.session.admin,
-
-        // });
+    
     },
     create: (req, res, next) => {
         //Verifico que el usuario este logueado
@@ -140,7 +123,8 @@ var cartController = {
                         status:1,
                      
                     }
-                }).then(function(newBook){
+                })
+                .then(function(newBook){
                     //newBook.addBook(req.body.book,req.body.quantity)
                     
                     //db.Cart_Product.findAll()
@@ -165,6 +149,7 @@ var cartController = {
                  //   res.redirect('/cart')
                 })
             }
+        
 
         })
         

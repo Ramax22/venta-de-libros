@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include('./partials/head') %>
-    <title>DETAIL | <%= selectedProduct.title %></title>
+    <title>BookEden: <%= selectedProduct.title %></title>
     <link rel='stylesheet' href='/stylesheets/productDetail.css' />
   </head>
 
@@ -48,7 +48,7 @@
           <h5>COSTOS DE ENVIO: ¡GRATIS!</h5>
           
           <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO-->
-          <form action="/cart" method="POST">
+          <form action="/cart" method="POST" >
               <label for="cantidad" class="cantidad">Cantidad </label>
               <select name="quantity" id="cantidad">
                 <option value="1">1</option>
@@ -88,5 +88,5 @@
       <%- include('./partials/footer') %>
     </div>
   </body>
-  <script src="/javascripts/products.js"></script>
+  
 </html>

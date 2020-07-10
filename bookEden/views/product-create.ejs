@@ -19,16 +19,18 @@
                     <h2 class="products-title">Ingrese Datos del producto</h2>
                 </div>
             </div>
+            <div class="errores col-8 offset-2 text-left">
+                <h6></h6>
+                <ul></ul>
+            </div>
            <div class="color border">
             <div class="col-12 ">
-                <div class="errores">
-                    <ul></ul>
-                </div>
-                <form action="/products/create" class="form-create" method="POST" enctype="multipart/form-data">
+                <form action="/products/create" id="form-create" method="POST" enctype="multipart/form-data">
                     <div class="row product-detail">
                         <div class="col-12 col-md-6 color">
                             <label for="title" class="form-label">Titulo<span class="oblig">(obligatorio)</span> </label>
-                            <input type="text" id="title" name="title" placeholder="Ej: El Hobbit" class=" title form-input">
+                            <input type="text" id="title" name="title" placeholder="Ej: El Hobbit" class="form-input">
+                            
                         </div>
                         <!-- <div class="col-12 col-md-6 color">
                             <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
@@ -63,7 +65,7 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-6 color">
-                            <label for="date" class="form-label">Fecha<span class="oblig">(obligatorio)</span></label>
+                            <label for="date" class="form-label">Fecha de Publicación<span class="oblig">(obligatorio)</span></label>
                             <input type="date" id="date" name="date" placeholder="Ej: 04-may-01" class="form-input">
                         </div>
                         <div class="col-12 col-md-6 color">
@@ -156,5 +158,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
 </body>
-<script src="/javascripts/products.js"></script>
+<script src="/javascripts/validationCreate.js"></script>
 </html>

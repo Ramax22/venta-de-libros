@@ -55,10 +55,11 @@ var productsController = {
             include:[{association:"genero"}, {association:"publisher"}]
         })
         .then((resultado)=>{
+            console.log(resultado)
             db.Authors.findAll()
             .then(function(autor){
                 res.render('detail', {
-                    title: 'BookEden' + resultado.title,
+                    title: resultado.title,
                     selectedProduct : resultado,
                     userLogged: req.session.userLogged,
                     admin:req.session.admin,
