@@ -44,11 +44,15 @@
               <a href=""><i class="fab fa-instagram-square"></i></a>
               <a href=""><i class="fab fa-pinterest-square"></i></a>                    
           </div>
-          <h3>$<%= selectedProduct.price %></h3>
+          <% let price = Math.round(selectedProduct.price) %>
+          <h3>$<%= price %></h3>
           <h5>COSTOS DE ENVIO: ¡GRATIS!</h5>
           
-          <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO-->
-          <form action="/cart" method="POST" >
+          <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO -->
+
+          <!-- USUARIO INDEFINIDO -->
+          <% if(userLogged == undefined) { %>
+          <form action="/cart" method="POST">
               <label for="cantidad" class="cantidad">Cantidad </label>
               <select name="quantity" id="cantidad">
                 <option value="1">1</option>
@@ -57,16 +61,28 @@
               </select>
             <button type="submit" class="btn btn-success" name="book" value="<%= selectedProduct.id %>">COMPRAR</button>
           </form>
-          
-          <% if(userLogged != undefined) { %>
-            <% if (userLogged.isAdmin == 1) { %>
-              <a href="/products/edit/<%= selectedProduct.id %>" class="btn btn-warning">EDITAR</a>
-              <br>
-              <form action="/products/delete/<%= selectedProduct.id %>?_method=DELETE" method="POST">
-                <button type="submit" class="btn btn-danger">ELIMINAR</button>
-              </form>
-            <% } %>
-          <% } %>
+
+          <!-- SI ESTÁ DEFINIDO Y ES ADMIN -->
+          <% } else if (userLogged.isAdmin == 1) { %>
+            <a href="/products/edit/<%= selectedProduct.id %>" class="btn btn-warning">EDITAR</a>
+            <br>
+            <form action="/products/delete/<%= selectedProduct.id %>?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-danger">ELIMINAR</button>
+            </form>
+
+          <!-- SI ESTÁ DEFINIDO Y NO ES ADMIN -->
+          <% } else { %>
+            <form action="/cart" method="POST">
+              <label for="cantidad" class="cantidad">Cantidad </label>
+              <select name="quantity" id="cantidad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <button type="submit" class="btn btn-success" name="book" value="<%= selectedProduct.id %>">COMPRAR</button>
+          </form>
+
+        <% } %>
  
         </div>
       </div>

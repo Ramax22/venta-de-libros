@@ -1,4 +1,5 @@
 const fs = require('fs');
+const db = require('../database/models')
 
 //Aplicamos un middleware de cookies a nivel aplicación para que se pueda mantener la información del usuario
 
@@ -6,37 +7,32 @@ var rememberMeMiddleware = {
 
     rememberMe: function(req, res, next){
         next();
+        console.log('estoy en el middleware')
         
         //chequeamos si hay una cookie pero no hay un usuario logueado
-        if(req.cookies.rememberMe != undefined && req.session.userToLog == undefined){
+        if(req.cookies.rememberMe != undefined && req.session.userLogged == undefined){
+        
+            
            
             //reciclo el código del login
-            let usersFile = fs.readFileSync('users.json', {encoding: 'utf-8'});
-            
-            let users;
-            
-            if(usersFile == ""){
-                users = [];
-                } else {
-                    users = JSON.parse(usersFile);
-            };
-                        
-            let userToLogin
-    
-            //buscamos el usuario con el email que trajimos con la cookie
-            for(var i = 0; i<users.length; i++){
-                if(req.cookies.rememberMe == users[i].email){
-                   userToLogin = users[i];
-                    break;
+            let userLogged;
+            db.User.findAll()
+            .then(function(user){
+              console.log(user[0].name)
+              //buscamos el usuario con el email que trajimos con la cookie
+              for (let i = 0; i < user.length; i++) {
+                  if(user[i].email == req.cookies.rememberMe){
+                      userLogged = user[i];
+                      console.log(userLogged)
+                      break;
+                    }
                 }
-            }
-    
-            //ponemos en session el usuario que trajimos de la cookie
-            req.session.userLogged = userToLogin;
-    
-            //de acá, tenemos que aplicarlo en app.js
-        }
 
+                //Ponemos en sesión al usuario que está guardado en la cookie
+                req.session.userLogged = userLogged
+            })  
+    
+        }
     }
 }
 

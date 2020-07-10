@@ -169,6 +169,7 @@ var productsController = {
         .then(function(books){
             console.log(books)
             res.render('results', {
+                busqueda: userSearch,
                 books:books,
                 userLogged: req.session.userLogged,
                 admin:req.session.admin,

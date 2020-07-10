@@ -19,7 +19,6 @@ var cartController = {
         .then((carrito) => {
             //Pregunto si hay carrito activo
             if(carrito){
-               // console.log(carrito)
                db.Cart_Product.findAll({
                    where:{
                        cart_id:carrito.id
@@ -29,36 +28,40 @@ var cartController = {
                 
                 db.Books.findAll()
                 .then(function(book){
-                    
                     var valor=0;
+                    var articles=0
                     for (let i = 0; i < compras.length; i++) {
                         for (let j = 0; j < book.length; j++) {
                             if(compras[i].book_id==book[j].id){
-                                
+                                articles+= parseFloat(compras[i].quantity)
                                 valor+= parseFloat(compras[i].quantity)* parseFloat(book[j].price)
                             }
-                        
                         }
                     }
-                    db.Cart.update
+                    db.Cart.update({
+                        total:valor
+                    },{
+                        where:{
+                        id:carrito.id,
+                        status:1
+                        }
+                    })
+                    .then(function(carritoActual){
+                        
+                        res.render('carrito',{
+                            userLogged: req.session.userLogged,
+                            books:carrito.books,
+                            total:valor,
+                            quantity:articles,
+                            compras:compras
+                        })
+                    })
                 })
-               
-              
-                    
+     
                })
-                res.render("carrito",{
-                    userLogged: req.session.userLogged,
-                    //admin:req.session.admin,
-                    books:carrito.books
-                })
 
-            }else{
-              console.log("raja")
-            }
+            } //aquí estaba el else"raja"
         })
-        
-
-    
     },
     create: (req, res, next) => {
         //Verifico que el usuario este logueado
@@ -136,42 +139,16 @@ var cartController = {
                     .then(function(quehay){
                         res.redirect("/cart")
                     })
-                    // .then(function(cart){
-                    //     db.Cart_Product.update({quantity:req.body.quantity},{where:{id:cart.id} })
-                    //     .then(quantity=>{
-                    //         res.redirect("/cart")
-                    //     })
-                    //     console.log(cart[0])
-                    //     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                    // })
-                   // console.log(newBook)
-                    
-                 //   res.redirect('/cart')
+
                 })
             }
         
 
         })
         
-
-
-    
-
-        
     },
     delete:function(req,res,next){
         let user = req.session.userLogged;
-        // db.Cart.destroy({
-        //     where: {
-        //         user_id: user.id,
-        //         status: 1
-                
-        //     },
-        //     include:[{association:"books", where:{
-        //         book_id:req.body.book
-        //     }}],
-            
-        // })
         db.Cart.findOne({
             where:{
                 user_id: user.id,
@@ -180,29 +157,79 @@ var cartController = {
         })
             .then(function(newCart){
                 newCart.removeBook(req.body.book)
-                console.log(newCart)
-                res.redirect('/cart')
+                .then(function(){
+                    res.redirect('/cart')
+                })
             })
         
-        // .then((carrito) => {
-        //     //Pregunto si hay carrito activo
-        //     if(carrito){
-        //         console.log(carrito)
-        //         res.render("carrito",{
-        //             userLogged: req.session.userLogged,
-        //             //admin:req.session.admin,
-        //             books:carrito.books
-        //         })
+    },
+    payment:function(req,res,next){
+        let user=req.session.userLogged.id
+        db.Cart.findOne({where:{
+            user_id:user,
+            status:1
+        },include:
+            [{association:'books'}]
+        })
+        .then(function(carrito){
+            var valor=0;
+            var articles=0
+            db.Cart_Product.findAll({
+            where:{
+                cart_id:carrito.id
+            }
+        })
+        .then(function(compras){
+         
+          db.Books.findAll()
+          .then(function(book){
+            //   var valor=0;
+            //   var articles=0
+              for (let i = 0; i < compras.length; i++) {
+                  for (let j = 0; j < book.length; j++) {
+                      if(compras[i].book_id==book[j].id){
+                          articles+= parseFloat(compras[i].quantity)
+                          valor+= parseFloat(compras[i].quantity)* parseFloat(book[j].price)
+                      }
+                    }
+                }
+                  })
+                  console.log(compras)
+              })
+            console.log(valor)
+            console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+            console.log(articles)
+            console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+           
+            res.render('payment',{
+                userLogged:req.session.userLogged,
+                carrito:carrito,
 
-        //     }else{
-        //       console.log("raja")
-        //     }
-        // })
-        // db.Books.destroy({
+            })
+        })
+
+        // db.Cart_Product.findAll({
         //     where:{
-        //         id: req.params.id
+        //         cart_id:carrito.id
         //     }
         // })
+        // .then(function(compras){
+         
+        //  db.Books.findAll()
+        //  .then(function(book){
+        //      var valor=0;
+        //      var articles=0
+        //      for (let i = 0; i < compras.length; i++) {
+        //          for (let j = 0; j < book.length; j++) {
+        //              if(compras[i].book_id==book[j].id){
+        //                  articles+= parseFloat(compras[i].quantity)
+        //                  valor+= parseFloat(compras[i].quantity)* parseFloat(book[j].price)
+        //              }
+        //          }
+        //      }
+    },
+    closeCart:function(req,res,next){
+
     }
 }
 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('./partials/head') %>
+  <link rel='stylesheet' href='/stylesheets/payment.css' />
+</head>
+
+<body>
+
+  <div class="container">
+    <%- include('partials/header.ejs', {userLogged}) %>
+
+    <div class="d-flex flex-column align-items-center flex-lg-row justify-content-between">
+
+ 
+      <div class="d-flex flex-column flex-lg-row justify-content-around info-profile">
+
+        <!-- CAJA IZQUIERDA -->
+          <div class="d-flex flex-column info-user">
+              <h2 class="info-title">Rellena los datos para este pedido</h2>
+              <p>Correo Electrónico</p>
+              <input type="text">
+              <p>Lo necesitamos para enviarte la infomación de tu pedido</p>
+              <hr>
+              <h2 class="info-title">1. Dirección de Entrega</h2>
+              <p>Nombre completo</p>
+              <input type="text">
+              <p>Nombre Completo. Por ejemplo: Pedro Pérez</p>
+              <p>País de entrega</p>
+              <p>Dirección de envío</p>
+              <input type="text">
+              <hr>
+              <h2 class="info-title">1. Dirección de Facturación</h2>
+              <p>Hcaer un select</p>
+              <hr>
+
+          </div>
+  
+          <!-- CAJA DERECHA -->
+          <div class="d-flex flex-column info-compra">
+            <!-- TITULO -->
+            <div class="d-flex flex-column info-payment">
+              <h2>Resumen del Pedido</h2>
+              <div class="d-flex justify-content-between">
+                <h2><i class="fas fa-shopping-basket"></i> 1 artículo</h2>
+                <h2>precio</h2>
+              </div>
+            </div>
+            <!-- COMPRA --> 
+            <div class="d-flex flex-column compra">
+              <!-- LIBROS --> 
+              <div class="d-flex justify-content-between bookPrice">
+                <div class="book">libro</div>
+                <div class="price">Precio</div>
+              </div>
+              <!-- SUBTOTAL --> 
+              <div class="d-flex justify-content-between bookPrice">
+                <div class="book">SUBTOTAL</div>
+                <div class="price">MONTO</div>
+              </div>
+              <!-- ENVÍO --> 
+              <div class="d-flex justify-content-between envio">
+                <div class="book">Envío</div>
+                <div class="gratis">GRATIS</div>
+              </div>
+              <div class="d-flex justify-content-between bookPrice">
+                <div class="book">libro</div>
+                <div class="total">TOTAL</div>
+              </div>
+                
+            </div>
+          </div>
+      </div>
+      
+
+  </div>
+
+    <%- include('./partials/footer') %>
+
+
+  </div>
+</body>
+
+</html>

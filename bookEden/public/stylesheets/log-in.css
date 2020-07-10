@@ -17,6 +17,10 @@
   .btn.btn-primary{
     background-color: rgb(73,10,72);
   }
+
+  .errores{
+    color:red;
+  }
   
   /*primera media*/
   @media(min-width:768px){

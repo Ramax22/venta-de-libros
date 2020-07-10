@@ -22,9 +22,18 @@
                 </div>
         
                 <aside class="products d-flex justify-content-center">
+<<<<<<< HEAD
                    
                        
                       
+=======
+                    <% destacado.forEach(element => { %>
+                        <article class="izq-art d-flex flex-column align-items-center">
+                            <img src="/images/products/<%= element.avatar %> " alt="<%= element.title %> ">
+                            <p class="autor"><%= element.Authors.name %> </p>
+                        </article>
+                    <% }) %> 
+>>>>>>> 2f9ccaef01ce5cca131418f7c4f92d4a514e141a
 
                 </aside>
             </div>
@@ -74,7 +83,7 @@
         <!--AQUÍ ESTÁ EL SECTIÓN-->
         <div class="d-flex flex-column">
             <div class="d-flex justify-content-center banner">
-                <img class="" src="images/banner2.png" alt="">
+                <img class="" src="/images/banner2.png" alt="">
             </div>
     
             <div class="categorias align-items-center">
@@ -90,7 +99,7 @@
                         <p class="autor"><%= autores[novedad.author_id].name %> </p>
                         <% let precioFinal = Math.round(novedad.price) %>
                         <p class="precio">ARS$ <%= precioFinal%> </p>
-                        <button type="button" class="btn btn-warning"><a href="/products/detail/<%= novedad.id %>">Leer más</a></button> 
+                        <button type="button" class="btn btn-warning"><a href="/products/detail/<%= novedad.id %> ">Ver más</a></button>
                     </article>
                     <% }) %> 
             </section>
@@ -125,7 +134,7 @@
                 <article class="product-des d-flex flex-column align-items-center justify-content-center">
                     <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.avatar %>" alt="<%= element.title %> "></a>
                     <p class="titulo"><%= element.title %> </p>
-                    <p class="autor"><%= autores[element.author_id].name %> </p>
+                    <p class="autor"><%= element.Authors.name %></p>
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
                     <button type="button" class="btn btn-warning"><a href="/products/detail/<%= element.id %>">Leer más</a></button> 

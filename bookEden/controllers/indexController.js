@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const db= require("../database/models")
 
-// const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-// const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 var indexController = {
 
@@ -13,6 +11,7 @@ var indexController = {
             where:{
                 category_id:1
             }
+            
         })
         .then((novedades)=>{
             db.Books.findAll({
@@ -24,7 +23,8 @@ var indexController = {
                 db.Books.findAll({
                     where:{
                         category_id:4
-                    }
+                    },
+                    include:[{association:"Authors"}]
                 })
                 .then((destacado)=>{
                     db.Books.findAll({
@@ -33,6 +33,7 @@ var indexController = {
                         }
                     })
                 .then((popularSpanish)=>{
+<<<<<<< HEAD
                     db.Authors.findAll()
                     .then(function(autores){
                         res.render('index',{
@@ -46,6 +47,29 @@ var indexController = {
                             autores:autores
                             })
                     
+=======
+                    db.Books.findAll({
+                        where:{
+                            category_id:5
+                        },
+                        include:[{association:"Authors"}]
+                    })
+                    .then((destacado)=>{
+                        db.Authors.findAll()
+                        .then(function(autores){
+                            res.render('index',{
+                                title: 'BookEden',
+                                novedades: novedades,
+                                bestselling: bestselling,
+                                popularSpanish: popularSpanish,
+                                destacado: destacado,
+                                userLogged: req.session.userLogged,
+                                autores:autores
+                                })
+                    })
+
+                    })
+>>>>>>> 2f9ccaef01ce5cca131418f7c4f92d4a514e141a
                 })
             })
         })

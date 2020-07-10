@@ -15,6 +15,13 @@
             <div class="menu">
                 <H2>Para continuar, ingresa e-mail o usuario</H2>
                 <hr class="">
+
+                <!-- Acá mostramos los errores de la validación en el FRONT -->
+                <div class="errores">
+                  <ul></ul>
+                </div>
+
+                <!-- Acá mostramos los errores de la validación en el BACK -->
                 <% if (typeof errors != 'undefined') { %>
                   <p style="color:red">¡ERROR!</p>
                    <ul>
@@ -25,23 +32,28 @@
                        <% } %>
                    </ul>
                  <% } %>
-                 <form action="/users/profile" method="POST" class="">
+                 <form action="/users/profile" method="POST" class="login">
+                <!-- INGRESA E-MAIL -->
                   <div class="form-group" >
                     <label for=""></label>
-                    <input  class="form-control"type="email" name="email" placeholder="&#128231; E-mail">
+                    <input  class="email form-control"type="email" name="email" placeholder="&#128231; E-mail">
+                    <div class="email invalid-feedback"></div>
                   </div>
+                <!-- INGRESA CONTRASEÑA -->
                   <div class="form-group">
                     <label for=""></label>
-                    <input class="form-control" type="password" name="password" placeholder="&#128274; Contraseña">
+                    <input class="password form-control" type="password" name="password" placeholder="&#128274; Contraseña">
+                    <div class="password invalid-feedback"></div>
                   </div>
                   <!-- BOTÓN DE "RECUÉRDAME -->
                   <label for="">Recuérdame</label>
                   <input type="checkbox" name="rememberMe">
                   <br>
-                  <input type="submit" class="btn btn-primary" value="Iniciar Sesión">
+                  <button type="submit" class="btn btn-primary" value="Iniciar Sesión">Iniciar Sesión</button>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/users/register">Sos nuevo aquí? Registrate</a>
                 <a class="dropdown-item" href="#">olvido su clave?</a>
+              </form>
           </div>
         </div>
         <%- include('partials/footer.ejs') %> 
@@ -50,23 +62,10 @@
      
         
 
-     
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+    <script src='/javascripts/login.js'></script>
     
 </body>
 </html>

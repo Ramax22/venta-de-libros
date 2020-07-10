@@ -1,0 +1,27 @@
+.resultados{
+  background-color: white;
+}
+
+h2{
+  color: rgb(73,10,72);
+  font-style: italic;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+h2 span{
+  text-decoration: underline;
+}
+
+@media(min-width:1024px){
+    article.product-des{
+        background-color: white;
+        margin: 0px 20px 10px 10px;
+        padding: 10px 10px;
+        min-width:0px;
+        width: 29%;
+        position: relative;
+        height: 390px;
+      }
+}
