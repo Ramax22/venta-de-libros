@@ -6,7 +6,6 @@ const db=require('../database/models')
 let {check, validationResult, body} = require('express-validator');
 const { EADDRINUSE } = require('constants');
 
-
 var usersController = {
   register: function (req, res, next){
       res.render("register", {
@@ -18,124 +17,140 @@ var usersController = {
   create: function (req, res, next) {
     //Agarro los errores
     let errors = validationResult(req);
-
-    console.log(errors);
     var avatar;
 
     if (req.files[0] == undefined) {
       avatar="avatar-1592599185603.jpg";
-      } else {
+    } else {
       avatar=req.files[0].filename;
+    }
+
+    // --- Validamos que el mail no este repetido ---
+    let mailVal = req.body.email; // Agarramos el mail que ingresó el usuario en el register
+
+    db.User.findAll()
+    .then((usersMail) => {
+      for (let i = 0; i < usersMail.length; i++) {
+        let mailDB = usersMail[i].email; // Agarramos un mail de la db
+
+        // Pregunto si es el mismo que en el formulario de registro
+        //console.log(mailDB + " - " + mailVal);
+        if (mailDB.trim() == mailVal.trim()) {
+          console.log("entro");
+          let error = {
+            value: '',
+            msg: 'Un usario ya se registró con ese mail.',
+            params: 'email',
+            location: 'body'
+          };
+          errors.errors.push(error);
+          break;
+        }
       }
 
-    if (errors.isEmpty()) {
-      db.User.create({
-          name:req.body.first_name,
-          last_name: req.body.last_name,
-          email:req.body.email,
-          password:bcrypt.hashSync(req.body.password, 10),//cambie para que entre en la BD
-          avatar:avatar,
-        }).then(function(newUser){
-            // Prendemos la sesión igualando el req.session con el nuevo usuario creado.
-            req.session.userLogged = newUser;  
-            res.render('Profile',{
-              title: 'Perfil',
-              userLogged: req.session.userLogged,
-              admin:req.session.admin
-          })
-
+      if (errors.isEmpty()) {
+        db.User.create({
+            name:req.body.first_name,
+            last_name: req.body.last_name,
+            email:req.body.email,
+            password:bcrypt.hashSync(req.body.password, 10),//cambie para que entre en la BD
+            avatar:avatar,
+          }).then(function(newUser){
+              // Prendemos la sesión igualando el req.session con el nuevo usuario creado.
+              req.session.userLogged = newUser;  
+              res.render('Profile',{
+                title: 'Perfil',
+                userLogged: req.session.userLogged,
+                admin:req.session.admin
+            })
           });
+      } else {
+        res.render('register', {
+          title: 'Register',
+          errors: errors.errors
+        });
+      }
+    });
+  },
 
-    } else {
+  login: function(req, res, next){
+    res.render('log-in', {
+      title: 'Login',
+      userLogged: req.session.userLogged,
+      admin: req.session.admin
+    });
+  },
 
-      res.render('register', {
-        title: 'Register',
-        userLogged: req.session.userLogged,
-        avatar: req.session.userLogged.avatar,
-        admin: req.session.admin,
-        errors: errors.errors
-      });
-    }
-    },
+  processLogin: function(req, res, next){
+    // Creamos la variable errores
+    let errors = validationResult(req);
+    // console.log('Aquí está el error!!!!')
 
-    login: function(req,res,next){
-      res.render('log-in', {
-        title: 'Login',
-        userLogged: req.session.userLogged,
-        admin:req.session.admin
-      });
-    },
-
-    processLogin: function(req, res, next){
-      // Creamos la variable errores
-      let errors = validationResult(req);
-     // console.log('Aquí está el error!!!!')
-
-      //Verificamos si hay errores
-      if(errors.isEmpty()){
-          //si no hay errores
-        let userToLogin
-        
-        console.log(req.body.email)
-        
-        db.User.findAll()
-        .then(function(resultados){
-         // console.log(resultados[0].name)
-          for (let i = 0; i < resultados.length; i++) {
-              if(resultados[i].email==req.body.email){
-                if(bcrypt.compareSync(req.body.password, resultados[i].password)){
-                  userToLogin=resultados[i];
-                }
+    //Verificamos si hay errores
+    if(errors.isEmpty()){
+        //si no hay errores
+      let userToLogin
+      
+      console.log(req.body.email)
+      
+      db.User.findAll()
+      .then(function(resultados){
+        // console.log(resultados[0].name)
+        for (let i = 0; i < resultados.length; i++) {
+            if(resultados[i].email==req.body.email){
+              if(bcrypt.compareSync(req.body.password, resultados[i].password)){
+                userToLogin=resultados[i];
               }
-            
-          }
-          console.log(userToLogin);
-          if(userToLogin == undefined){
-            // En caso de que el usuario esté indefinido hacemos nuestro propio mensaje de error
-            res.render('log-in', {
-                title:'Login',
-                userLogged: undefined,
-                admin:req.session.admin,
-                errors: [
-                {msg: 'credenciales inválidas'}
-            ]});
+            }
+          
+        }
+        console.log(userToLogin);
+        if(userToLogin == undefined){
+          // En caso de que el usuario esté indefinido hacemos nuestro propio mensaje de error
+          res.render('log-in', {
+              title:'Login',
+              userLogged: undefined,
+              admin:req.session.admin,
+              errors: [
+              {msg: 'credenciales inválidas'}
+          ]});
+      }
+
+        //aplicamos session acá con el usuario encontrado
+        req.session.userLogged = userToLogin;
+
+        if(req.body.rememberMe != undefined){
+          res.cookie('rememberMe', userToLogin.email, {maxAge: 2628000000000})
         }
 
-          //aplicamos session acá con el usuario encontrado
-          req.session.userLogged = userToLogin;
-
-          if(req.body.rememberMe != undefined){
-            res.cookie('rememberMe', userToLogin.email, {maxAge: 2628000000000})
-          }
-
-          console.log(userToLogin)
-          if (userToLogin.isAdmin == 1){
-            res.render('admin',{
-              title: 'Admin',
-              userLogged: req.session.userLogged,
-              avatar: req.session.userLogged.imagen,
-              admin:req.session.admin
-            })
-          } else {
-            res.render('profile',{
-              title: 'Perfil',
-              userLogged: req.session.userLogged,
-              avatar: req.session.userLogged.avatar,//cambien de imagen a avatar
-              admin:req.session.admin
-            })
-          }
-        })//fin del thennnnnnnnnnnnnnn
-          
-          /* --- Si no se encuentra el usuario --- */
-          } else {
-          res.render('log-in', {
-              errors: errors.errors,
-              userLogged: undefined,
-              title: 'Login',
-              admin:req.session.admin
+        console.log(userToLogin)
+        if (userToLogin.isAdmin == 1){
+          res.render('admin',{
+            title: 'Admin',
+            userLogged: req.session.userLogged,
+            avatar: req.session.userLogged.imagen,
+            admin:req.session.admin
           })
-      }
-    },
+        } else {
+          res.render('profile',{
+            title: 'Perfil',
+            userLogged: req.session.userLogged,
+            avatar: req.session.userLogged.avatar,//cambien de imagen a avatar
+            admin:req.session.admin
+          })
+        }
+      })//fin del thennnnnnnnnnnnnnn
+        
+        /* --- Si no se encuentra el usuario --- */
+        } else {
+        res.render('log-in', {
+            errors: errors.errors,
+            userLogged: undefined,
+            title: 'Login',
+            admin:req.session.admin
+        })
+    }
+  },
   
     destroy : function (req, res) {
     db.User.destroy({
