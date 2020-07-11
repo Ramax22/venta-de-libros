@@ -1,7 +1,7 @@
 
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-create");
-
+   alert("Vamos a agregar un nuevo libro?")
    if (formulario) {
       formulario.addEventListener("submit", function (e) {
          //creamos el array de errores
@@ -31,26 +31,17 @@ window.addEventListener("load", function () {
          if (campoDate.value == "") {
             errores.push("Debe seleccionar una fecha")
          } else
-            if (campoDate.value,
-               function validafecha(date) {
-                  var x = new Date();
-                  var fecha = date.split("/");
-                  x.setFullYear(fecha[2], fecha[1] - 1, fecha[0]);
-                  var hoy = new Date();
+         var hoy = new Date();
+         var day = new Date(hoy).getDate();
+         var month = new Date(hoy).getMonth() + 1;
+         var year = new Date(hoy).getFullYear();
 
-                  if (x >= hoy)
-                     return false;
+         var fecha = year + '-' + "0" + month + '-' + day;
 
-               }
-            ) {
-               var hoy = new Date();
-               var day = hoy.getDate();
-               var month = hoy.getMonth() + 1;
-               var year = hoy.getFullYear();
-
-               var fecha = year + '-' + month + '-' + day;
-               errores.push("La fecha debe ser igual o menor a " + fecha)
-            }
+         if (campoDate.value > fecha) {
+            errores.push("La fecha debe ser igual o menor a " + fecha)
+         }
+               
          var image = document.querySelector("#image")
 
          if (image.value == "") {
