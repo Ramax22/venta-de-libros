@@ -17,7 +17,7 @@
         <!-- BOTONES DE LA DERECHA-->
         <div class=" d-flex flex-column align-items-center nav-bar">
           <!-- VALIDAMOS SI EL USUARIO ESTÁ DEFINIDO, SI ES ADMIN O NO-->
-          <% if(userLogged == undefined) { %>
+          <% if(typeof userLogged == 'undefined') { %>
                 <ul>
                   <li><a href="/users/register">Registrarme</a></li>
                   <li><a href="/users/login">Login <i class="fas fa-sign-in-alt"></i></a></li>

@@ -27,8 +27,17 @@ h3{
   color: chocolate;
 }
 
+.book-title {
+  color: rgb(165, 105, 165);
+  font-size: 35px;
+}
+
+
+
 @media (min-width: 768px){
   #text-center {
     text-align: left!important;
   }
+
+  
 }
