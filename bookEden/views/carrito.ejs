@@ -40,7 +40,7 @@
 
 
           <div class="detalle row">
-            <div class="col-5 col-md-2 col-xl-2 p-0">
+            <div class="col-5 col-md-2 col-xl-2 pb-2">
               <img src="/images/products/<%=book.avatar%>" alt="">
             </div>
             <div class="col-6 offset-1 col-md-5 col-xl-5 p-0" id="descripcion">
@@ -65,7 +65,7 @@
               </div>
             </div>
 
-            <div class="total row col-md-4 col-xl-5 m-0 p-0 w-100">
+            <div class="total row col-md-4 col-xl-5 m-0 p-2 w-100">
               <form class=" cantidad1 col-6 col-md-12 col-xl-12" action="">
                 <label for="cantidad" class="cantidad">Cantidad </label>
                 <select name="" id="cantidad">
@@ -75,13 +75,14 @@
                   <%} } %> 
                 </select>
               </form>
-            </div>
+           
             <!-- <div class="eliminar"> -->
-              <form action="/cart/delete/<%=book.id%>?_method=DELETE" method="POST"   >
-                <button  type="submit" name="book"  value="<%=book.id%>" class="eliminar btn btn-primary">ELIMINAR</button>
+              <form class=" cantidad1 col-6 col-md-12 col-xl-12" action="/cart/delete/<%=book.id%>?_method=DELETE" method="POST"   >
+                <button  type="submit" name="book"  value="<%=book.id%>" class="btn btn-light">Eliminar</button>
               </form>
               <!-- <input class="btn btn-primary" type="reset" value="Eliminar"> -->
             <!-- </div> -->
+          </div>
           </div>
           <% }) %>       
           <!--aca termina el forEach  -->

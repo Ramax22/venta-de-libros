@@ -47,7 +47,7 @@ margin-bottom: 10px;
   width: 97%;
 }
 img{
-  width: 110px;
+  width: 100%;
 }
 #descripcion{
   justify-content: center;
@@ -58,9 +58,7 @@ img{
 }
 .btn.btn-light{
   text-align: right;
-  height: 60px;
-  margin-right: 12px;
-  width: 100%;
+  
 }
 input.btn.btn-primary{
   background-color: white;
@@ -146,19 +144,16 @@ img.cards{
     width: 95%;
   }
   img{
-    width: 120px;
+    width: 100%;
   }
   #descripcion{
     margin-left: 30px;
     font-size: 17px;
   }
   .cantidad1{
-    margin-top: 35PX;
     text-align: right;
    }
-   .eliminar{
-     margin-right: 20px;
-   }
+   
    .row.envio{
      justify-content: right;
    }
@@ -197,7 +192,7 @@ img.cards{
     width: 96%;
   }
   img{
-    width: 170px;
+    width: 100%;
   }
   .estrellas{
     margin-bottom: 5px;
@@ -208,7 +203,7 @@ img.cards{
   }
   form.cantidad1{
     margin-bottom: -40px;
-    margin-top: 55px;
+   
   }
   #cantidad{
     padding: 9px;
