@@ -29,7 +29,7 @@ var indexController = {
                 .then((popularSpanish)=>{
                     db.Books.findAll({
                         where:{
-                            category_id:5
+                            category_id:4
                         },
                         include:[{association:"Authors"}]
                     })

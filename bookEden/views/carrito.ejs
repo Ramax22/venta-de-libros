@@ -41,7 +41,12 @@
 
           <div class="detalle row">
             <div class="col-5 col-md-2 col-xl-2 pb-2">
-              <img src="/images/products/<%=book.avatar%>" alt="">
+              <img src="/images/products/<%=book.avatar%>" alt=""
+              title="<%= book.title %> "
+              data-toggle="popover" 
+              data-trigger="hover"
+              data-content="<%= book.description %> ">
+              >
             </div>
             <div class="col-6 offset-1 col-md-5 col-xl-5 p-0" id="descripcion">
               <div>
@@ -134,5 +139,9 @@
 
   </div>
 </body>
-
+<script>
+  $(function () {
+$('[data-toggle="popover"]').popover()
+})
+</script>
 </html>
