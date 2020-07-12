@@ -83,9 +83,9 @@
             </div>
           </div>
       </div>
-
-      <a class="btn btn-primary align-self-right" href="/cart/payment" role="button">Finalizar Compra</a>  
-
+      <form action="/cart/paymnet" method="POST">
+      <button type="submit" class="btn btn-success" name="cartId" value="<%=carritoId  %>">Finalizar Compra</button>
+    </form>
     </div>
 
     <%- include('./partials/footer') %>

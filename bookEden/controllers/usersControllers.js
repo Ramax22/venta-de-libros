@@ -56,13 +56,20 @@ var usersController = {
             password:bcrypt.hashSync(req.body.password, 10),//cambie para que entre en la BD
             avatar:avatar,
           }).then(function(newUser){
-              // Prendemos la sesión igualando el req.session con el nuevo usuario creado.
-              req.session.userLogged = newUser;  
-              res.render('Profile',{
-                title: 'Perfil',
-                userLogged: req.session.userLogged,
-                admin:req.session.admin
-            })
+            db.Cart.create({ 
+              user_id: newUser.id,
+              status: 1,
+              total:0
+              }).then(function(nada){
+                  // Prendemos la sesión igualando el req.session con el nuevo usuario creado.
+                  req.session.userLogged = newUser;  
+                  res.render('Profile',{
+                    title: 'Perfil',
+                    userLogged: req.session.userLogged,
+                    admin:req.session.admin
+                  })
+              })
+            
           });
       } else {
         res.render('register', {
@@ -177,51 +184,51 @@ var usersController = {
     var expiresDate = new Date(2019, 6, 9)
     res.cookie('rememberMe', {expires: expiresDate})
     req.session.userLogged = undefined
-
-    db.Books.findAll({
-      where:{
-          category_id:1
-      }
-    })
-    .then((novedades)=>{
-        db.Books.findAll({
-            where:{
-                category_id:2
-            }
-        })
-      .then((bestselling)=>{
-          db.Books.findAll({
-              where:{
-                  category_id:4
-              }
-          })
-          .then((popularSpanish)=>{
-            db.Books.findAll({
-              where:{
-                category_id:5
-              }
-            })
-            .then((destacado)=>{
-              db.Authors.findAll()
-            .then(function(autores){
+    res.redirect('/')
+    // db.Books.findAll({
+    //   where:{
+    //       category_id:1
+    //   }
+    // })
+    // .then((novedades)=>{
+    //     db.Books.findAll({
+    //         where:{
+    //             category_id:2
+    //         }
+    //     })
+    //   .then((bestselling)=>{
+    //       db.Books.findAll({
+    //           where:{
+    //               category_id:4
+    //           }
+    //       })
+    //       .then((popularSpanish)=>{
+    //         db.Books.findAll({
+    //           where:{
+    //             category_id:5
+    //           }
+    //         })
+    //         .then((destacado)=>{
+    //           db.Authors.findAll()
+    //         .then(function(autores){
               
-              res.render('index',{
-                title: 'BookEden',
-                novedades: novedades,
-                popularSpanish: popularSpanish,
-                bestselling: bestselling,
-                destacado: destacado,
-                autores:autores,
-                userLogged: undefined,
+    //           res.render('index',{
+    //             title: 'BookEden',
+    //             novedades: novedades,
+    //             popularSpanish: popularSpanish,
+    //             bestselling: bestselling,
+    //             destacado: destacado,
+    //             autores:autores,
+    //             userLogged: undefined,
                 
-            })
+    //         })
             
-              })
+    //           })
               
-            })   
-          })
-        })
-    })
+    //         })   
+    //       })
+    //     })
+    // })
   },
 
   edit : function (req, res) {
