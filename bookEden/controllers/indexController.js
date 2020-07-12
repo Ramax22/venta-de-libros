@@ -26,12 +26,6 @@ var indexController = {
                     },
                     include:[{association:"Authors"}]
                 })
-                .then((destacado)=>{
-                    db.Books.findAll({
-                        where:{
-                            category_id:5
-                        }
-                    })
                 .then((popularSpanish)=>{
                     db.Books.findAll({
                         where:{
@@ -50,25 +44,15 @@ var indexController = {
                                 destacado: destacado,
                                 userLogged: req.session.userLogged,
                                 autores:autores
-                                })
-                    })
+                            })
+                        })
 
                     })
                 })
             })
         })
 
-        
-		
-		// res.render('index',{
-        //     title: 'BookEden',
-        //     novedades: novedades,
-        //     bestselling: bestselling,
-        //     popularSpanish: popularSpanish,
-        //     destacado: destacado,
-        //     userLogged: req.session.userLogged,
-        //     admin:req.session.admin//Probando
-        })
+
     }
 } 
   

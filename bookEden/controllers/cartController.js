@@ -163,7 +163,7 @@ var cartController = {
             })
         
     },
-    payment:function(req,res,next){
+    payment: function(req,res,next){
         let user=req.session.userLogged.id
         db.Cart.findOne({where:{
             user_id:user,
@@ -183,8 +183,8 @@ var cartController = {
          
           db.Books.findAll()
           .then(function(book){
-            //   var valor=0;
-            //   var articles=0
+            var valor=0;
+            var articles=0
               for (let i = 0; i < compras.length; i++) {
                   for (let j = 0; j < book.length; j++) {
                       if(compras[i].book_id==book[j].id){
@@ -193,41 +193,26 @@ var cartController = {
                       }
                     }
                 }
-                  })
-                  console.log(compras)
+            }).then(function(carritoActual){
+                console.log(compras)
+                console.log('AQUÍ ESTÁ TODO')
+                console.log(valor)
+                console.log(articles)
+                res.render('payment',{
+                  userLogged:req.session.userLogged,
+                  books:carrito.books,
+                  total: valor,
+                  quantity: articles
               })
-            console.log(valor)
-            console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-            console.log(articles)
-            console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-           
-            res.render('payment',{
-                userLogged:req.session.userLogged,
-                carrito:carrito,
-
             })
+                  
+        })
+           
+            
         })
 
-        // db.Cart_Product.findAll({
-        //     where:{
-        //         cart_id:carrito.id
-        //     }
-        // })
-        // .then(function(compras){
-         
-        //  db.Books.findAll()
-        //  .then(function(book){
-        //      var valor=0;
-        //      var articles=0
-        //      for (let i = 0; i < compras.length; i++) {
-        //          for (let j = 0; j < book.length; j++) {
-        //              if(compras[i].book_id==book[j].id){
-        //                  articles+= parseFloat(compras[i].quantity)
-        //                  valor+= parseFloat(compras[i].quantity)* parseFloat(book[j].price)
-        //              }
-        //          }
-        //      }
     },
+    
     closeCart:function(req,res,next){
 
     }

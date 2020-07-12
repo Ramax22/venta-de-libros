@@ -11,7 +11,7 @@
   <div class="container">
     <%- include('partials/header.ejs', {userLogged}) %>
 
-    <div class="d-flex flex-column align-items-center flex-lg-row justify-content-between">
+    <div class="d-flex flex-column align-items-center justify-content-between">
 
  
       <div class="d-flex flex-column flex-lg-row justify-content-around info-profile">
@@ -19,20 +19,31 @@
         <!-- CAJA IZQUIERDA -->
           <div class="d-flex flex-column info-user">
               <h2 class="info-title">Rellena los datos para este pedido</h2>
-              <p>Correo Electrónico</p>
+              <p>Correo Electrónico<span>*</span> </p>
               <input type="text">
-              <p>Lo necesitamos para enviarte la infomación de tu pedido</p>
+              <p class="mensaje">Lo necesitamos para enviarte la infomación de tu pedido</p>
               <hr>
               <h2 class="info-title">1. Dirección de Entrega</h2>
-              <p>Nombre completo</p>
+              <p>Nombre completo<span>*</span></p>
               <input type="text">
-              <p>Nombre Completo. Por ejemplo: Pedro Pérez</p>
-              <p>País de entrega</p>
+              <p class="mensaje">Nombre Completo. Por ejemplo: Pedro Pérez</p>
+              <p>País de entrega<span>*</span></p>
               <p>Dirección de envío</p>
               <input type="text">
               <hr>
-              <h2 class="info-title">1. Dirección de Facturación</h2>
-              <p>Hcaer un select</p>
+              <h2 class="info-title">2. Dirección de Facturación</h2>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  Igual a la dirección de entrega
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  Diferente a la dirección de entrega
+                </label>
+              </div>
               <hr>
 
           </div>
@@ -43,8 +54,8 @@
             <div class="d-flex flex-column info-payment">
               <h2>Resumen del Pedido</h2>
               <div class="d-flex justify-content-between">
-                <h2><i class="fas fa-shopping-basket"></i> 1 artículo</h2>
-                <h2>precio</h2>
+                <h4 class="info-payment-left"><i class="fas fa-shopping-basket"></i> <%= quantity %>  artículo</h4>
+                <h4 class="info-payment-right"> ARS$ <%= total %> </h4>
               </div>
             </div>
             <!-- COMPRA --> 
@@ -56,25 +67,26 @@
               </div>
               <!-- SUBTOTAL --> 
               <div class="d-flex justify-content-between bookPrice">
-                <div class="book">SUBTOTAL</div>
+                <div class="sub">SUBTOTAL</div>
                 <div class="price">MONTO</div>
               </div>
               <!-- ENVÍO --> 
-              <div class="d-flex justify-content-between envio">
-                <div class="book">Envío</div>
+              <div class="d-flex justify-content-between bookPrice">
+                <div class="sub">Envío</div>
                 <div class="gratis">GRATIS</div>
               </div>
               <div class="d-flex justify-content-between bookPrice">
-                <div class="book">libro</div>
-                <div class="total">TOTAL</div>
+                <div class="sub">Total</div>
+                <div class="total">ARS$ TOTAL</div>
               </div>
                 
             </div>
           </div>
       </div>
-      
 
-  </div>
+      <a class="btn btn-primary align-self-right" href="/cart/payment" role="button">Finalizar Compra</a>  
+
+    </div>
 
     <%- include('./partials/footer') %>
 
