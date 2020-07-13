@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
          }
                
          var image = document.querySelector("#image")
-
+         console.log(image.value)
          if (image.value == "") {
             errores.push("Debe agregar una imagen")
          }

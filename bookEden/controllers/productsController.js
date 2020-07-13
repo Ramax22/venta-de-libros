@@ -131,27 +131,34 @@ var productsController = {
     
     created:function(req,res,next){
       //funciona para un array vacio o ya empezado
-        
-        db.Books.create({
-            title:req.body.title,
-            author_id: req.body.author,
-            language_id:req.body.lenguage,
-            format_id:req.body.format,
-            price:req.body.price ,
-            description:req.body.description ,
-            discount:req.body.discount,
-            rating:3,
-            category_id:req.body.category,
-            genre_id:req.body.genre,
-            avatar:req.files[0].filename,
-            publisher_id:req.body.publisher,
-            release_date:req.body.date
-            
-        })
-        .then(function(algo){
-            res.redirect('/products');
-        })
-      
+        let errors=validationResult(req);
+
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        console.log( req.files[0].filename)
+        console.log(errors)
+        if(errors.isEmpty()){
+            db.Books.create({
+                title:req.body.title,
+                author_id: req.body.author,
+                language_id:req.body.lenguage,
+                format_id:req.body.format,
+                price:req.body.price ,
+                description:req.body.description ,
+                discount:req.body.discount,
+                rating:3,
+                category_id:req.body.category,
+                genre_id:req.body.genre,
+                avatar:req.files[0].filename,
+                publisher_id:req.body.publisher,
+                release_date:req.body.date
+                
+            })
+            .then(function(algo){
+                res.redirect('/products');
+            })
+        }else{
+            res.send("hola error")
+        }
     },
 
     /* --- SEARCH ---*/

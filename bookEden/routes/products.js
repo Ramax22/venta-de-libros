@@ -23,8 +23,40 @@ router.get('/', productsController.main); /* GET - All products */
 router.get('/detail/:id', productsController.detail); /* GET - Product detail */
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/create/', productsController.create); /* GET - Form to create */
-router.post('/create/', upload.any(), productsController.created); /* POST - Store in DB */
+router.get('/create/',productsController.create); /* GET - Form to create */
+router.post('/create/', upload.any(),[
+	check("title").isLength({min:5}),
+	check("description").isLength({min:20}),
+	check("files").custom(function(value){
+		console.log("acaaaaaaaaaaaaaaaaaaa")
+		console.log(value)
+	})
+	// check("image").matches()
+] ,productsController.created); /* POST - Store in DB */
+// ,function(req,res,next){
+// 		console.log("entreeee")
+// 		console.log(req.body.files)
+// 		if(req.body.files==undefined){
+// 			console.log("estoy en el iff")
+// 			let errors=validationResult(req)
+// 			console.log(errors)
+// 			errors.errors.push({
+// 				value: '',
+// 				  msg: 'ingrese otra imagen',
+// 				 param: 'image',
+// 				location: 'body'
+// 			})
+// 			next();
+// 		}else{
+// 			let extension= path.extname(req.files[0].originalname)
+// 			if(extension==".jpg"||extension==".jpeg"||extension==".png"||extension==".gif"){
+// 			 console.log(path.extname(req.files[0].originalname))
+// 			console.log("funciono")
+// 			next();
+// 			}
+// 		}
+// }
+
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsController.edit); /* GET - Form to create */
