@@ -1,4 +1,6 @@
-
+.paises li {
+    color: black;
+}
 .profile {
     margin-bottom: 30px;
 }
@@ -46,6 +48,11 @@ span{
     color:red
 }
 
+.cantidadLibro{
+    color:black;
+    font-weight: bold;
+}
+
 .mensaje{
     color: grey;
     margin-left: 25px;
@@ -60,6 +67,12 @@ span{
 }
 
 input{
+    margin-left: 25px;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+.countries{
     margin-left: 25px;
     margin-bottom: 5px;
     width: 80%;
@@ -115,6 +128,7 @@ h4{
     margin-right: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .total{
@@ -123,12 +137,13 @@ h4{
     margin-top: 10px;
     font-size: 20px;
     color: rgb(73,10,72);
+    font-weight: bold;
 
 
 }
 
-.btn.btn-primary{
-    background-color: rgb(73,10,72)!important;
+.btn.btn-success{
+    
     margin-bottom: 20px;
 }
 

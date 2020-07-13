@@ -174,7 +174,8 @@ var cartController = {
                       books:carrito.books,
                       total: carrito.total,
                       quantity: articles,
-                      carritoId:carrito.id
+                      carritoId:carrito.id,
+                      compras: compras
                   })
                 })
             })
