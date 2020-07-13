@@ -28,6 +28,9 @@
               <input type="text">
               <p class="mensaje">Nombre Completo. Por ejemplo: Pedro Pérez</p>
               <p>País de entrega<span>*</span></p>
+              <select name="paises" class="countries">
+              </select>
+              
               <p>Dirección de envío</p>
               <input type="text">
               <hr>
@@ -61,14 +64,19 @@
             <!-- COMPRA --> 
             <div class="d-flex flex-column compra">
               <!-- LIBROS --> 
+              <% books.forEach(book => { %>
               <div class="d-flex justify-content-between bookPrice">
-                <div class="book">libro</div>
-                <div class="price">Precio</div>
+                <div class="book"> <%= book.title %> </div>
+                  <%for(let i=0;i<compras.length;i++){ %> 
+                  <%if(book.id==compras[i].book_id){%> 
+                <div class="price"> <%= book.price %> <span class="cantidadLibro">(<%= compras[i].quantity %>)</span></div>
+                  <%} } %> 
               </div>
+              <% }) %> 
               <!-- SUBTOTAL --> 
               <div class="d-flex justify-content-between bookPrice">
                 <div class="sub">SUBTOTAL</div>
-                <div class="price">MONTO</div>
+                <div class="price">ARS$ <%= total %></div>
               </div>
               <!-- ENVÍO --> 
               <div class="d-flex justify-content-between bookPrice">
@@ -77,7 +85,7 @@
               </div>
               <div class="d-flex justify-content-between bookPrice">
                 <div class="sub">Total</div>
-                <div class="total">ARS$ TOTAL</div>
+                <div class="total">ARS$ <%= total %></div>
               </div>
                 
             </div>
@@ -92,6 +100,7 @@
 
 
   </div>
+  <script src='/javascripts/payment.js'></script>
 </body>
 
 </html>
