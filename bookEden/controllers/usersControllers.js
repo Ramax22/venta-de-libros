@@ -9,8 +9,7 @@ const { EADDRINUSE } = require('constants');
 var usersController = {
   register: function (req, res, next){
       res.render("register", {
-        userLogged: req.session.userLogged,
-        admin:req.session.admin
+        userLogged: req.session.userLogged
       });
   },
     
@@ -34,9 +33,7 @@ var usersController = {
         let mailDB = usersMail[i].email; // Agarramos un mail de la db
 
         // Pregunto si es el mismo que en el formulario de registro
-        //console.log(mailDB + " - " + mailVal);
         if (mailDB.trim() == mailVal.trim()) {
-          console.log("entro");
           let error = {
             value: '',
             msg: 'Un usario ya se registró con ese mail.',
@@ -65,8 +62,7 @@ var usersController = {
                   req.session.userLogged = newUser;  
                   res.render('Profile',{
                     title: 'Perfil',
-                    userLogged: req.session.userLogged,
-                    admin:req.session.admin
+                    userLogged: req.session.userLogged
                   })
               })
             
@@ -83,26 +79,21 @@ var usersController = {
   login: function(req, res, next){
     res.render('log-in', {
       title: 'Login',
-      userLogged: req.session.userLogged,
-      admin: req.session.admin
+      userLogged: req.session.userLogged
     });
   },
 
   processLogin: function(req, res, next){
     // Creamos la variable errores
     let errors = validationResult(req);
-    // console.log('Aquí está el error!!!!')
 
     //Verificamos si hay errores
     if(errors.isEmpty()){
-        //si no hay errores
+      //si no hay errores
       let userToLogin
-      
-      console.log(req.body.email)
       
       db.User.findAll()
       .then(function(resultados){
-        // console.log(resultados[0].name)
         for (let i = 0; i < resultados.length; i++) {
             if(resultados[i].email==req.body.email){
               if(bcrypt.compareSync(req.body.password, resultados[i].password)){
@@ -111,7 +102,7 @@ var usersController = {
             }
           
         }
-        console.log(userToLogin);
+        
         if(userToLogin == undefined){
           // En caso de que el usuario esté indefinido hacemos nuestro propio mensaje de error
           res.render('log-in', {
@@ -121,7 +112,7 @@ var usersController = {
               errors: [
               {msg: 'credenciales inválidas'}
           ]});
-      }
+        }
 
         //aplicamos session acá con el usuario encontrado
         req.session.userLogged = userToLogin;
@@ -146,20 +137,19 @@ var usersController = {
             admin:req.session.admin
           })
         }
-      })//fin del thennnnnnnnnnnnnnn
-        
-        /* --- Si no se encuentra el usuario --- */
-        } else {
-        res.render('log-in', {
-            errors: errors.errors,
-            userLogged: undefined,
-            title: 'Login',
-            admin:req.session.admin
-        })
+      })
+      
+      /* --- Si no se encuentra el usuario --- */
+      } else {
+      res.render('log-in', {
+          errors: errors.errors,
+          userLogged: undefined,
+          title: 'Login'
+      })
     }
   },
   
-    destroy : function (req, res) {
+  destroy : function (req, res) {
     db.User.destroy({
         where:{
             id: req.params.id
@@ -167,15 +157,14 @@ var usersController = {
     })
     req.session.userLogged = undefined
     res.redirect('/');
-    },
+  },
 
   profile: function(req, res, next){
     
     res.render('profile',{
       title: 'Perfil',
       userLogged: req.session.userLogged,
-      avatar: req.session.userLogged.avatar,
-      admin:req.session.admin
+      avatar: req.session.userLogged.avatar
     })
   },
 
@@ -185,58 +174,14 @@ var usersController = {
     res.cookie('rememberMe', {expires: expiresDate})
     req.session.userLogged = undefined
     res.redirect('/')
-    // db.Books.findAll({
-    //   where:{
-    //       category_id:1
-    //   }
-    // })
-    // .then((novedades)=>{
-    //     db.Books.findAll({
-    //         where:{
-    //             category_id:2
-    //         }
-    //     })
-    //   .then((bestselling)=>{
-    //       db.Books.findAll({
-    //           where:{
-    //               category_id:4
-    //           }
-    //       })
-    //       .then((popularSpanish)=>{
-    //         db.Books.findAll({
-    //           where:{
-    //             category_id:5
-    //           }
-    //         })
-    //         .then((destacado)=>{
-    //           db.Authors.findAll()
-    //         .then(function(autores){
-              
-    //           res.render('index',{
-    //             title: 'BookEden',
-    //             novedades: novedades,
-    //             popularSpanish: popularSpanish,
-    //             bestselling: bestselling,
-    //             destacado: destacado,
-    //             autores:autores,
-    //             userLogged: undefined,
-                
-    //         })
-            
-    //           })
-              
-    //         })   
-    //       })
-    //     })
-    // })
   },
 
   edit : function (req, res) {
     res.render("user-edit",{
-      userLogged: req.session.userLogged,
-      admin:req.session.admin
+      userLogged: req.session.userLogged
     })
   },
+
   update : function (req, res) {
     var avatar
     if (req.files[0] == undefined) {
@@ -245,7 +190,6 @@ var usersController = {
       avatar=req.files[0].filename;
     }
     var contrasenia
-    console.log( req.body.password+"bodyyyy contrasnaaaaaaaa");
     if(req.body.password==""){
       contrasenia=req.session.userLogged.password
     }
@@ -262,28 +206,22 @@ var usersController = {
             id:req.params.id
         }
     });
-    var nuevoValor
+    var nuevoValor;
+
     db.User.findByPk(req.params.id)
     .then(function(resultado){
-      console.log(resultado)
       nuevoValor=resultado;
-      console.log(nuevoValor+"nuevo valorrrrrrr")
       req.session.userLogged=nuevoValor
-      console.log(req.session.userLogged.name)
       res.render('profile',{userLogged:req.session.userLogged,admin:undefined})
     })
-   
-},
+  },
 
   admin: function(req, res){
     res.render('admin', {
       title: 'Administrador',
-      userLogged: req.session.userLogged,
-      admin:req.session.admin
+      userLogged: req.session.userLogged
     })
   }
-  
-
 }
 
 module.exports = usersController;
