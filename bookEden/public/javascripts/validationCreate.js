@@ -1,7 +1,7 @@
 
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-create");
-   alert("Vamos a agregar un nuevo libro?")
+  
    if (formulario) {
       formulario.addEventListener("submit", function (e) {
          //creamos el array de errores
