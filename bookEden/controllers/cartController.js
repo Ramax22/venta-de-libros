@@ -186,6 +186,49 @@ var cartController = {
         //})
 
     },
+    canasta: function(req,res,next){
+        let user=req.session.userLogged.id
+        db.Cart.findOne({where:{
+            user_id:user,
+            status:1
+        },include:
+            [{association:'books'}]
+        })
+        .then(function(carrito){
+            db.Cart_Product.findAll({
+                where:{
+                    cart_id:carrito.id
+                }
+            })
+            .then(function(compras){
+                db.Books.findAll()
+                .then(function(book){
+                    var articles=0
+                    for (let i = 0; i < compras.length; i++) {
+                        for (let j = 0; j < book.length; j++) {
+                            if(compras[i].book_id==book[j].id){
+                                articles+= parseFloat(compras[i].quantity)
+                            }
+                        }
+                    }
+                    res.render('header',{
+                      userLogged:req.session.userLogged,
+                      books:carrito.books,
+                      total: carrito.total,
+                      quantity: articles,
+                      carritoId:carrito.id,
+                      compras: compras
+                  })
+                })
+            })
+                  
+        })
+           
+            
+        //})
+
+    },
+
     
     closeCart:function(req,res,next){
         db.Cart.update({
