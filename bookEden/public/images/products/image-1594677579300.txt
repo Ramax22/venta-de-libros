@@ -1,0 +1,14 @@
+Dudas: 
+1) consultar como llenar la columna cantidad
+2) Que no se repita el producto en la base de datos
+3) Como agregar mas productos a un carrito?
+pedido asinncronicas
+reponsy de users
+lista de pagos
+terminar base de datos
+pedido con fech
+acomodar el botton eliminar
+descuento
+
+5)gooabby 
+ctrl+k+c
