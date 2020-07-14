@@ -128,7 +128,7 @@
                 <article class="product-des d-flex flex-column align-items-center justify-content-center">
                     <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.avatar %>" alt="<%= element.title %> "></a>
                     <p class="titulo"><%= element.title %> </p>
-                    <p class="autor"><%=element.Authors.name  %></p>
+                    <p class="autor"><%= element.Authors.name %></p>
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
                     <button type="button" class="btn btn-warning"><a href="/products/detail/<%= element.id %>">Leer más</a></button> 

@@ -7,13 +7,10 @@ var rememberMeMiddleware = {
 
     rememberMe: function(req, res, next){
         next();
-        console.log('estoy en el middleware')
         
         //chequeamos si hay una cookie pero no hay un usuario logueado
         if(req.cookies.rememberMe != undefined && req.session.userLogged == undefined){
-        
-            
-           
+
             //reciclo el código del login
             let userLogged;
             db.User.findAll()
