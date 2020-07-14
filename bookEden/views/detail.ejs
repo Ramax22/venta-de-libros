@@ -19,6 +19,8 @@
           <!-- no estoy seguro si el forma correcat lo del autor creo que deberia funcionar solo con association -->
           <p style="margin-left: 10px;"><b>Autor: <%=selectedProduct.Authors.name  %> </b></p>
           <p style="margin-left: 10px;"><b>Editorial: <%=selectedProduct.publisher.name%> </b></p>
+          <p style="margin-left: 10px;"><b>Idioma: <%=selectedProduct.language.language%> </b></p>
+          <p style="margin-left: 10px;"><b>Formato: <%=selectedProduct.format.type%> </b></p>
           <br>
           <% var descriptionComplete = selectedProduct.description %>
           <% var descriptionPartOne = descriptionComplete.slice(0, 399); %>
