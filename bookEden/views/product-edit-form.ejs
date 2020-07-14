@@ -11,13 +11,34 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <h2>Editando: <%= selectedProduct.title %></h2>
+                        <span>esto lo puse asi nomas si lo pueden dejar bien y al lado el input tipo file o como ustedes crean que quede bien</span>
+                        <br>
+                        <img src="/images/products/<%= selectedProduct.avatar %>" alt="<%= selectedProduct.title %>"></a>
                 </div>
             </div>
             <div class="errores col-6 offset-3 text-left">
+                <% if(typeof errores != 'undefined'){%>
+                    <ul>
+                        <%for(let i=0;i<errores.length;i++){%>
+                            <li>
+                                <%= errores[i].msg %> 
+                            </li>
+                        <%}%>
+                    </ul>
+                <% } %> 
                 <h6></h6>
                 <ul></ul>
             </div>
-            <form action="/products/edit/<%= selectedProduct.id %>?_method=PUT" method="POST" id="form-edit">
+            <form action="/products/edit/<%= selectedProduct.id %>?_method=PUT" method="POST" id="form-edit" enctype="multipart/form-data">
+                <!-- agregue ecntype -->
+                <!-- input del file -->
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="image" name="image" >
+                        </div>
+                    </div>
+                    <!-- input del file -->
                 <div class="row text-center">
                     <div class="col-md-6">
                         <div class="input-group mb-3">
@@ -190,5 +211,5 @@
             <%- include('./partials/footer') %>
         </div>
     </body>
-   <script src="/javascripts/validationEdit.js"></script>
+   <!-- <script src="/javascripts/validationEdit.js"></script
 </html>

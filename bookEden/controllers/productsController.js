@@ -88,23 +88,66 @@ var productsController = {
     },
 
     update : function (req, res) {
-       db.Books.update({
-            title:req.body.name,
-            price:req.body.price,
-            discount:req.body.discount,
-            category_id:req.body.category,
-            language_id:req.body.language,
-            format_id:req.body.format,
-            author_id:req.body.author,
-            publisher_id:req.body.publisher,
-            genre_id:req.body.genre
-        },{
-            where:{
-                id:req.params.id
-            }
-        });
-        
-        res.redirect('/products');
+        let errors=validationResult(req);
+        var imagen
+        if(req.files[0]!=undefined){
+            imagen=req.files[0].filename
+        }else{
+            db.Books.findOne({
+                where:{
+                    id:req.params.id
+                }
+            }).then(function(libro){
+                imagen=libro.avatar
+            })
+        }
+        console.log("llegue a este punto")
+        if(errors.isEmpty()){
+            db.Books.update({
+                title:req.body.name,
+                price:req.body.price,
+                discount:req.body.discount,
+                category_id:req.body.category,
+                language_id:req.body.language,
+                format_id:req.body.format,
+                author_id:req.body.author,
+                publisher_id:req.body.publisher,
+                genre_id:req.body.genre,
+                avatar:imagen
+            },{
+                where:{
+                    id:req.params.id
+                }
+            })
+            .then(function(){
+                res.redirect('/products');
+            })
+        }else{
+            let pedidoLibro= db.Books.findByPk(req.params.id,{
+                include:[{association:"genero"},{association:"category"},{association:"format"},{association:"language"},{association:"publisher"} ]
+            })
+            let pedidoCategoria= db.Category.findAll();
+            let pedidoIdioma=db.Language.findAll();
+            let pedidoFormato=db.Format.findAll();
+            let pedidoGenero=db.Genres.findAll();
+            let pedidoEditorial=db.Publisher.findAll();
+            let pedidoAuthor=db.Authors.findAll()
+            Promise.all([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor])
+            .then(function([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor]){
+                res.render('product-edit-form', {
+                    title: 'BookEden' + pedidoLibro.title,
+                    selectedProduct : pedidoLibro,
+                    categoria:pedidoCategoria,
+                    idioma:pedidoIdioma,
+                    formato:pedidoFormato,
+                    userLogged: req.session.userLogged,
+                    editorial:pedidoEditorial,
+                    genero:pedidoGenero,
+                    autor:pedidoAuthor,
+                    errores:errors.errors
+                });
+            })
+        }
     },
 
     destroy : function (req, res) {
@@ -145,7 +188,40 @@ var productsController = {
                 res.redirect('/products');
             })
         }else{
-            res.send("hola error")
+            // res.render("product-create",{
+            //     userLogged: req.session.userLogged,
+            //     title: 'Agregar producto',
+            //     errores:errors.errors
+            // })
+            db.Genres.findAll()
+            .then((generos)=>{
+                db.Format.findAll()
+                .then((formatos)=>{
+                    db.Language.findAll()
+                    .then((idiomas)=>{
+                        db.Category.findAll()
+                        .then((categorias)=>{
+                            db.Authors.findAll()
+                            .then((autores)=>{
+                                db.Publisher.findAll()
+                                .then((editorial)=>{
+                                    res.render('product-create',{
+                                        title: 'Agregar producto',
+                                        userLogged: req.session.userLogged,
+                                        generos:generos,
+                                        formatos:formatos,
+                                        idiomas:idiomas,
+                                        categorias:categorias,
+                                        autores:autores,
+                                        editorial:editorial,
+                                        errores:errors.errors
+                                    })     
+                                })
+                            })
+                        })
+                    })
+                })
+            })
         }
     },
 

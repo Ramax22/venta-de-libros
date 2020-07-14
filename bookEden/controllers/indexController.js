@@ -49,7 +49,6 @@ var indexController = {
                                 autores:autores
                             })
                         })
-
                     })
                 })
             })

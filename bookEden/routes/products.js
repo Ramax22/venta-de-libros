@@ -26,13 +26,8 @@ router.get('/detail/:id', productsController.detail); /* GET - Product detail */
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', adminMiddlewares.check, productsController.create); /* GET - Form to create */
 router.post('/create/', upload.any(),[
-	check("title").isLength({min:5}),
-	check("description").isLength({min:20}),
-	check("files").custom(function(value){
-		console.log("acaaaaaaaaaaaaaaaaaaa")
-		console.log(value)
-	})
-	// check("image").matches()
+	check("title").isLength({min:5}).withMessage("nombre invalido minimo 5 caracteres"),
+	check("description").isLength({min:20}).withMessage("minimo 20 caracteres")
 ] ,productsController.created); /* POST - Store in DB */
 // ,function(req,res,next){
 // 		console.log("entreeee")
