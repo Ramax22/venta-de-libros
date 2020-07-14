@@ -20,17 +20,18 @@
             <div class="avatar d-flex justify-content-center ">
                 <img src="/images/avatars/<%=userLogged.avatar %>" alt="no funca">
             </div>
+            <br>
             <form action="/users/delete/<%=userLogged.id%>?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger">ELIMINAR</button>
               </form>
-              <a href="/users/edit/<%=userLogged.id  %>" class="btn btn-warning">EDITAR</a>
+              
         </div>
     
         <div class="d-flex flex-column flex-lg-row justify-content-around info-profile">
             <div class="d-flex flex-column info-menu">
                 <h2 class="info-title">Datos Personales</h2>
                 <ul>
-                    <li>Nombre, correo electrónico, contraseña</li>
+                    <li> <a href="/users/edit/<%=userLogged.id%>"> Nombre, apellido, contraseña</a></li>
                     <li>Preferencias de comunicación</li>
                     <li>Opciones de pago</li>
                     <li>Direcciones</li>
