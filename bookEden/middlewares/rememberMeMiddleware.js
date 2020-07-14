@@ -7,7 +7,7 @@ var rememberMeMiddleware = {
 
     rememberMe: function(req, res, next){
         next();
-        
+              
         //chequeamos si hay una cookie pero no hay un usuario logueado
         if(req.cookies.rememberMe != undefined && req.session.userLogged == undefined){
 
@@ -15,12 +15,10 @@ var rememberMeMiddleware = {
             let userLogged;
             db.User.findAll()
             .then(function(user){
-              console.log(user[0].name)
               //buscamos el usuario con el email que trajimos con la cookie
               for (let i = 0; i < user.length; i++) {
                   if(user[i].email == req.cookies.rememberMe){
                       userLogged = user[i];
-                      console.log(userLogged)
                       break;
                     }
                 }

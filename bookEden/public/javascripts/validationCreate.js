@@ -1,7 +1,7 @@
 
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-create");
-   alert("Vamos a agregar un nuevo libro?")
+  
    if (formulario) {
       formulario.addEventListener("submit", function (e) {
          //creamos el array de errores
@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
          }
 
          var image = document.querySelector("#image")
-
+         console.log(image.value)
          if (image.value == "") {
             errores.push("Debe agregar una imagen")
          } else
