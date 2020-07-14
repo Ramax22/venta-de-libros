@@ -98,6 +98,7 @@ var usersController = {
             if(resultados[i].email==req.body.email){
               if(bcrypt.compareSync(req.body.password, resultados[i].password)){
                 userToLogin=resultados[i];
+                break;
               }
             }
           
@@ -121,20 +122,17 @@ var usersController = {
           res.cookie('rememberMe', userToLogin.email, {maxAge: 2628000000000})
         }
 
-        console.log(userToLogin)
         if (userToLogin.isAdmin == 1){
           res.render('admin',{
             title: 'Admin',
             userLogged: req.session.userLogged,
             avatar: req.session.userLogged.imagen,
-            admin:req.session.admin
           })
         } else {
           res.render('profile',{
             title: 'Perfil',
             userLogged: req.session.userLogged,
             avatar: req.session.userLogged.avatar,//cambien de imagen a avatar
-            admin:req.session.admin
           })
         }
       })

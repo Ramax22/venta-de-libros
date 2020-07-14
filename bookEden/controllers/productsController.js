@@ -167,7 +167,6 @@ var productsController = {
                 busqueda: userSearch,
                 books:books,
                 userLogged: req.session.userLogged,
-                admin:req.session.admin,
                 title: 'Resultados'//hacer resultados
             })
         })
