@@ -10,14 +10,16 @@ var indexController = {
         db.Books.findAll({
             where:{
                 category_id:1
-            }
+            }, 
+            include:[{association:"Authors"}]
             
         })
         .then((novedades)=>{
             db.Books.findAll({
                 where:{
                     category_id:2
-                }
+                }, 
+                include:[{association:"Authors"}]
             })
             .then((bestselling)=>{
                 db.Books.findAll({
@@ -34,19 +36,14 @@ var indexController = {
                         include:[{association:"Authors"}]
                     })
                     .then((destacado)=>{
-                        db.Authors.findAll()
-                        .then(function(autores){
-                            res.render('index',{
-                                title: 'BookEden',
-                                novedades: novedades,
-                                bestselling: bestselling,
-                                popularSpanish: popularSpanish,
-                                destacado: destacado,
-                                userLogged: req.session.userLogged,
-                                autores:autores
-                            })
+                        res.render('index',{
+                            title: 'BookEden',
+                            novedades: novedades,
+                            bestselling: bestselling,
+                            popularSpanish: popularSpanish,
+                            destacado: destacado,
+                            userLogged: req.session.userLogged
                         })
-
                     })
                 })
             })

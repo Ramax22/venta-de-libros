@@ -21,6 +21,15 @@
                 </div>
             </div>
             <div class="errores col-8 offset-2 text-left">
+                <% if(typeof errores != 'undefined'){%>
+                    <ul>
+                        <%for(let i=0;i<errores.length;i++){%>
+                            <li>
+                                <%= errores[i].msg %> 
+                            </li>
+                        <%}%>
+                    </ul>
+                <% } %> 
                 <h6></h6>
                 <ul></ul>
             </div>
@@ -146,5 +155,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
 </body>
-<script src="/javascripts/validationCreate.js"></script> 
+<!-- <script src="/javascripts/validationCreate.js"></script>  -->
 </html>
