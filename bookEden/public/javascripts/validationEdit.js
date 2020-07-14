@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-edit");
-   alert("Estas seguro de que quieres editar?")
+  
    if (formulario) {
       formulario.addEventListener("submit", function (e) {
         

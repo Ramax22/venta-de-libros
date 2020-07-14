@@ -1,7 +1,7 @@
 
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-create");
-   alert("Vamos a agregar un nuevo libro?")
+  
    if (formulario) {
       formulario.addEventListener("submit", function (e) {
          //creamos el array de errores
@@ -23,15 +23,15 @@ window.addEventListener("load", function () {
 
 
          let campoDiscount = document.querySelector("#discount");
-            if (campoDiscount.value < 0) {
-               errores.push("El Descuento no puedo ser menor a cero")
-            }
+         if (campoDiscount.value < 0) {
+            errores.push("El Descuento no puedo ser menor a cero")
+         }
 
          let campoDate = document.querySelector("#date");
          if (campoDate.value == "") {
             errores.push("Debe seleccionar una fecha")
          } else
-         var hoy = new Date();
+            var hoy = new Date();
          var day = new Date(hoy).getDate();
          var month = new Date(hoy).getMonth() + 1;
          var year = new Date(hoy).getFullYear();
@@ -41,12 +41,21 @@ window.addEventListener("load", function () {
          if (campoDate.value > fecha) {
             errores.push("La fecha debe ser igual o menor a " + fecha)
          }
-               
+
          var image = document.querySelector("#image")
          console.log(image.value)
          if (image.value == "") {
             errores.push("Debe agregar una imagen")
+         } else
+            var archivo = image.value
+         let extension = archivo.indexOf(".jpg")
+
+         if (extension == -1) {
+            errores.push("Extensión no válida")
          }
+
+
+
          let campoDescription = document.querySelector("#description");
          if (campoDescription.value == "") {
             errores.push("El campo descripción no puede estar vacio")

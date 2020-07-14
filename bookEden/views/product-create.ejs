@@ -11,6 +11,7 @@
     <title> <%= title %>  </title>
 </head>
 <body>
+    <div class="container">
     <%-include('partials/header')  %>
     <div class="back">
         <div class="container products-wrapper ">
@@ -32,10 +33,7 @@
                             <input type="text" id="title" name="title" placeholder="Ej: El Hobbit" class="form-input">
                             
                         </div>
-                        <!-- <div class="col-12 col-md-6 color">
-                            <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
-                            <input type="text" id="author" name="author" placeholder="Ej:  J. R. R. Tolkien" class="form-input">
-                        </div> -->
+                        
                         <div class="col-12 col-md-6 color">
                             <label for="author" class="form-label">Autor<span class="oblig">(obligatorio)</span></label>
                             <select name="author" id="author" class=" title form-input">
@@ -88,17 +86,7 @@
                                 <%}  %>  
                             </select>
                         </div>
-                        <!-- <div class="col-12 col-md-6 color">
-                            <label for="category" class="form-label">Categoría<span class="oblig">(obligatorio)</span></label>
-                            <select name="category" id="category" class="form-input">
-                                <option value="">Elige</option>
-                                <option value="Aventuras">Aventuras</option>
-                                <option value="Ciencia Ficcion">Ciencia Ficcion</option>
-                                <option value="Gotico"> Gotico</option>
-                                <option value="Policial">Policial</option>
-                                <option value="Fantastica">Fantastica </option>
-                            </select>
-                        </div> -->
+                      
                         <div class="col-12 col-md-6 color">
                             <label for="category" class="form-label">Categoría<span class="oblig">(obligatorio)</span></label>
                             <select name="category" id="category" class="form-input">
@@ -121,7 +109,7 @@
                         </div>
                         <div class="col-12 col-md-6 ">
                            <label for="image" class="form-label" >Agregar Imagen<span class="oblig">(obligatorio)</span></label>
-                           <input type="file" id='image' name='image'> 
+                           <input type="file" id='image' name='image' style="width: 100%"> 
                         </div>
                         <div class="col-12 color">
                             <label for="description" class="form-label">Descripción<span class="oblig">(No obligatorio)</span></label>
@@ -146,7 +134,7 @@
 
         <%-include('partials/footer')  %>
     </div>
-
+</div>
 
 
 
@@ -154,8 +142,8 @@
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
 </body>
 <script src="/javascripts/validationCreate.js"></script> 

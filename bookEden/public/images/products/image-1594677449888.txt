@@ -1,0 +1,26 @@
+https://stackoverflow.com/questions/18022809/xampp-mysql-shutdown-unexpectedly
+
+1) SELECT * FROM `actors` WHERE actors.id = (SELECT MAX(actors.id)FROM actors) 
+
+3)SELECT length FROM movies WHERE title LIKE "Titanic" 
+
+4) SELECT genre_id FROM series WHERE title LIKE "Person of interest" 
+
+select * from moviesinner join actors on actors.favorite_movie_id = movies.idwhere actors.rating = 2.3
+
+
+ sequelize.query("SELECT * FROM movies")
+        .then(function (resultados){
+            let peliculas = resultados [0];
+            res.render("movies", {peliculas: peliculas});
+
+
+
+parseInt(edadUsuario)
+
+para la vista de heroes
+app.use(function(req, res, next){  res.status(404);  // respond with html page  if (req.accepts('html')) {    res.render('404', { url: req.url });    return;  }});
+
+https://airtable.com/
+https://sequelize.org/master/manual/assocs.html#special-methods-mixins-added-to-instances
+

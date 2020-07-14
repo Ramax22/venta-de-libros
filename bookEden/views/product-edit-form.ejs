@@ -34,7 +34,7 @@
                             </div>
                             <select class="custom-select" id="author" name="author">
                                 <%for (let i = 0; i < autor.length; i++) {%>
-                                    <% if(autor[i].id==selectedProduct.publisher_id){ %> 
+                                    <% if(autor[i].id==selectedProduct.author_id){ %> 
                                         <option value="<%=autor[i].id%>" selected>
                                             <%= autor[i].name %> 
                                         </option>
@@ -104,11 +104,6 @@
                                         </option>
                                     <%} %> 
                                <% }  %> 
-                                <!-- <option selected>Elegir...</option>
-                                <option value="bestselling">Bestselling</option>
-                                <option value="novedades">Novedad</option>
-                                <option value="popular-spanish">Populares en Español</option>
-                                <option value="destacado">Destacado</option> -->
                             </select>
                         </div>
                     </div>

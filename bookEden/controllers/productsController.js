@@ -10,8 +10,7 @@ var productsController = {
             return res.render('products', {
                 title: 'BookEden | Products',
                 books: books,
-                userLogged: req.session.userLogged,
-                admin:req.session.admin
+                userLogged: req.session.userLogged
             })
         })
 
@@ -33,14 +32,13 @@ var productsController = {
                                 res.render('product-create',{
                                     title: 'Agregar producto',
                                     userLogged: req.session.userLogged,
-                                    admin:req.session.admin,
                                     generos:generos,
                                     formatos:formatos,
                                     idiomas:idiomas,
                                     categorias:categorias,
                                     autores:autores,
                                     editorial:editorial
-                            })     
+                                })     
                             })
                         })
                     })
@@ -52,22 +50,15 @@ var productsController = {
 
     detail : function (req, res) {
         db.Books.findByPk(req.params.id,{
-            include:[{association:"genero"}, {association:"publisher"},{association:"Authors"}]
+            include:[{association:"genero"}, {association:"publisher"}, {association:"Authors"}, {association:"language"}, {association:"format"}]
         })
         .then((resultado)=>{
-            console.log(resultado)
-            db.Authors.findAll()
-            .then(function(autor){
-                res.render('detail', {
-                    title: resultado.title,
-                    selectedProduct : resultado,
-                    userLogged: req.session.userLogged,
-                    admin:req.session.admin,
-                    autor:autor
-                }); 
-            })
+            res.render('detail', {
+                title: resultado.title,
+                selectedProduct : resultado,
+                userLogged: req.session.userLogged
+            }); 
         })
-
     },
 
     edit : function (req, res) {
@@ -82,8 +73,6 @@ var productsController = {
         let pedidoAuthor=db.Authors.findAll()
         Promise.all([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor])
         .then(function([pedidoLibro,pedidoCategoria,pedidoIdioma,pedidoFormato,pedidoGenero,pedidoEditorial,pedidoAuthor]){
-          
-            console.log(pedidoLibro.category_id)
             res.render('product-edit-form', {
                 title: 'BookEden' + pedidoLibro.title,
                 selectedProduct : pedidoLibro,
@@ -91,7 +80,6 @@ var productsController = {
                 idioma:pedidoIdioma,
                 formato:pedidoFormato,
                 userLogged: req.session.userLogged,
-                admin:req.session.admin,
                 editorial:pedidoEditorial,
                 genero:pedidoGenero,
                 autor:pedidoAuthor
