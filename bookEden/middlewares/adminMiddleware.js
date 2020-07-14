@@ -6,7 +6,7 @@ const adminMiddlewares={
             // Continuamos
             next();
         } else {
-            res.send("No tienes los privilegios para ingresar");
+            res.redirect('/')
         }
     }
 

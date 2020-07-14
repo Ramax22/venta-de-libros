@@ -11,22 +11,39 @@ window.onload = function(){
             email.classList.add('is-invalid')
             document.querySelector('.email.invalid-feedback').innerHTML = 'Por favor, ingresa tu email'
         }
-    });
+    })
+
+    email.addEventListener('blur', function(){
+        if(email.value != ""){
+            email.classList.remove('is-invalid')
+            document.querySelector('.email.invalid-feedback').innerHTML = ''
+            email.classList.add('is-valid')
+            document.querySelector('.email.valid-feedback').innerHTML = 'Perfecto :)'
+        }
+    })
+    
 
     /* VALIDACIÓN DE CONTRASEÑA */
 
     var password = document.querySelector('.password.form-control');
-    console.log(password);
     
     password.addEventListener('blur', function(){
         if(password.value == ""){
             password.classList.add('is-invalid');
             document.querySelector('.password.invalid-feedback').innerHTML = 'Por favor, ingresa tu contraseña'
-        }
-
-        if(password.value.length < 6){
+        } else if(password.value.length < 6){
             password.classList.add('is-invalid');
             document.querySelector('.password.invalid-feedback').innerHTML = 'La contraseña debe tener mínimo 6 caracteres'
+        }
+
+    })
+
+    password.addEventListener('blur', function(){
+        if(password.value.length > 5){
+            password.classList.remove('is-invalid');
+            document.querySelector('.password.invalid-feedback').innerHTML = ''
+            password.classList.add('is-valid')
+            document.querySelector('.password.valid-feedback').innerHTML = 'Perfecto :)'
         }
 
     })
@@ -34,7 +51,6 @@ window.onload = function(){
 // VALIDACIONES AL HACER SUBMIT
 
     var formulario = document.querySelector('form.login')
-    console.log(formulario)
 
     formulario.addEventListener('submit', function(e){
         
@@ -47,14 +63,9 @@ window.onload = function(){
 
         if(password.value == ""){
             errores.push('El campo de contraseña debe estar lleno') 
-        }
-
-        if(password.value.length < 6){
+        } else if(password.value.length < 6){
             errores.push('La contraseña debe tener mínimo 6 caracteres')
         }
-
-        
-        console.log(errores + 'AQUÍ ESTÁN LOS ERRORES')
 
         if (errores.length > 0){
         //si tenemos errores, evitamos que se envíe el formulario

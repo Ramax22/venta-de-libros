@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var path = require('path');
+var adminMiddlewares = require('../middlewares/adminMiddleware');
 let {check, validationResult, body } = require('express-validator')
 
 
@@ -23,7 +24,7 @@ router.get('/', productsController.main); /* GET - All products */
 router.get('/detail/:id', productsController.detail); /* GET - Product detail */
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/create/',productsController.create); /* GET - Form to create */
+router.get('/create/', adminMiddlewares.check, productsController.create); /* GET - Form to create */
 router.post('/create/', upload.any(),[
 	check("title").isLength({min:5}),
 	check("description").isLength({min:20}),
@@ -59,20 +60,20 @@ router.post('/create/', upload.any(),[
 
 
 /*** EDIT ONE PRODUCT ***/ 
-router.get('/edit/:id', productsController.edit); /* GET - Form to create */
+router.get('/edit/:id', adminMiddlewares.check, productsController.edit); /* GET - Form to create */
 router.put('/edit/:id', productsController.update); /* PUT - Update in DB */
 
 /*** DELETE ONE PRODUCT***/ 
 router.delete('/delete/:id', productsController.destroy); /* DELETE - Delete from DB */
 
 /*** AUTHOR ***/
-router.get('/authors', productsController.authors);
+router.get('/authors', adminMiddlewares.check, productsController.authors);
 router.post('/authors',[
 	check('authorName').isLength().withMessage('Este campo debe estar lleno'),
 ], productsController.authorSafe);
 
 /*** PUBLISHER ***/
-router.get('/publishers', productsController.publishers);
+router.get('/publishers', adminMiddlewares.check, productsController.publishers);
 router.post('/publishers',[
 	check('publisher').isLength().withMessage('Este campo debe estar lleno'),
 ], productsController.publisherSafe);

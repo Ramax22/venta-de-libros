@@ -20,6 +20,10 @@
             <section class="products d-flex flex-wrap justify-content-center">
                 
             <!--AQUÍ ESTÁ FOREACH-->
+
+            <% if (books == "") { %>
+             <h2>Lo sentimos. No encontramos resultados asociados a tu búsqueda </h2>
+            <% } else { %>
                 <% books.forEach(book => { %>
                     <article class="product-des d-flex flex-column align-items-center">
                         <a href="/products/detail/<%= book.id %> "><img src="/images/products/<%= book.avatar %> " alt="<%= book.title %> "></a>
@@ -29,8 +33,9 @@
                         <p class="precio"> ARS$<%= precioFinal%> </p>
                         <button type="button" class="btn btn-warning"><a href="/cart">Añadir al carrito</a></button>
                     </article>
-                    <% }) %> 
+                    <% }) %>   
             </section>
+            <% } %> 
     
            
         </div>
