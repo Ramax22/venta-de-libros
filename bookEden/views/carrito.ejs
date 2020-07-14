@@ -76,7 +76,7 @@
                 <select name="" id="cantidad">
                   <%for(let i=0;i<compras.length;i++){ %> 
                   <%if(book.id==compras[i].book_id){%> 
-                  <option value="<%=compras[i].quantity %> "><%= compras[i].quantity %> </option>
+                  <option class="cantidad" value="<%=compras[i].quantity %> "><%= compras[i].quantity %> </option>
                   <%} } %> 
                 </select>
               </form>

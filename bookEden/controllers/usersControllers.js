@@ -187,31 +187,44 @@ var usersController = {
     } else {
       avatar=req.files[0].filename;
     }
+    console.log(req.files[0])
+    console.log(avatar)
     var contrasenia
     if(req.body.password==""){
       contrasenia=req.session.userLogged.password
     }
     else{
-      contrasenia=req.body.password
+      contrasenia=bcrypt.hashSync(req.body.password, 10)
     }
+    var nuevoValor;
     db.User.update({
         name:req.body.name,
-        last_name:req.body.last_name,
+        last_name:req.body.username,
         password:contrasenia,
         avatar:avatar,
     },{
         where:{
             id:req.params.id
         }
-    });
-    var nuevoValor;
-
-    db.User.findByPk(req.params.id)
-    .then(function(resultado){
-      nuevoValor=resultado;
-      req.session.userLogged=nuevoValor
-      res.render('profile',{userLogged:req.session.userLogged})
     })
+    .then(function(resultadoEditado){
+      db.User.findByPk(req.params.id)
+      .then(function(resultado){
+        req.session.userLogged=resultado;
+        res.render('profile',{userLogged:req.session.userLogged})
+      })
+     
+     
+    })
+   
+
+    // db.User.findByPk(req.params.id)
+    // .then(function(resultado){
+    //   nuevoValor=resultado;
+    //   req.session.userLogged=nuevoValor
+    //   res.render('profile',{userLogged:req.session.userLogged})
+    // })
+
   },
 
   admin: function(req, res){

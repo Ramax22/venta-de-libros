@@ -25,13 +25,8 @@ router.get('/detail/:id', productsController.detail); /* GET - Product detail */
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/',productsController.create); /* GET - Form to create */
 router.post('/create/', upload.any(),[
-	check("title").isLength({min:5}),
-	check("description").isLength({min:20}),
-	check("files").custom(function(value){
-		console.log("acaaaaaaaaaaaaaaaaaaa")
-		console.log(value)
-	})
-	// check("image").matches()
+	check("title").isLength({min:5}).withMessage("nombre invalido minimo 5 caracteres"),
+	check("description").isLength({min:20}).withMessage("minimo 20 caracteres")
 ] ,productsController.created); /* POST - Store in DB */
 // ,function(req,res,next){
 // 		console.log("entreeee")
@@ -60,7 +55,10 @@ router.post('/create/', upload.any(),[
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsController.edit); /* GET - Form to create */
-router.put('/edit/:id', productsController.update); /* PUT - Update in DB */
+router.put('/edit/:id', upload.any(),[
+	check("name").isLength({min:5}).withMessage("nombre invalido minimo 5 caracteres"),
+	check("description").isLength({min:20}).withMessage("minimo 20 caracteres")
+], productsController.update); /* PUT - Update in DB */
 
 /*** DELETE ONE PRODUCT***/ 
 router.delete('/delete/:id', productsController.destroy); /* DELETE - Delete from DB */

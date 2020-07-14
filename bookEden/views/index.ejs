@@ -90,7 +90,7 @@
                     <article class="product-des d-flex flex-column align-items-center justify-content-center">
                         <a href="/products/detail/<%= novedad.id %> "><img src="/images/products/<%= novedad.avatar %> " alt="<%= novedad.title %> "></a>
                         <p class="titulo"><%= novedad.title %> </p>
-                        <p class="autor"><%= autores[novedad.author_id].name %> </p>
+                        <p class="autor"><%= novedad.Authors.name %> </p>
                         <% let precioFinal = Math.round(novedad.price) %>
                         <p class="precio">ARS$ <%= precioFinal%> </p>
                         <button type="button" class="btn btn-warning"><a href="/products/detail/<%= novedad.id %> ">Leer más</a></button>
@@ -109,7 +109,7 @@
                     <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.avatar %>" alt="<%= element.title %>"></a>
                     <p class="titulo"><%= element.title %> </p>
                     <!-- ver bloc de notas de como estaba antes los autoressss -->
-                    <p class="autor"><%= autores[element.author_id].name %> </p>  
+                    <p class="autor"><%= element.Authors.name %> </p>  
                     <% let precioFinal = Math.round(element.price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
                    <button type="button" class="btn btn-warning"><a href="/products/detail/<%= element.id %>">Leer más</a></button> 
