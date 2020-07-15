@@ -26,33 +26,9 @@ router.get('/detail/:id', productsController.detail); /* GET - Product detail */
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', adminMiddlewares.check, productsController.create); /* GET - Form to create */
 router.post('/create/', upload.any(),[
-	check("title").isLength({min:5}).withMessage("nombre invalido minimo 5 caracteres"),
-	check("description").isLength({min:20}).withMessage("minimo 20 caracteres")
+	check("title").isLength({min:5}).withMessage("titulo invalido minimo 5 caracteres"),
+	check("description").isLength({min:20}).withMessage("la descripcion debe tener minimo 20 caracteres")
 ] ,productsController.created); /* POST - Store in DB */
-// ,function(req,res,next){
-// 		console.log("entreeee")
-// 		console.log(req.body.files)
-// 		if(req.body.files==undefined){
-// 			console.log("estoy en el iff")
-// 			let errors=validationResult(req)
-// 			console.log(errors)
-// 			errors.errors.push({
-// 				value: '',
-// 				  msg: 'ingrese otra imagen',
-// 				 param: 'image',
-// 				location: 'body'
-// 			})
-// 			next();
-// 		}else{
-// 			let extension= path.extname(req.files[0].originalname)
-// 			if(extension==".jpg"||extension==".jpeg"||extension==".png"||extension==".gif"){
-// 			 console.log(path.extname(req.files[0].originalname))
-// 			console.log("funciono")
-// 			next();
-// 			}
-// 		}
-// }
-
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', adminMiddlewares.check, productsController.edit); /* GET - Form to create */

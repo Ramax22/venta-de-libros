@@ -101,7 +101,19 @@ var productsController = {
                 imagen=libro.avatar
             })
         }
-        console.log("llegue a este punto")
+        var fechaEditada
+        if (req.body.date=="") {
+            db.Books.findOne({
+                where:{
+                    id:req.params.id
+                }
+            }).then(function(libro){
+                fechaEditada=libro.release_date
+            })
+        }else{
+            fechaEditada=req.body.date
+        }
+        
         if(errors.isEmpty()){
             db.Books.update({
                 title:req.body.name,
@@ -113,7 +125,8 @@ var productsController = {
                 author_id:req.body.author,
                 publisher_id:req.body.publisher,
                 genre_id:req.body.genre,
-                avatar:imagen
+                avatar:imagen,
+                release_date:fechaEditada
             },{
                 where:{
                     id:req.params.id
@@ -163,8 +176,6 @@ var productsController = {
     created:function(req,res,next){
       //funciona para un array vacio o ya empezado
         let errors=validationResult(req);
-
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         console.log( req.files[0].filename)
         console.log(errors)
         if(errors.isEmpty()){

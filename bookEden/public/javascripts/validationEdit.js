@@ -1,9 +1,7 @@
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-edit");
-
-
+   
    formulario.addEventListener("submit", function (e) {
-
       //creamos el array de errores
       let errores = false;
 
@@ -19,11 +17,10 @@ window.addEventListener("load", function () {
       if (campoPrice.value == "") {
          alert("El campo precio no puede estar vacio")
          errores = true;
-      } else
-         if (campoPrice.value < 0) {
+      } else if (campoPrice.value < 0) {
             alert("El campo precio debe ser mayor a cero")
             errores = true;
-         }
+      }
 
 
       let campoDiscount = document.querySelector("input.form-control.discount");
@@ -36,8 +33,8 @@ window.addEventListener("load", function () {
       if (campoDate.value == "") {
          alert("Debe seleccionar una fecha")
          errores = true;
-      } else
-         var hoy = new Date();
+      } 
+      var hoy = new Date();
       var day = hoy.getDate();
       var month = hoy.getMonth() + 1;
       var year = hoy.getFullYear();
@@ -51,10 +48,10 @@ window.addEventListener("load", function () {
 
       let campoDescription = document.querySelector("textarea.form-control.description");
       if (campoDescription.value == "") {
-         alert("La fecha debe ser igual o menor a " + fecha)
+         alert("La descripcion debe completarse")
          errores = true;
       }
-      if (errores) {
+      if (errores==true) {
          e.preventDefault();
 
       }
