@@ -148,7 +148,7 @@
                                     <div class="input-group-prepend">
                                         <label for="date" class="input-group-text" id="">Publicación:</label>
                                     </div>
-                                    <input type="date" class="form-control" id="date" name="date" aria-label="Ej: 0-100"
+                                    <input type="date" class="form-control date" id="date" name="date" aria-label="Ej: 0-100"
                                         aria-describedby="basic-addon1">
                                 </div>
                             </div>
@@ -203,7 +203,7 @@
                                     <div class="input-group-prepend">
                                         <label for="price" class="input-group-text" id="price">Precio:</label>
                                     </div>
-                                    <input type="text" class="form-control" id="price" name="price"
+                                    <input type="text" class="form-control price" id="price" name="price"
                                         placeholder="Ej: 1234.50" aria-label="Ej: 1234.50"
                                         aria-describedby="basic-addon1" value="<%=selectedProduct.price%> ">
                                 </div>
@@ -213,7 +213,7 @@
                                     <div class="input-group-prepend">
                                         <label for="discount" class="input-group-text" id="discount">Descuento:</label>
                                     </div>
-                                    <input type="text" class="form-control" id="discount" name="discount"
+                                    <input type="text" class="form-control discount" id="discount" name="discount"
                                         placeholder="Ej: 0-100" aria-label="Ej: 0-100" aria-describedby="basic-addon1"
                                         value="<%= selectedProduct.discount%> ">
                                 </div>
@@ -224,7 +224,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text p-0">Descipción:</span>
                             </div>
-                            <textarea id="description" name="description" class="form-control m-0"
+                            <textarea id="description" name="description" class="form-control description m-0"
                                 style="height: 230px;"
                                 aria-label="With textarea"><%= selectedProduct.description %></textarea>
                         </div>

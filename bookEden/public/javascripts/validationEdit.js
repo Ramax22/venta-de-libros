@@ -1,81 +1,67 @@
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-edit");
 
- 
-      formulario.addEventListener("submit", function (e) {
-        
-         //creamos el array de errores
-         let errores = [];
 
-         let camponame = document.querySelector("#title");
+   formulario.addEventListener("submit", function (e) {
 
-         if (camponame.value == "") {
-            errores.push("El campo Titulo no puede estar vacio")
-           }
+      //creamos el array de errores
+      let errores = false;
 
-         let campoPrice = document.querySelector("#price");
+      let camponame = document.querySelector("input.form-control.box");
 
-         if (campoPrice.value == "") {
-            errores.push("El campo Precio no puede estar vacio")
-         } else
-            if (campoPrice.value < 0) {
-               errores.push("El Precio debe ser mayor a cero")
-            }
+      if (camponame.value == "") {
+         alert("El campo Titulo no puede estar vacio")
+         errores = true;
+      }
 
+      let campoPrice = document.querySelector("input.form-control.price");
 
-         let campoDiscount = document.querySelector("#discount");
-         if (campoDiscount.value == "") {
-            alert("El campo Descuento no puede estar vacio")
-         } else
-            if (campoDiscount.value <= 0) {
-               errores.push("El Descuento no puedo ser menor a cero")
-            }
-
-         let campoDate = document.querySelector("#date");
-         if (campoDate.value == "") {
-            errores.push("Debe seleccionar una fecha")
-         } else
-            var hoy = new Date();
-         var day = hoy.getDate();
-         var month = hoy.getMonth() + 1;
-         var year = hoy.getFullYear();
-
-         var fecha = year + '-' + "0" + month + '-' + day;
-
-         if (campoDate.value > fecha) {
-            errores.push("La fecha debe ser igual o menor a " + fecha)
+      if (campoPrice.value == "") {
+         alert("El campo precio no puede estar vacio")
+         errores = true;
+      } else
+         if (campoPrice.value < 0) {
+            alert("El campo precio debe ser mayor a cero")
+            errores = true;
          }
 
-         let campoDescription = document.querySelector("#description");
-         if (campoDescription.value == "") {
-            errores.push("Debe agregar una descripción")
-         }
-         // en caso de encontrar errores
-         if (errores.length > 0) {
-            e.preventDefault();
 
-            const divErrores = document.querySelector("div.errores");
-            divErrores.style.borderRadius = "8px"
-            divErrores.style.boxShadow = "inset 0 0 5px 0 red"
-            const titulo = document.querySelector("h6");
-            titulo.innerHTML = "Encontramos algunos errores:"
-            const ulErrores = document.querySelector("div.errores ul");
-            ulErrores.style.color = "red";
-            ulErrores.style.listStyle = "none"
+      let campoDiscount = document.querySelector("input.form-control.discount");
+      if (campoDiscount.value == "") {
+         alert("El campo Descuento no puede estar vacio")
+         errores = true;
+      }
+
+      let campoDate = document.querySelector("input.form-control.date");
+      if (campoDate.value == "") {
+         alert("Debe seleccionar una fecha")
+         errores = true;
+      } else
+         var hoy = new Date();
+      var day = hoy.getDate();
+      var month = hoy.getMonth() + 1;
+      var year = hoy.getFullYear();
+
+      var fecha = year + '-' + "0" + month + '-' + day;
+
+      if (campoDate.value > fecha) {
+         alert("La fecha debe ser igual o menor a " + fecha)
+         errores = true;
+      }
+
+      let campoDescription = document.querySelector("textarea.form-control.description");
+      if (campoDescription.value == "") {
+         alert("La fecha debe ser igual o menor a " + fecha)
+         errores = true;
+      }
+      if (errores) {
+         e.preventDefault();
+
+      }
 
 
-            //recorremos el array para imprimir  los errores
+   })
 
-            for (let i = 0; i < errores.length; i++) {
-
-               ulErrores.innerHTML += "<li>" + errores[i] + "</li>"
-
-            }
-
-         }
-
-      })
-   
 
 
 })
