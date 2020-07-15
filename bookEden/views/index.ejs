@@ -86,16 +86,16 @@
 
             <section class="products d-flex flex-wrap justify-content-center">
             <!--AQUÍ ESTÁ FOREACH-->
-                <% novedades.forEach(novedad => { %>
+                <% for(let i = 0; i<3 ; i++) { %>
                     <article class="product-des d-flex flex-column align-items-center justify-content-center">
-                        <a href="/products/detail/<%= novedad.id %> "><img src="/images/products/<%= novedad.avatar %> " alt="<%= novedad.title %> "></a>
-                        <p class="titulo"><%= novedad.title %> </p>
-                        <p class="autor"><%= novedad.Authors.name %> </p>
-                        <% let precioFinal = Math.round(novedad.price) %>
+                        <a href="/products/detail/<%= novedades[i].id %> "><img src="/images/products/<%= novedades[i].avatar %> " alt="<%= novedades[i].title %> "></a>
+                        <p class="titulo"><%= novedades[i].title %> </p>
+                        <p class="autor"><%= novedades[i].Authors.name %> </p>
+                        <% let precioFinal = Math.round(novedades[i].price) %>
                         <p class="precio">ARS$ <%= precioFinal%> </p>
-                        <button type="button" class="btn btn-warning"><a href="/products/detail/<%= novedad.id %> ">Leer más</a></button>
+                        <button type="button" class="btn btn-warning"><a href="/products/detail/<%= novedades[i].id %> ">Leer más</a></button>
                     </article>
-                    <% }) %> 
+                    <% } %> 
             </section>
     
             <div class="categorias align-items-center">
@@ -104,17 +104,17 @@
     
             <section class="products d-flex flex-wrap justify-content-center">
             <!--AQUÍ ESTÁ FOREACH-->
-            <% bestselling.forEach(element => { %>
+            <% for(let i = 0; i<3 ; i++){ %>
                 <article class="product-des d-flex flex-column align-items-center justify-content-center">
-                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.avatar %>" alt="<%= element.title %>"></a>
-                    <p class="titulo"><%= element.title %> </p>
+                    <a href="/products/detail/<%= bestselling[i].id %> "><img src="/images/products/<%= bestselling[i].avatar %>" alt="<%= bestselling[i].title %>"></a>
+                    <p class="titulo"><%= bestselling[i].title %> </p>
                     <!-- ver bloc de notas de como estaba antes los autoressss -->
-                    <p class="autor"><%= element.Authors.name %> </p>  
-                    <% let precioFinal = Math.round(element.price) %> 
+                    <p class="autor"><%= bestselling[i].Authors.name %> </p>  
+                    <% let precioFinal = Math.round(bestselling[i].price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
-                   <button type="button" class="btn btn-warning"><a href="/products/detail/<%= element.id %>">Leer más</a></button> 
+                   <button type="button" class="btn btn-warning"><a href="/products/detail/<%= bestselling[i].id %>">Leer más</a></button> 
                 </article>
-            <% }) %>
+            <% } %>
 
             </section>
     
@@ -124,16 +124,16 @@
     
             <section class="products d-flex flex-wrap justify-content-center">
             <!--AQUÍ ESTÁ FOREACH-->
-            <% popularSpanish.forEach(element => { %>
+            <% for(let i = 0; i<3 ; i++) { %>
                 <article class="product-des d-flex flex-column align-items-center justify-content-center">
-                    <a href="/products/detail/<%= element.id %> "><img src="/images/products/<%= element.avatar %>" alt="<%= element.title %> "></a>
-                    <p class="titulo"><%= element.title %> </p>
-                    <p class="autor"><%= element.Authors.name %></p>
-                    <% let precioFinal = Math.round(element.price) %> 
+                    <a href="/products/detail/<%= popularSpanish[i].id %> "><img src="/images/products/<%= popularSpanish[i].avatar %>" alt="<%= popularSpanish[i].title %> "></a>
+                    <p class="titulo"><%= popularSpanish[i].title %> </p>
+                    <p class="autor"><%= popularSpanish[i].Authors.name %></p>
+                    <% let precioFinal = Math.round(popularSpanish[i].price) %> 
                     <p class="precio">ARS$ <%= precioFinal%> </p>
-                    <button type="button" class="btn btn-warning"><a href="/products/detail/<%= element.id %>">Leer más</a></button> 
+                    <button type="button" class="btn btn-warning"><a href="/products/detail/<%= popularSpanish[i].id %>">Leer más</a></button> 
                 </article>
-            <% }) %>
+            <% } %>
 
             </section>
         </div>
