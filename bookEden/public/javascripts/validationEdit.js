@@ -1,16 +1,17 @@
 window.addEventListener("load", function () {
    var formulario = document.querySelector("#form-edit");
-  
-   if (formulario) {
+
+ 
       formulario.addEventListener("submit", function (e) {
         
          //creamos el array de errores
          let errores = [];
 
          let camponame = document.querySelector("#title");
+
          if (camponame.value == "") {
             errores.push("El campo Titulo no puede estar vacio")
-         }
+           }
 
          let campoPrice = document.querySelector("#price");
 
@@ -24,9 +25,9 @@ window.addEventListener("load", function () {
 
          let campoDiscount = document.querySelector("#discount");
          if (campoDiscount.value == "") {
-            errores.push("El campo Descuento no puede estar vacio")
+            alert("El campo Descuento no puede estar vacio")
          } else
-            if (campoDiscount.value < 0) {
+            if (campoDiscount.value <= 0) {
                errores.push("El Descuento no puedo ser menor a cero")
             }
 
@@ -74,6 +75,7 @@ window.addEventListener("load", function () {
          }
 
       })
-   }
+   
+
 
 })

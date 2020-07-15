@@ -1,215 +1,243 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <%- include('./partials/head') %>
-        <title>EDIT | <%= selectedProduct.title %></title>
-    </head>
 
-    <body>
-        <div class="container">
-            <%- include('./partials/header') %>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2>Editando: <%= selectedProduct.title %></h2>
-                        <span>esto lo puse asi nomas si lo pueden dejar bien y al lado el input tipo file o como ustedes crean que quede bien</span>
-                        <br>
-                        <img src="/images/products/<%= selectedProduct.avatar %>" alt="<%= selectedProduct.title %>"></a>
-                </div>
-            </div>
-            <div class="errores col-6 offset-3 text-left">
+<head>
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/edit.css">
+    <title>EDIT | <%= selectedProduct.title %></title>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('./partials/header') %>
+        <div class="row col-12 m-0">
+            <div class="errores  col-6 offset-3 text-left">
                 <% if(typeof errores != 'undefined'){%>
-                    <ul>
-                        <%for(let i=0;i<errores.length;i++){%>
-                            <li>
-                                <%= errores[i].msg %> 
-                            </li>
-                        <%}%>
+                <ul>
+                    <%for(let i=0;i<errores.length;i++){%>
+                    <li>
+                        <%= errores[i].msg %>
+                    </li>
+                    <%}%>
                     </ul>
-                <% } %> 
-                <h6></h6>
-                <ul></ul>
+                <% } %>
+                    <h6></h6>
+                    <ul></ul>
             </div>
-            <form action="/products/edit/<%= selectedProduct.id %>?_method=PUT" method="POST" id="form-edit" enctype="multipart/form-data">
-                <!-- agregue ecntype -->
-                <!-- input del file -->
-                <div class="row text-center">
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="image" name="image" >
+
+            <form action="/products/edit/<%= selectedProduct.id %>?_method=PUT" method="POST" id="form-edit"
+                class=" text-center col-12" enctype="multipart/form-data">
+               
+    
+                <div class="row text-center col-12 col-md-5 m-0 p-0" id="imagen">
+                    <div class=" col-12 text-center" id="">
+                        <h2 class="m-0">Editando: <%= selectedProduct.title %></h2>
+
+                        <br>
+                        <img style="width: 100%" src="/images/products/<%= selectedProduct.avatar %>"
+                            alt="<%= selectedProduct.title %>"></a>
+                    </div>
+                    <!-- agregue ecntype -->
+                    <!-- input del file -->
+
+                    <div id="img-input">
+                        <div class="input-group m-2">
+                            <input type="file" class="" id="image" name="image" style="width: 70%">
                         </div>
                     </div>
                     <!-- input del file -->
-                <div class="row text-center">
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label for="name" class="input-group-text" id="basic-addon1">Título</label>
+                </div>
+                <div class="row col-12 m-0 p-0">
+                    <div class="row col-12 m-0 p-0">
+                        <div class="row col-12 m-0 p-0 col-md-6">
+                            <div class="col-xl-12" id="title">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend" id="title">
+                                        <label for="name" class="input-group-text"
+                                            id="basic-addon1 title">Título</label>
+                                    </div>
+                                    <input type="text" class="form-control box" id="title" name="name"
+                                        placeholder="Ej: Moby Dick" aria-label="Ej: Moby Dick"
+                                        aria-describedby="basic-addon1" value="<%= selectedProduct.title %> ">
+                                </div>
+                                <div id="de"></div>
                             </div>
-                            <input type="text" class="form-control" id="title" name="name" placeholder="Ej: Moby Dick" aria-label="Ej: Moby Dick" aria-describedby="basic-addon1" value="<%= selectedProduct.title %> ">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label for="author" class="input-group-text" id="author">Autor:</label>
-                            </div>
-                            <select class="custom-select" id="author" name="author">
-                                <%for (let i = 0; i < autor.length; i++) {%>
-                                    <% if(autor[i].id==selectedProduct.author_id){ %> 
+                            <div class="col-xl-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label for="author" class="input-group-text" id="author">Autor:</label>
+                                    </div>
+                                    <select class="custom-select" id="author" name="author">
+                                        <%for (let i = 0; i < autor.length; i++) {%>
+                                        <% if(autor[i].id==selectedProduct.author_id){ %>
                                         <option value="<%=autor[i].id%>" selected>
-                                            <%= autor[i].name %> 
+                                            <%= autor[i].name %>
                                         </option>
-                                    <% }else{%>
-                                        <option value="<%=autor[i].id%>" >
-                                            <%= autor[i].name %> 
+                                        <% }else{%>
+                                        <option value="<%=autor[i].id%>">
+                                            <%= autor[i].name %>
                                         </option>
-                                    <%} %> 
-                               <% }  %> 
-                            </select>
-                             </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label for="publisher" class="input-group-text" id="publisher">Editorial:</label>
+                                        <%} %>
+                                        <% }  %>
+                                    </select>
+                                </div>
                             </div>
-                            <select class="custom-select" id="publisher" name="publisher">
-                                <%for (let i = 0; i < editorial.length; i++) {%>
-                                    <% if(editorial[i].id==selectedProduct.publisher_id){ %> 
+                            <div class="col-xl-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label for="publisher" class="input-group-text"
+                                            id="publisher">Editorial:</label>
+                                    </div>
+                                    <select class="custom-select" id="publisher" name="publisher">
+                                        <%for (let i = 0; i < editorial.length; i++) {%>
+                                        <% if(editorial[i].id==selectedProduct.publisher_id){ %>
                                         <option value="<%=editorial[i].id%>" selected>
-                                            <%= editorial[i].name %> 
+                                            <%= editorial[i].name %>
                                         </option>
-                                    <% }else{%>
-                                        <option value="<%=editorial[i].id%>" >
-                                            <%= editorial[i].name %> 
+                                        <% }else{%>
+                                        <option value="<%=editorial[i].id%>">
+                                            <%= editorial[i].name %>
                                         </option>
-                                    <%} %> 
-                               <% }  %> 
-                            </select>
+                                        <%} %>
+                                        <% }  %>
+                                    </select>
+                                </div>
                             </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label for="genre" class="input-group-text" id="genre">Género:</label>
-                            </div>
-                            <select class="custom-select" id="genre" name="genre">
-                                <%for (let i = 0; i < genero.length; i++) {%>
-                                    <% if(genero[i].id==selectedProduct.genre_id){ %> 
+                            <div class="col-xl-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label for="genre" class="input-group-text" id="genre">Género:</label>
+                                    </div>
+                                    <select class="custom-select" id="genre" name="genre">
+                                        <%for (let i = 0; i < genero.length; i++) {%>
+                                        <% if(genero[i].id==selectedProduct.genre_id){ %>
                                         <option value="<%=genero[i].id%>" selected>
-                                            <%= genero[i].name %> 
+                                            <%= genero[i].name %>
                                         </option>
-                                    <% }else{%>
-                                        <option value="<%=genero[i].id%>" >
-                                            <%= genero[i].name %> 
+                                        <% }else{%>
+                                        <option value="<%=genero[i].id%>">
+                                            <%= genero[i].name %>
                                         </option>
-                                    <%} %> 
-                               <% }  %> 
-                            </select>
-                        </div>
-                    </div> 
-                    <div class="col-md-3">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="category">Categoría:</label>
+                                        <%} %>
+                                        <% }  %>
+                                    </select>
+                                </div>
                             </div>
-                            <select class="custom-select" id="category" name="category">
-                                <%for (let i = 0; i < categoria.length; i++) {%>
-                                    <% if(categoria[i].id==selectedProduct.category_id){ %> 
+                            <div class="col-xl-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="category">Categoría:</label>
+                                    </div>
+                                    <select class="custom-select" id="category" name="category">
+                                        <%for (let i = 0; i < categoria.length; i++) {%>
+                                        <% if(categoria[i].id==selectedProduct.category_id){ %>
                                         <option value="<%=categoria[i].id%>" selected>
-                                            <%= categoria[i].name %> 
+                                            <%= categoria[i].name %>
                                         </option>
-                                    <% }else{%>
-                                        <option value="<%=categoria[i].id%>" >
-                                            <%= categoria[i].name %> 
+                                        <% }else{%>
+                                        <option value="<%=categoria[i].id%>">
+                                            <%= categoria[i].name %>
                                         </option>
-                                    <%} %> 
-                               <% }  %> 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="language">Idioma:</label>
+                                        <%} %>
+                                        <% }  %>
+                                    </select>
+                                </div>
                             </div>
-                            <select class="custom-select" id="language" name="language">
-                                <%for (let i = 0; i < idioma.length; i++) {%>
-                                    <% if(idioma[i].id==selectedProduct.language_id){ %> 
+                            <div class="col-xl-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label for="date" class="input-group-text" id="">Publicación:</label>
+                                    </div>
+                                    <input type="date" class="form-control" id="date" name="date" aria-label="Ej: 0-100"
+                                        aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-5" id="form-dos">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="language">Idioma:</label>
+                                    </div>
+                                    <select class="custom-select" id="language" name="language">
+                                        <%for (let i = 0; i < idioma.length; i++) {%>
+                                        <% if(idioma[i].id==selectedProduct.language_id){ %>
                                         <option value="<%=idioma[i].id%>" selected>
-                                            <%= idioma[i].language %> 
+                                            <%= idioma[i].language %>
                                         </option>
-                                    <% }else{%>
-                                        <option value="<%=idioma[i].id%>" >
-                                            <%= idioma[i].language %> 
+                                        <% }else{%>
+                                        <option value="<%=idioma[i].id%>">
+                                            <%= idioma[i].language %>
                                         </option>
-                                    <%} %> 
-                               <% }  %> 
-                                <!-- <option selected>Elegir...</option>
+                                        <%} %>
+                                        <% }  %>
+                                        <!-- <option selected>Elegir...</option>
                                 <option value="Español">Español</option>
                                 <option value="Inglés">Inglés</option> -->
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="format">Formato:</label>
+                                    </select>
+                                </div>
                             </div>
-                            <select class="custom-select" id="format" name="format">
-                                <%for (let i = 0; i < formato.length; i++) {%>
-                                    <% if(formato[i].id==selectedProduct.format_id){ %> 
+                            <div class="col-md-6 col-xl-5" id="form-dos">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="format">Formato:</label>
+                                    </div>
+                                    <select class="custom-select" id="format" name="format">
+                                        <%for (let i = 0; i < formato.length; i++) {%>
+                                        <% if(formato[i].id==selectedProduct.format_id){ %>
                                         <option value="<%=formato[i].id%>" selected>
-                                            <%= formato[i].type %> 
+                                            <%= formato[i].type %>
                                         </option>
-                                    <% }else{%>
-                                        <option value="<%=formato[i].id%>" >
-                                            <%= formato[i].type %> 
+                                        <% }else{%>
+                                        <option value="<%=formato[i].id%>">
+                                            <%= formato[i].type %>
                                         </option>
-                                    <%} %> 
-                               <% }  %> 
-                                <!-- <option selected>Elegir...</option>
+                                        <%} %>
+                                        <% }  %>
+                                        <!-- <option selected>Elegir...</option>
                                 <option value="Paperback">Paperback</option> -->
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <label for="date" class="input-group-text" id="">Fecha de Publicación:</label>
+                                    </select>
+                                </div>
                             </div>
-                            <input type="date" class="form-control" id="date" name="date" aria-label="Ej: 0-100" aria-describedby="basic-addon1">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label for="price" class="input-group-text" id="price">Precio:</label>
+
+                            <div class="col-md-6 col-xl-5" id="precio">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label for="price" class="input-group-text" id="price">Precio:</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="price" name="price"
+                                        placeholder="Ej: 1234.50" aria-label="Ej: 1234.50"
+                                        aria-describedby="basic-addon1" value="<%=selectedProduct.price%> ">
+                                </div>
                             </div>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="Ej: 1234.50" aria-label="Ej: 1234.50" aria-describedby="basic-addon1" value="<%=selectedProduct.price%> ">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <label for="discount" class="input-group-text" id="discount">Descuento:</label>
+                            <div class="col-md-6 col-xl-5" id="precio">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <label for="discount" class="input-group-text" id="discount">Descuento:</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="discount" name="discount"
+                                        placeholder="Ej: 0-100" aria-label="Ej: 0-100" aria-describedby="basic-addon1"
+                                        value="<%= selectedProduct.discount%> ">
+                                </div>
                             </div>
-                            <input type="text" class="form-control" id="discount" name="discount" placeholder="Ej: 0-100" aria-label="Ej: 0-100" aria-describedby="basic-addon1" value="<%= selectedProduct.discount%> ">
+                        </div>
+
+                        <div class="input-group col-12 col-xl-7 p-0" id="descripcion">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text p-0">Descipción:</span>
+                            </div>
+                            <textarea id="description" name="description" class="form-control m-0"
+                                style="height: 230px;"
+                                aria-label="With textarea"><%= selectedProduct.description %></textarea>
+                        </div>
+                        <div class="col-12 col-xl-12" id="guardar">
+                            <button type="submit" class="btn btn-primary mt-2 mb-2">Guardar</button>
                         </div>
                     </div>
-                    <div class="input-group col-12">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Descipción:</span>
-                        </div>
-                        <textarea id="description" name="description" class="form-control" style="height: 130px;"  aria-label="With textarea"><%= selectedProduct.description %></textarea>
-                    </div>
-                    <div class="col-12">
-						<button type="submit" class="btn btn-primary mt-2 mb-2">Guardar</button>
-					</div>
                 </div>
             </form>
-            <%- include('./partials/footer') %>
         </div>
-    </body>
-   <!-- <script src="/javascripts/validationEdit.js"></script
+        <%- include('./partials/footer') %>
+    </div>
+</body>
+<script src="/javascripts/validationEdit.js"></script>
+
 </html>
