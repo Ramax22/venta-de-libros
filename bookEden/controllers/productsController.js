@@ -235,7 +235,8 @@ var productsController = {
 
             order: [
                 ['title', "DESC"]
-            ]
+            ],
+            include:[{association:"Authors"}]
         })
         .then(function(books){
             console.log(books)

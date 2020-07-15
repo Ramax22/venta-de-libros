@@ -17,8 +17,8 @@
         <%- include('./partials/header') %>
         <div class="col-12">
         <form action="/users/edit/<%=userLogged.id%> ?_method=PUT" method="POST" enctype="multipart/form-data">
-            <div class="row text-center padding">
-                <div class="col-6 offset-3">
+            <div class="row text-center padding d-flex flex-wrap justify-content-center">
+                <div class="col-lg-6 col-md-8">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label for="name" class="input-group-text" id="basic-addon1">Nombre</label>
@@ -27,8 +27,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row text-center padding">
-                <div class="col-6 offset-3">
+            <div class="row text-center padding d-flex flex-wrap justify-content-center">
+                <div class="col-lg-6 col-md-8">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label for="username" class="input-group-text" id="basic-addon1">apellido</label>
@@ -37,8 +37,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row text-center padding">
-                <div class="col-6 offset-3">
+            <div class="row text-center padding d-flex flex-wrap justify-content-center">
+                <div class="col-lg-6 col-md-8">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label for="password" class="input-group-text" id="basic-addon1">Contraseña</label>
@@ -47,13 +47,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-6 offset-3 ">
-                <label for="image" class="form-label" >Imagen</label>
-                <input type="file" id='image' name='image'> 
-             </div>
-            <!-- mejorar la vista muchooooo -->
+            <div class="row text-center padding d-flex flex-wrap justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <label for="image" class="form-label" >Imagen</label>
+                    <input type="file" id='image' name='image'> 
+                 </div>
+                <!-- mejorar la vista muchooooo -->
+            </div> 
             <button type="submit" class="btn btn-secondary offset-5 padding">Guardar Cambios</button>
-            
         </form>
         </div>
         <%- include('./partials/footer') %>

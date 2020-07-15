@@ -56,7 +56,10 @@ router.post('/create/', upload.any(),[
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', adminMiddlewares.check, productsController.edit); /* GET - Form to create */
-router.put('/edit/:id', productsController.update); /* PUT - Update in DB */
+router.put('/edit/:id', upload.any(),[
+	check("name").isLength({min:5}).withMessage("nombre invalido minimo 5 caracteres"),
+	check("description").isLength({min:20}).withMessage("minimo 20 caracteres")
+], productsController.update); /* PUT - Update in DB */
 
 /*** DELETE ONE PRODUCT***/ 
 router.delete('/delete/:id', productsController.destroy); /* DELETE - Delete from DB */

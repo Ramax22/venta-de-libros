@@ -28,10 +28,10 @@
                     <article class="product-des d-flex flex-column align-items-center">
                         <a href="/products/detail/<%= book.id %> "><img src="/images/products/<%= book.avatar %> " alt="<%= book.title %> "></a>
                         <p class="titulo"><%= book.title %> </p>
-                        <p class="autor"><%= book.author %> </p>
+                        <p class="autor"><%= book.Authors.name %> </p>
                         <% let precioFinal = Math.round(book.price) %> 
                         <p class="precio"> ARS$<%= precioFinal%> </p>
-                        <button type="button" class="btn btn-warning"><a href="/cart">Añadir al carrito</a></button>
+                        <button type="button" class="btn btn-warning"><a href="/products/detail/<%=book.id%> ">Leer mas</a></button>
                     </article>
                     <% }) %>   
             </section>
