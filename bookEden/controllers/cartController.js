@@ -48,7 +48,7 @@ var cartController = {
                     })
                     .then(function(carritoActual){
                         
-                        res.render('carrito','header',{
+                        res.render('carrito',{
                             userLogged: req.session.userLogged,
                             books:carrito.books,
                             total:valor,
