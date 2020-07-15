@@ -1,0 +1,45 @@
+@media (min-width:768px){
+    #form-edit{
+        display: flex;
+    }
+    #imagen{
+        height: 50%;
+    }
+    #title{
+        margin-top: 37px;
+    }
+    #form-dos{
+        padding: 1px;
+    }
+    #precio{
+        padding: 0;
+    }
+    #descripcion{
+        margin-left: -42%;
+    }
+    #img-input{
+        margin-left: 16%;
+    }
+    #guardar{
+        margin-left: -43%;
+        
+    }
+}
+@media (min-width:1024px){
+    #descripcion{
+        margin-top: 15%;
+        
+    }
+}
+
+@media (min-width:1200px){
+    #descripcion{
+        height: 20%;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    #guardar{
+        margin-left: -43%;
+        margin-top: 5%;
+    }
+}

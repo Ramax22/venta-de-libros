@@ -169,7 +169,7 @@ var cartController = {
                             }
                         }
                     }
-                    res.render('payment',{
+                    res.render('payment', {
                       userLogged:req.session.userLogged,
                       books:carrito.books,
                       total: carrito.total,
@@ -182,10 +182,10 @@ var cartController = {
                   
         })
            
-            
-        //})
-
+    
+    
     },
+
     
     closeCart:function(req,res,next){
         db.Cart.update({
